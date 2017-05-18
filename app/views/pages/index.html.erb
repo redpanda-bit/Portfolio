@@ -1,31 +1,87 @@
-  <body>
+<style>
+  .overlay{
+    opacity:1;
+    background-color:#ccc;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+}
+h2 {
+  font-size: 2em;
+  line-height: 40px;
+}
+p {
+  font-size: 1em;
+  line-height: 24px
+}
+</style>
+  
+    <%= stylesheet_link_tag 'component' %>
+    <%= stylesheet_link_tag 'normalize' %>
+    <%= stylesheet_link_tag 'hover' %>
+
+  <body id="website" class="" style="display: block;min-width: 960px" data-hijacking="off" data-animation="scaleDown">
+  <div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: white">
+    
+  </div>
+
+      <header id="ha-header" class="ha-header">
+        <div class="ha-header-perspective">
+          <div class="ha-header-front">
+            <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated fadeInUp', style: 'top: -5px;height: 60px;position: relative;display: none'%></span></h1>
+            <nav>
+      <a style="cursor: pointer" id="aboutFromNav">About</a>
+      <a style="cursor: pointer" id="experienceFromNav">Experience</a>
+      <a style="cursor: pointer" id="educationFromNav">Education</a>
+      <a style="cursor: pointer" id="projectsFromNav">Projects</a>
+      <a style="cursor: pointer" id="skillsFromNav">Skills</a>
+      <a style="cursor: pointer" id="contactFromNav">Contact</a>
+            </nav>
+          </div>
+          <div class="ha-header-bottom">
+            <nav>
+              <a>Dalliance</a>
+              <a>Inglenook</a>
+              <a>Lagniappe</a>
+              <a>Mellifluous</a>
+              <a>Erstwhile</a>
+              <a>Wafture</a>
+              <a>Serendipity</a>
+              <a>Love</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+
 
     <!-- BEGIN NAVBAR -->
-    <div class="navbar  animated fadeInUp">
+<!--     <header id="ha-header" class="ha-header ha-header-subshow animated fadeInUp" style="z-index: 8888; display: none">
       <a href="" style="height: 0px">
-<%= image_tag "CA Logo.png", style: 'height: 90px; left: 10px;top: -30px; position: relative'%>
+
 
       </a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
+
+    </header> -->
     <!-- END NAVBAR -->
 
     <div class="container">
 
       <!-- HEADER -->
-      <div class="jumbotron">
+      <div class="jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg.jpg' %>'); background-size: 100% 100%">
 
         <div class="jumbotron-text">
 
-<%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %>
+<!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
+<%= image_tag "CA Logo.png",class: 'logo animated fadeIn', style: 'position: relative;display:none'%>
 
-          <h1>Carlos Almonte</h1>
-          <p>Full-Stack Web Developer in New York, NY.</p>
+  
+          <h1 id="jumbotronFullName" class="fullName">Carlos Almonte</h1>
+          <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a style="cursor: pointer">
+    Web Developer</a> in New York, NY.</p>
         </div>
         <div class="jumbotron-social">
           <ul class="ul-social">
@@ -38,7 +94,7 @@
           </ul>
         </div>
         <div id="down-arrow">
-          <span><a href="#about"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
+          <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
         </div>
       </div>
       <!-- END HEADER -->
@@ -46,23 +102,26 @@
 
 
       <!-- BEGIN ABOUT -->
-      <div class="row white box-shadow">
+      <section id="about" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
+      <div class="row box-shadow" style="background-color: white" >
         <div class="side-content"></div>
         <div class="main-content">
           <div class="content-header">
             <a class="anchor" name="about"></a>
             <h2>About</h2>
           </div>
-          <div class="content-body">
-            <p>Academic and career background in Clinical Nutrition, assisting doctors by recommending diets to their patients based on diagnosis, labs and other pathological status.</p>
-            <p>Passion and intermediate knowledge of Software/Web Development. Currently browsing the tech world, firmly determined to make a career change into the field.</p>
+          <div class="content-body" style="color: black">
+            <p style="text-align: left">Academic and career background in Clinical Nutrition, assisting doctors by recommending diets to their patients based on diagnosis, labs and other pathological status.</p>
+            <p style="text-align: left">Passion and intermediate knowledge of Software/Web Development. Currently browsing the tech world, firmly determined to make a career change into the field.</p>
           </div>
         </div>
         <div class="side-content"></div>
       </div>
+      </section>
       <!-- END ABOUT -->
 
       <!-- BEGIN EPERIENCE -->
+      <section id="experience" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
       <div class="row">
         <div class="side-content"></div>
         <div class="main-content">
@@ -72,7 +131,7 @@
           </div>
           <!-- CARD #1 -->
           <div class="content-body">
-            <div class="card">
+            <div class="card hvr-glow" style="width: 100%">
               <div class="card-header">
                 <h4>Grand Manor Nursing Home  —  April 2016 - Present<span class="job-title">Dietitian</span></h4>
               </div>
@@ -89,7 +148,7 @@
 
           <!-- CARD #2 -->
 
-            <div class="card">
+            <div class="card hvr-glow" style="width: 100%">
               <div class="card-header">
                 <h4>Delta Air Lines  —  July 2016 - Present <span class="job-title">Airport Customer Service Agent</span></h4>
               </div>
@@ -106,7 +165,7 @@
 
           <!-- CARD #3 -->
 
-            <div class="card">
+            <div class="card hvr-glow" style="width: 100%">
               <div class="card-header">
                 <h4>ASIG  —  February 2016 - July 2016<span class="job-title">Airport Customer Service Agent</span></h4>
               </div>
@@ -123,9 +182,11 @@
         </div>
         <div class="side-content"></div>
       </div>
+      </section>
       <!-- END EXPERIENCE -->
 
       <!-- BEGIN EDUCATION -->
+      <section id="education" class="ha-waypoint">
       <div class="row white box-shadow">
         <div class="side-content"></div>
         <div class="main-content">
@@ -136,7 +197,7 @@
           <div class="content-body">
 
             <!-- EDUCATION 1 -->
-            <div class="card">
+            <div class="card hvr-glow" style="width: 100%" style="background-color: white">
               <div class="card-header">
                 <h4>Lehman College <span class="job-title">2012 - 2016</span></h4>
               </div>
@@ -148,9 +209,11 @@
         </div>
         <div class="side-content"></div>
       </div>
+      </section>
       <!-- END EDUCATION -->
 
       <!-- BEGIN PROJECTS -->
+      <section id="projects" class="ha-waypoint">
       <div class="row">
         <div class="side-content-sm"></div>
         <div class="main-content-lg">
@@ -160,24 +223,24 @@
           </div>
           <div class="content-body">
             <!-- CARD #1 -->
-            <div class="project-card">
-              <div class="project-image" style="width: 40%" >
+            <div class="project-card hvr-glow" style="width: 100%">
+              <div class="project-image" style="float: left;width: 40%;" >
 <%= image_tag "ezgif-1-b329556bfd.jpg", class: 'project1',style: "width: 100%" %>
               </div>
-              <div class="project-content" style="width: 100%">
+              <div class="project-content" style="display: block;width: 100%;position: relative; left: 23px">
                 <h4>Dietitian.Help</h4>
                 <p>Electronic Medical Records (EMR) designed specifically for Dietitians and other healthcare providers looking to ease the Medical Nutrition Therapy process.</p>
                 <a href="http://dietitian.help">Dietitian.Help</a>
               </div>
             </div>
             <!-- CARD #2 -->
-            <div class="project-card">
-              <div class="project-content" style="width: 100%">
+            <div class="project-card hvr-glow" style="width: 100%">
+              <div class="project-content" style="display: inline-block;position: relative;width: 60%">
                 <h4>Nostalgia Experience</h4>
                 <p>Web app for music group "Nostalgia."</p>
                 <a href="http://wearenostalgia.xyz">WeareNostalgia.xyz</a>
               </div>
-              <div class="project-image" style="width: 40%" >
+              <div class="project-image" style="float: right;width: 40%" >
 <%= image_tag "ezgif-1-af57977208.jpg",class: 'project2', style: "width: 100%" %>
               </div>
             </div>
@@ -185,9 +248,11 @@
         </div>
         <div class="side-content-sm"></div>
       </div>
+      </section>
       <!-- END PROJECTS -->
 
       <!-- BEGIN SKILLS -->
+      <section id="skills" class="ha-waypoint">
       <div class="row white box-shadow">
         <div class="side-content"></div>
         <div class="main-content">
@@ -211,11 +276,12 @@
         </div>
         <div class="side-content"></div>
       </div>
+      </section>
       <!-- END SKILLS -->
 
       <!-- BEGIN CONTACT -->
-
-      <div class="row blue">
+<section id="contact" class="cd-section">
+      <div class="row dark-gray">
         <div class="side-content"></div>
         <div class="main-content">
           <div class="content-header">
@@ -233,6 +299,7 @@
         </div>
         <div class="side-content"></div>
       </div>
+      </section>
       <!-- END CONTACT -->
 
       <!-- BEGIN FOOTER -->
@@ -241,8 +308,8 @@
         <div class="main-content">
           <div class="content-header">
           </div>
-          <div class="content-body">
-            <p>Copyright Carlos Almonte 2017</p>
+          <div class="content-body footer">
+            <p>Copyright&copy; Carlos Almonte 2017</p>
           </div>
         </div>
         <div class="side-content"></div>
@@ -251,9 +318,74 @@
 
     </div>
   </body>
+    <%= javascript_include_tag 'modernizr.custom' %>
+    <%= javascript_include_tag 'waypoints.min' %>
+
+
   <script>
-  $(document).ready(function()
-{
+
+
+  // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
+  // $("#jumbotronFullName").typed({
+  // strings: ['carlos almonte'],
+  // typeSpeed: 4,
+  // startDelay: 100,
+  // cursorChar: "",
+  // });
+
+$("#aboutFromNav").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#about").offset().top - 25
+    }, 400);
+});
+
+$("#aboutFromJumbotron").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#about").offset().top - 25
+    }, 400);
+});
+
+$("#experienceFromNav").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#experience").offset().top - 25
+    }, 400);
+});
+
+$("#educationFromNav").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#education").offset().top - 25
+    }, 400);
+});
+
+$("#projectsFromNav").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#projects").offset().top - 25
+    }, 400);
+});
+
+$("#skillsFromNav").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#skills").offset().top - 25
+    }, 400);
+});
+
+$("#contactFromNav").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#contact").offset().top - 25
+    }, 400);
+});
+
+ window.onload = function() {
+  if($(window).scrollTop() < 384){
+          $('.ha-header').delay(400).addClass('ha-header-shrink');
+      }
+  $('#preloader').delay(100).fadeOut("slow");
+  $('.ha-header').delay(400).css('display', '');
+  $('.logo').delay(400).css('display', '');
+  $('#jumbotronFullTitleAndLocation').delay(400).css('display', '');
+
+
+  // PNG TO GIF (ANIMATES PICTURES ON HOVER)
     $(".project1").hover(
         function()
         {
@@ -276,5 +408,49 @@
           var src = $(this).attr("src");
           $(this).attr("src", '/assets/ezgif-1-af57977208-f0168f9a925cc356bba4c279f8f495c579aa84da0ca83a559f6fad5a0db59101.jpg');
         });
-});</script>
+
+// HIDES LOGO ON NAVBAR IF WINDOW TOO SMALL
+    if($(window).width() < 970 && $(window).scrollTop() < 384) {
+      $('#logoOnHeader').hide();
+    }
+    else if($(window).scrollTop() > 384 && $(window).width() > 970 ){
+      $('#logoOnHeader').show();
+    }
+};
+var $head = $( '#ha-header' );
+      $( '.ha-waypoint' ).each( function(i) {
+        var $el = $( this ),
+          animClassDown = $el.data( 'animateDown' ),
+          animClassUp = $el.data( 'animateUp' );
+
+        $el.waypoint( function( direction ) {
+          if( direction === 'down' && animClassDown ) {
+            $head.attr('class', 'ha-header ' + animClassDown);
+          }
+          else if( direction === 'up' && animClassUp ){
+            $head.attr('class', 'ha-header ' + animClassUp);
+          }
+        }, { offset: '100%' } );
+      } );
+// ON SCROLL EVENT LISTENER FOR LOGO ON NAVBAR
+$(window).on( "scroll", function() {
+      if($(window).scrollTop() > 384 && $(window).width() > 970) {
+        $('#logoOnHeader').show();
+        $('#logoOnHeader').removeClass('fadeOutDownBig');
+      }
+      else if($(window).scrollTop() < 384){
+        $('#logoOnHeader').addClass('fadeOutDownBig')
+      }
+    });
+// // EVENT LISTENER TO HIDE LOGO FROM NAVBAR IF WIDTH TOO SMALL
+// window.onresize = function(event) {
+//   console.log('resized')
+//     if($(window).width() < 970) {
+//       $('#logoOnHeader').addClass('fadeOutDownBig')
+//     }
+//     else {
+//       $('#logoOnHeader').show();
+//     }
+// };
+</script>
 </html>
