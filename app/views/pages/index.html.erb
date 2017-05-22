@@ -80,7 +80,7 @@ p {
 
   
           <h1 id="jumbotronFullName" class="fullName">Carlos Almonte</h1>
-          <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a style="cursor: pointer">
+          <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a style="cursor: default">
     Web Developer</a> in New York, NY.</p>
         </div>
         <div class="jumbotron-social">
@@ -224,8 +224,8 @@ p {
           <div class="content-body">
             <!-- CARD #1 -->
             <div class="project-card hvr-glow" style="width: 100%">
-              <div class="project-image" style="float: left;width: 40%;" >
-<%= image_tag "ezgif-1-b329556bfd.jpg", class: 'project1',style: "width: 100%" %>
+              <div class="project-image project1" style="float: left;width: 40%;" >
+<%= image_tag "ezgif-1-b329556bfd.jpg",style: "width: 100%" %>
               </div>
               <div class="project-content" style="display: block;width: 100%;position: relative; left: 23px">
                 <h4>Dietitian.Help</h4>
@@ -386,7 +386,7 @@ $("#contactFromNav").click(function() {
 
 
   // PNG TO GIF (ANIMATES PICTURES ON HOVER)
-    $(".project1").hover(
+    $("#project1").hover(
         function()
         {
           var src = $(this).attr("src");
@@ -397,7 +397,7 @@ $("#contactFromNav").click(function() {
           var src = $(this).attr("src");
           $(this).attr("src", '/assets/ezgif-1-b329556bfd-00794f1f40b1c2804ff249ccea95a5be8de7034fc3482c2b6d96198734aaf775.jpg');
         });
-    $(".project2").hover(
+    $("#project2").hover(
         function()
         {
           var src = $(this).attr("src");
