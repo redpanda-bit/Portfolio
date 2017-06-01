@@ -32,7 +32,7 @@ p {
         <div class="ha-header-perspective">
           <div class="ha-header-front">
             <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated fadeInUp', style: 'top: -5px;height: 60px;position: relative;display: none'%></span></h1>
-            <nav>
+            <nav id="navLi">
       <a style="cursor: pointer" id="aboutFromNav">About</a>
       <a style="cursor: pointer" id="projectsFromNav">Projects</a>
       <a style="cursor: pointer" id="educationFromNav">Education</a>
@@ -110,8 +110,9 @@ p {
             <h2>About</h2>
           </div>
           <div class="content-body" style="color: black">
-            <p style="text-align: left">Academic and career background in Clinical Nutrition, assisting doctors by recommending diets to their patients based on diagnosis, labs and other pathological status.</p>
-            <p style="text-align: left">Passion and intermediate knowledge of Software/Web Development. Currently browsing the industry, firmly determined to make a career change into the field.</p>
+            <p style="text-align: left">Academic and career background in Clinical Nutrition, passion and intermediate knowledge of Software/Web Development, using mainly Ruby on Rails but also familiar with Node JS. browsing the industry, firmly determined to make a career change into the field.</p>
+            <p style="text-align: left">High preference for Object Oriented backends and intuitive frontends with responsive designs. </p>
+            <p style="text-align: left">Experienced on SQLite, PostgreSQL and CRUD functionalities overall. </p>
           </div>
         </div>
         <div class="side-content"></div>
@@ -452,6 +453,32 @@ $(window).on( "scroll", function() {
         $('#logoOnHeader').addClass('fadeOutDownBig')
       }
     });
+
+// ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
+
+$(window).resize(function() {
+      if($(window).scrollTop() > 384 && $(window).width() > 970) {
+        $('#logoOnHeader').show();
+        $('#logoOnHeader').removeClass('fadeOutDownBig');
+
+      }
+      else if($(window).scrollTop() < 384 || $(window).width() < 970){
+        $('#logoOnHeader').addClass('fadeOutDownBig')
+      }
+      if($(window).width() < 970){
+                $('#navLi').attr('style', 'margin-top: -15px')
+
+      }
+                  if($(window).width() > 970){
+                $('#navLi').attr('style', 'margin-top: 0px')
+
+      }
+    });
+
+      if($(window).width() < 970){
+                $('#navLi').attr('style', 'margin-top: -15px')
+
+      }
 // // EVENT LISTENER TO HIDE LOGO FROM NAVBAR IF WIDTH TOO SMALL
 // window.onresize = function(event) {
 //   console.log('resized')
