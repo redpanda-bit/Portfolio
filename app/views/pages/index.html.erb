@@ -22,8 +22,11 @@ p {
     <%= stylesheet_link_tag 'component' %>
     <%= stylesheet_link_tag 'normalize' %>
     <%= stylesheet_link_tag 'hover' %>
+    <%= stylesheet_link_tag 'imghover' %>
+    <%= stylesheet_link_tag 'linkstyles' %>
 
-  <body id="website" class="" style="display: block;min-width: 960px" data-hijacking="off" data-animation="scaleDown">
+
+  <body id="website" class="" style="display: block" data-hijacking="off" data-animation="scaleDown">
   <div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: white">
     
   </div>
@@ -67,20 +70,23 @@ p {
     </header> -->
     <!-- END NAVBAR -->
 
-    <div class="container">
-
+    <div id="" class="container">
       <!-- HEADER -->
       <div class="jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg.jpg' %>'); background-size: 100% 100%">
 
+<div id="containLogoNameAndTitle" style="position: center">
         <div class="jumbotron-text">
 
 <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
-<%= image_tag "CA Logo.png",class: 'logo animated fadeIn', style: 'position: relative;display:none'%>
 
-  
-          <h1 id="jumbotronFullName" class="fullName">Carlos Almonte</h1>
-          <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a style="cursor: default">
-    Web Developer</a> in New York, USA.</p>
+<%= image_tag "CA Logo.png",class: 'logo animated fadeIn', style: 'position: relative;display:none;width: 30%'%>
+                
+
+<div style="width: 90%;margin: 0 0 0 5%">
+          <h1 id="jumbotronFullName" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%">Carlos Almonte</h1>
+</div>
+          <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
+    Web Developer&nbsp;</a>in New York, USA.</p>
         </div>
         <div class="jumbotron-social">
           <ul class="ul-social">
@@ -96,6 +102,8 @@ p {
           <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
         </div>
       </div>
+      </div>
+
       <!-- END HEADER -->
 
 
@@ -107,7 +115,8 @@ p {
         <div class="main-content">
           <div class="content-header">
             <a class="anchor" name="about"></a>
-            <h2>About</h2>
+            <h2> <a style="cursor: default">About</a></h2>
+            <p></p>
           </div>
           <div class="content-body" style="color: black">
             <p style="text-align: left">Academic and career background in Clinical Nutrition, passion and intermediate knowledge of Web Development, primarily using Ruby on Rails but also familiar with Node JS.</p>
@@ -131,16 +140,22 @@ p {
           </div>
           <div class="content-body">
             <!-- CARD #1 -->
-            <div class="project-card hvr-glow" style="width: 100%;height:230px">
-              <div class="project-image project1" style="margin: 10px;float: left;width: 40%;background-image: url('<%=asset_path('ezgif-1-b329556bfd.jpg') %>');background-size: contain;background-repeat:no-repeat;height:250px;min-width:40%;height:100%" >
-<!-- <%= image_tag "ezgif-1-b329556bfd.jpg",style: "width: 100%" %> -->
               </div>
+            <div class="project-card hvr-glow" style="width: 100%">
+
               <div class="project-content" style="display: inline-block;width: 55%;position: relative; left: 23px">
                 <h4>Dietitian.Help</h4>
                 <p>Prototype of a small CRUD application with user authentication and individualized database access for each user. Functions as a Electronic Medical Record (EMR) designed specifically for Dietitians and healthcare providers seeking to ease the Medical Nutrition Therapy process.</p>
                 <a href="http://dietitian.help" target="_blank">Dietitian.Help</a>
               </div>
+              <div style="width: 40%;height: 201px;float: right">
+                            <a href="www.dietitian.help"><div class="project-image" style="margin-top: 20px;height: 100%;background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: contain;background-repeat: no-repeat" >
+                              </div>
+                              </a>
+              </div>
             </div>
+
+
             <!-- CARD #2 -->
             <div class="project-card hvr-glow" style="width: 100%">
               <div class="project-content" style="display: inline-block;position: relative;width: 60%">
@@ -328,9 +343,20 @@ p {
       <!-- END FOOTER -->
 
     </div>
+
+
+
+
+  
   </body>
     <%= javascript_include_tag 'modernizr.custom' %>
     <%= javascript_include_tag 'waypoints.min' %>
+    <%= javascript_include_tag 'anime.min' %>
+    <%= javascript_include_tag 'imghover' %>
+
+
+
+
 
 
   <script>
@@ -387,6 +413,8 @@ $("#contactFromNav").click(function() {
 });
 
  window.onload = function() {
+
+
   if($(window).scrollTop() < 384){
           $('.ha-header').delay(400).addClass('ha-header-shrink');
       }
@@ -420,13 +448,7 @@ $("#contactFromNav").click(function() {
           $(this).attr("src", '/assets/ezgif-1-af57977208-f0168f9a925cc356bba4c279f8f495c579aa84da0ca83a559f6fad5a0db59101.jpg');
         });
 
-// HIDES LOGO ON NAVBAR IF WINDOW TOO SMALL
-    if($(window).width() < 970 && $(window).scrollTop() < 384) {
-      $('#logoOnHeader').hide();
-    }
-    else if($(window).scrollTop() > 384 && $(window).width() > 970 ){
-      $('#logoOnHeader').show();
-    }
+
 };
 var $head = $( '#ha-header' );
       $( '.ha-waypoint' ).each( function(i) {
@@ -443,20 +465,53 @@ var $head = $( '#ha-header' );
           }
         }, { offset: '100%' } );
       } );
-// ON SCROLL EVENT LISTENER FOR LOGO ON NAVBAR
-$(window).on( "scroll", function() {
-      if($(window).scrollTop() > 384 && $(window).width() > 970) {
-        $('#logoOnHeader').show();
-        $('#logoOnHeader').removeClass('fadeOutDownBig');
-      }
-      else if($(window).scrollTop() < 384){
-        $('#logoOnHeader').addClass('fadeOutDownBig')
-      }
-    });
 
-// ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
 
-$(window).resize(function() {
+
+
+function resize() {
+
+
+// RESIZE FULLNAME && LOGO
+    if ($(window).width() < 601 && $(window).width() > 470) {
+      $('#jumbotronFullName').attr('style', 'font-size: 2.3em;margin-top: -20px')
+      $('.logo').attr('style', 'width:75%')
+    };
+
+    if ($(window).width() > 601 && $(window).width() < 830) {
+      $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
+      $('.logo').attr('style', 'width:44%; margin-top: -10px')
+    };
+
+
+// LOGO ONLY
+    if ($(window).width() > 470 && $(window).width() < 601) {
+      $('.logo').attr('style', 'width:72%')
+    };
+    if ($(window).width() > 830) {
+      $('.logo').attr('style', 'width:33%')
+    };
+
+    if ($(window).width() < 470) {
+      $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+      $('.logo').attr('style', 'width:75%')
+    };
+
+
+// RESIZE TITLE AND LOCATION
+    if ($(window).width() < 601 && $(window).width() > 470) {
+      $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .8em;margin-top: 7px')
+    };
+
+    if ($(window).width() > 601) {
+      $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;')
+    };
+
+    if ($(window).width() < 470) {
+      $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
+    };
+
+
       if($(window).scrollTop() > 384 && $(window).width() > 970) {
         $('#logoOnHeader').show();
         $('#logoOnHeader').removeClass('fadeOutDownBig');
@@ -473,7 +528,7 @@ $(window).resize(function() {
                 $('#navLi').attr('style', 'margin-top: 0px')
 
       }
-    });
+    }
 
       if($(window).width() < 970){
                 $('#navLi').attr('style', 'margin-top: -15px')
@@ -489,5 +544,26 @@ $(window).resize(function() {
 //       $('#logoOnHeader').show();
 //     }
 // };
+
+
+
+// ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
+$(window).resize(function() {
+  resize();
+});
+
+
+// ON SCROLL EVENT LISTENER FOR LOGO ON NAVBAR
+$(window).on( "scroll", function() {
+  resize();
+    });
+
+
+$(document).ready(function(){
+resize();
+
+})
 </script>
+
+
 </html>

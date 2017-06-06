@@ -1,6 +1,7 @@
 
 
 /*setup*/
+
 *{
   margin: 0;
   padding: 0;
@@ -93,11 +94,11 @@ a#neon2:hover{
   animation: neon2 1.5s ease-in-out infinite alternate;
 }
 
-a#neon3{
+p:nth-child(3) a{
   color:#FFDD1B;
   font-family:Pacifico;
 }
-a#neon3:hover{ 
+p:nth-child(3) a:hover{ 
   -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
   -moz-animation: neon3 1.5s ease-in-out infinite alternate;
   animation: neon3 1.5s ease-in-out infinite alternate; 
