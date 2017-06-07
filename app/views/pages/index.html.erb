@@ -17,6 +17,36 @@ p {
   font-size: 1em;
   line-height: 24px
 }
+
+#down-arrow {
+              animation: bounce 2s infinite;
+            -webkit-animation: bounce 2s infinite;
+            -moz-animation: bounce 2s infinite;
+            -o-animation: bounce 2s infinite;
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+    40% {-webkit-transform: translateY(-30px);}
+    60% {-webkit-transform: translateY(-15px);}
+}
+
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+    40% {-moz-transform: translateY(-30px);}
+    60% {-moz-transform: translateY(-15px);}
+}
+
+@-o-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+    40% {-o-transform: translateY(-30px);}
+    60% {-o-transform: translateY(-15px);}
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-30px);}
+    60% {transform: translateY(-15px);}
+}
 </style>
   
     <%= stylesheet_link_tag 'component' %>
@@ -146,7 +176,9 @@ p {
               <div class="project-content" style="display: inline-block;width: 55%;position: relative; left: 23px">
                 <h4>Dietitian.Help</h4>
                 <p>Prototype of a small CRUD application with user authentication and individualized database access for each user. Functions as a Electronic Medical Record (EMR) designed specifically for Dietitians and healthcare providers seeking to ease the Medical Nutrition Therapy process.</p>
-                <a href="http://dietitian.help" target="_blank">Dietitian.Help</a>
+                <p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://dietitian.help" target="_blank">Dietitian.Help</a><br>
+                <p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/dhakle/DietitianHelp" target="_blank">See on GitHub</a>
+
               </div>
               <div style="width: 40%;height: 201px;float: right">
                             <a href="www.dietitian.help"><div class="project-image" style="margin-top: 20px;height: 100%;background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: contain;background-repeat: no-repeat" >
@@ -161,7 +193,8 @@ p {
               <div class="project-content" style="display: inline-block;position: relative;width: 60%">
                 <h4>Nostalgia Experience</h4>
                 <p>Web app for music group "Nostalgia."</p>
-                <a href="http://wearenostalgia.xyz"target="_blank">WeareNostalgia.xyz</a>
+                <p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://wearenostalgia.xyz" target="_blank">wearenostalgia.xyz</a><br>
+                <p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/dhakle/nostalgiaexperience" target="_blank">See on GitHub</a>
               </div>
               <div class="project-image" style="float: right;width: 40%" >
 <%= image_tag "ezgif-1-af57977208.jpg",class: 'project2', style: "width: 100%" %>
