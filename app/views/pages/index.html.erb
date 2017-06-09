@@ -105,7 +105,7 @@ p {
       <div class="jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg.jpg' %>'); background-size: cover">
 
 <div id="containLogoNameAndTitle" style="position: center">
-        <div class="jumbotron-text">
+        <div class="jumbotron-text" style="position: absolute; bottom: 0%; left: 10%;width: 80%">
 
 <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
 
@@ -117,8 +117,7 @@ p {
 </div>
           <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
     Web Developer&nbsp;</a>in New York, USA.</p>
-        </div>
-        <div class="jumbotron-social">
+                <div class="jumbotron-social" style="font-size: .6em">
           <ul class="ul-social">
             <li class="li-social-links">
               <a class="social" href="https://github.com/dhakle" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
@@ -128,9 +127,11 @@ p {
             </li>
           </ul>
         </div>
-        <div id="down-arrow">
+                <div id="down-arrow" style="font-size: .5em">
           <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
         </div>
+        </div>
+
       </div>
       </div>
 
@@ -176,9 +177,11 @@ p {
               <div class="project-content" style="display: inline-block;width: 55%;position: relative; left: 23px">
                 <h4>Dietitian.Help</h4>
                 <p>Prototype of a small CRUD application with user authentication and individualized database access for each user. Functions as a Electronic Medical Record (EMR) designed specifically for Dietitians and healthcare providers seeking to ease the Medical Nutrition Therapy process.</p>
-                <p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://dietitian.help" target="_blank">Dietitian.Help</a><br>
-                <p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/dhakle/DietitianHelp" target="_blank">See on GitHub</a>
-
+                <ul>
+                  <li><p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://dietitian.help" target="_blank">Dietitian.Help</a><br></li>
+                <li><p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/dhakle/DietitianHelp" target="_blank">See on GitHub</a></li>
+                
+</ul>
               </div>
               <div style="width: 40%;height: 201px;float: right">
                             <a href="www.dietitian.help"><div class="project-image" style="margin-top: 20px;height: 100%;background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: contain;background-repeat: no-repeat" >
@@ -517,6 +520,7 @@ function resize() {
     };
 
 
+
 // LOGO ONLY
     if ($(window).width() > 470 && $(window).width() < 601) {
       $('.logo').attr('style', 'width:72%')
@@ -561,6 +565,114 @@ function resize() {
                 $('#navLi').attr('style', 'margin-top: 0px')
 
       }
+
+
+
+      // RESIZE LOGO ON HEIGHT
+if ($(window).height() < 735) {
+      $('.logo').removeClass('animated fadeInDown');
+      $('.logo').addClass('animated fadeOutUp');
+};
+
+if ($(window).height() > 735) {
+      $('.logo').removeClass('animated fadeOutUp');
+      $('.logo').addClass('animated fadeInDown');
+
+};
+
+// POSITION JUMBOTRO TEXT WHEN HEIGHT RESIZE
+if ($(window).height() < 585) {
+      $('.jumbotron-text').attr('style', 'position: absolute; bottom: -10%; left: 10%;width: 80%')
+};
+
+
+if ($(window).height() > 585) {
+      $('.jumbotron-text').attr('style', 'position: absolute; bottom: 0%; left: 10%;width: 80%')
+};
+
+if ($(window).height() < 465) {
+      $('.jumbotron-text').attr('style', 'position: absolute; bottom: -20%; left: 10%;width: 80%')
+};
+
+if ($(window).height() < 410) {
+      $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
+      $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+
+};
+
+if ($(window).height() < 384) {
+      $('#ha-header').removeClass('animated fadeInDown')
+      $('#ha-header').addClass('animated fadeOutUp')
+      $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+
+};
+
+if ($(window).height() > 384) {
+  var header = $('#ha-header')
+      $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
+      $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+      if (header.hasClass('fadeOutUp')){
+
+        $('#ha-header').removeClass('animated fadeOutUp')
+        $('#ha-header').addClass('animated fadeInDown')
+                header.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+      function() {
+        if(header.hasClass('fadeOutUp')) {
+
+        }
+        else {
+        $('#ha-header').removeClass('animated fadeInDown')
+      }
+
+    });
+}
+
+};
+if ($(window).height() < 300) {
+      $('.jumbotron-text').attr('style', 'position: absolute; bottom: -28%; left: 10%;width: 80%')
+      $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
+      
+};
+
+if ($(window).height() < 250) {
+      $('.jumbotron-text').attr('style', 'position: absolute; bottom: -38%; left: 10%;width: 80%')
+
+
+      $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
+
+};
+
+if ($(window).height() < 200) {
+      $('.jumbotron-text').attr('style', 'position: absolute; bottom: -58%; left: 10%;width: 80%')
+
+
+      $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
+
+};
+
+
+
+
+// IF SMALLEST
+if ($(window).height() < 225 && $(window).width() < 525) {
+      $('#jumbotronFullName').attr('style', 'font-size: .9em;margin-top: -20px')
+      $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .5em;margin-top: 7px')
+
+
+
+
+};
+
+
+if ($(window).height() > 410) {
+      $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
+
+
+};
+
+    if ($(window).width() < 572 && $(window).height() > 400) {
+      $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+    };
     }
 
       if($(window).width() < 970){
@@ -580,8 +692,12 @@ function resize() {
 
 
 
+
+
+
 // ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
 $(window).resize(function() {
+  console.log('reside')
   resize();
 });
 
