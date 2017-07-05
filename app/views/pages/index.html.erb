@@ -502,115 +502,118 @@ var $head = $( '#ha-header' );
 
 function resize() {
 // RESIZE FULLNAME && LOGO
-  if ($(window).width() < 601 && $(window).width() > 470) {
+height = $(window).height()
+width = $(window).width()
+
+  if (width < 601 && width > 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2.3em;margin-top: -20px')
     $('.logo').attr('style', 'width:75%')
   };
 
 
-  if ($(window).width() > 601 && $(window).width() < 830) {
+  if (width > 601 && width < 830) {
     $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
     $('.logo').attr('style', 'width:44%; margin-top: -10px')
   };
 
 
 // LOGO ONLY
-  if ($(window).width() > 470 && $(window).width() < 601) {
+  if (width > 470 && width < 601) {
     $('.logo').attr('style', 'width:72%')
   };
 
 
-  if ($(window).width() > 830) {
+  if (width > 830) {
     $('.logo').attr('style', 'width:33%')
   };
 
 
-  if ($(window).width() < 470) {
+  if (width < 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
     $('.logo').attr('style', 'width:75%')
   };
 
 
 // RESIZE TITLE AND LOCATION
-  if ($(window).width() < 601 && $(window).width() > 470) {
+  if (width < 601 && width > 470) {
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .8em;margin-top: 7px')
   };
 
 
-  if ($(window).width() > 601) {
+  if (width > 601) {
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;')
   };
 
 
-  if ($(window).width() < 470) {
+  if (width < 470) {
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
   };
 
 
-  if($(window).scrollTop() > 384 && $(window).width() > 970) {
+  if($(window).scrollTop() > 384 && width > 970) {
     $('#logoOnHeader').show();
     $('#logoOnHeader').removeClass('fadeOutDownBig');
   }
 
 
-  else if($(window).scrollTop() < 384 || $(window).width() < 970){
+  else if($(window).scrollTop() < 384 || width < 970){
     $('#logoOnHeader').addClass('fadeOutDownBig')
   }
 
 
-  if($(window).width() < 970){
+  if(width < 970){
     $('#navLi').attr('style', 'margin-top: -15px')
   }
 
 
-  if($(window).width() > 970){
+  if(width > 970){
     $('#navLi').attr('style', 'margin-top: 0px')
   }
 
 
 // RESIZE LOGO ON HEIGHT
-  if ($(window).height() < 735) {
+  if (height < 735) {
     $('.logo').removeClass('animated fadeInDown');
     $('.logo').addClass('animated fadeOutUp');
   };
 
 
-  if ($(window).height() > 735) {
+  if (height > 735) {
     $('.logo').removeClass('animated fadeOutUp');
     $('.logo').addClass('animated fadeInDown');
   };
 
 
 // POSITION JUMBOTRO TEXT WHEN HEIGHT RESIZE
-  if ($(window).height() < 585) {
+  if (height < 585) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -10%; left: 10%;width: 80%')
   };
 
 
-  if ($(window).height() > 585) {
+  if (height > 585) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: 0%; left: 10%;width: 80%')
   };
 
 
-  if ($(window).height() < 465) {
+  if (height < 465) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -20%; left: 10%;width: 80%')
   };
 
 
-    if ($(window).height() < 410) {
+    if (height < 410) {
   $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
 
 
-  if ($(window).height() < 384) {
+  if (height < 384) {
     $('#ha-header').removeClass('animated fadeInDown')
     $('#ha-header').addClass('animated fadeOutUp')
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
 
 
-  if ($(window).height() > 384) {
+  if (height > 384) {
   var header = $('#ha-header')
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;margin-top: 7px')
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
@@ -631,42 +634,42 @@ function resize() {
   };
 
 
-  if ($(window).height() < 300) {
+  if (height < 300) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -28%; left: 10%;width: 80%')
     $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
 
 
-  if ($(window).height() < 250) {
+  if (height < 250) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -38%; left: 10%;width: 80%')
     $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
 
 
-  if ($(window).height() < 200) {
+  if (height < 200) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -58%; left: 10%;width: 80%')
     $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
 
 
 // IF SMALLEST
-  if ($(window).height() < 225 && $(window).width() < 525) {
+  if (height < 225 && width < 525) {
     $('#jumbotronFullName').attr('style', 'font-size: .9em;margin-top: -20px')
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .5em;margin-top: 7px')
   };
 
 
-  if ($(window).height() > 410) {
+  if (height > 410) {
   $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
   };
 
 
-  if ($(window).width() < 572 && $(window).height() > 400) {
+  if (width < 572 && height > 400) {
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
 
 
-  if($(window).width() < 970){
+  if(width < 970){
     $('#navLi').attr('style', 'margin-top: -15px')
   }
 
