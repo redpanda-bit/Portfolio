@@ -51,7 +51,7 @@ p {
   
 
 
-  <body id="website" class="" style="display: block" data-hijacking="off" data-animation="scaleDown">
+
   <div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: white">
     
   </div>
@@ -361,27 +361,12 @@ p {
       </section>
       <!-- END CONTACT -->
 
-      <!-- BEGIN FOOTER -->
-      <div class="row">
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-          </div>
-          <div class="content-body footer">
-            <p>Copyright&copy; Carlos Almonte 2017</p>
-          </div>
-        </div>
-        <div class="side-content"></div>
-      </div>
-      <!-- END FOOTER -->
-
     </div>
 
 
 
 <div id="modal-iframe"</div>
   
-  </body>
     <%= javascript_include_tag 'modernizr.custom' %>
     <%= javascript_include_tag 'waypoints.min' %>
     <%= javascript_include_tag 'anime.min' %>
@@ -502,10 +487,8 @@ var $head = $( '#ha-header' );
 
 
 
-function resize() {
+function myResize(height, width) {
 // RESIZE FULLNAME && LOGO
-height = $(window).height()
-width = $(window).width()
 
   if (width < 601 && width > 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2.3em;margin-top: -20px')
@@ -687,18 +670,18 @@ width = $(window).width()
 
 // ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
 $(window).resize(function() {
-  resize();
+  myResize($(window).height(), $(window).width());
 });
 
 
 // ON SCROLL EVENT LISTENER FOR LOGO ON NAVBAR
 $(window).on( "scroll", function() {
-  resize();
+  myResize($(window).height(), $(window).width());
     });
 
 
 $(document).ready(function(){
-resize();
+  myResize($(window).height(), $(window).width());
 
 $("#modal-iframe").iziModal({
                         iframe: true,
