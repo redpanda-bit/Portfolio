@@ -59,9 +59,11 @@ p {
       <header id="ha-header" class="ha-header">
         <div class="ha-header-perspective">
           <div class="ha-header-front">
-            <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated fadeInUp', style: 'top: -5px;height: 60px;position: relative;display: none'%></span></h1>
+            <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative;display: none'%></span></h1>
             <nav id="navLi">
       <a style="cursor: pointer" id="aboutFromNav">About</a>
+      <a style="cursor: pointer" id="blogFromNav">Blog</a>
+
       <a style="cursor: pointer" id="projectsFromNav">Projects</a>
       <a style="cursor: pointer" id="educationFromNav">Education</a>
       <a style="cursor: pointer" id="skillsFromNav">Skills</a>
@@ -104,7 +106,7 @@ p {
 
 <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
 
-<%= image_tag "CA Logo.png",class: 'logo animated fadeIn', style: 'position: relative;display:none;width: 30%'%>
+<%= image_tag "CA Logo.png",class: 'logo animated', style: 'position: relative;display:none;width: 30%'%>
                 
 
 <div style="width: 90%;margin: 0 0 0 5%">
@@ -377,7 +379,7 @@ p {
 
 
 
-
+<div id="modal-iframe"</div>
   
   </body>
     <%= javascript_include_tag 'modernizr.custom' %>
@@ -447,8 +449,8 @@ $("#contactFromNav").click(function() {
 
 
   if($(window).scrollTop() < 384){
-          $('.ha-header').delay(400).addClass('ha-header-shrink');
-      }
+  $('.ha-header').delay(400).addClass('ha-header-shrink');
+    }
   $('#preloader').delay(100).fadeOut("slow");
   $('.ha-header').delay(400).css('display', '');
   $('.logo').delay(400).css('display', '');
@@ -553,11 +555,15 @@ width = $(window).width()
   if($(window).scrollTop() > 384 && width > 970) {
     $('#logoOnHeader').show();
     $('#logoOnHeader').removeClass('fadeOutDownBig');
+    $('#logoOnHeader').addClass('fadeInUp');
   }
 
 
   else if($(window).scrollTop() < 384 || width < 970){
     $('#logoOnHeader').addClass('fadeOutDownBig')
+    $('#logoOnHeader').removeClass('fadeInUp')
+
+
   }
 
 
@@ -573,14 +579,15 @@ width = $(window).width()
 
 // RESIZE LOGO ON HEIGHT
   if (height < 735) {
-    $('.logo').removeClass('animated fadeInDown');
-    $('.logo').addClass('animated fadeOutUp');
+    $('.logo').removeClass('fadeInDown');
+    $('.logo').addClass('fadeOutUp');
+
   };
 
 
   if (height > 735) {
-    $('.logo').removeClass('animated fadeOutUp');
-    $('.logo').addClass('animated fadeInDown');
+    $('.logo').removeClass('fadeOutUp');
+    $('.logo').addClass('fadeInDown');
   };
 
 
@@ -692,6 +699,16 @@ $(window).on( "scroll", function() {
 
 $(document).ready(function(){
 resize();
+
+$("#modal-iframe").iziModal({
+                        iframe: true,
+                        iframeHeight: 800,
+                        iframeURL: "/posts/1"
+                    });
+})
+
+$("#blogFromNav").click(function() {
+  $("#modal-iframe").iziModal('open');
 })
 </script>
 

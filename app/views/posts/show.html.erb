@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<div id="title">
+	<h2><%= @post.title %></h2>
+</div>
+
+<div class="post-body">
+	<%= @post.body%>
+	<div>
+  <p>A formal education in that will enable you to become a software developer is expenssive with prices ranging from 12k to 20k is not surprising that most aspiring software developers will at least try to reach a certain level of knowledge on their own. And I was no stranger to this. </p>
+
+	<p>After discovering the beautiful craft of software development ,I dug everywhere online looking for some of that free knowledge. Succesfully, (at least I thought), I found reseources like <code>codecademy</code>, <code>teamtreehouse</code>, <code>stackoverflow</code> and <code>reddit</code> that gave me enough to create a few crafts here and there. However, after while attending bootcamp I shortly noticed that these crafts were nothing but a structure built on top of an ice cream layer waiting for the slightest heat wave to make it go down.</p>
+
+	<div class="image-holder" style="">
+		<a href="https://imgflip.com/i/1s2mbu"><img src="https://i.imgflip.com/1s2mbu.jpg" title="made at imgflip.com" alt="Y'all got some of that free knowledge? Meme"/></a>
+	</div>
+
+
+<p>For starters my APIs key were out there in the open, right on my index.html. Furthermore, I had a function that perform the same task at least 10 times repeated on my codebase. (See example below.
+</p>
+
+<script src="https://gist.github.com/carlosalmonte04/899629a671b1905149b409d5c5d959eb.js"></script>
+
+<p>As you can see I would execute the <code>.height()</code> function many times to check for my conditions. Very unnecessary practice soon I came to find out.</p>
+
+<p>Two weeks into bootcamp and I was taught how to keep it 'DRY' (Don't Repeat Yourself). (See example below).</p>
+
+<script src="https://gist.github.com/carlosalmonte04/1b441a10ea4b6258e40a5e22c6596aed.js"></script>
+
+
+<p>I would perform all my requests to the outside without passing it through my model first. Hey, it worked ¯\_(ツ)_/¯! However, two weeks into bootcamp and I know how to make a 'no page refresh' request without compromising safety. And I also got familiar with best refactoring techniques that will make my code a lot more efficient. Cool! Huh?!</p>
+
+<p>
+To wrap it up, learning on my own was great, my passion led me to gain very proximate knowledge of many coding techniques. However, this knowledge can be describe as knowing how to do many things but not knowing how to put it all together – at least the right way. 
+</p>
+<p>
+Bootcamp is providing me with this knowledge that I believe many self-taught developers may not know exists. But is it worth the money? With two weeks in I would say yes but only time (15 weeks) can tell. 
+</p>
+</div>
+</div>
+
+<div class="author">
+	<h2><%= @post.author%></h2>
+</div>
+
+  <tbody>
+    
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
+<%= link_to 'Edit', edit_post_path %>

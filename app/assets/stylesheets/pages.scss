@@ -294,10 +294,24 @@ h4 {
   color: #424242 !important;
 }
 
+.post-body {
+  padding: 64px 300px 100px 300px;
+}
 
+.post-body p {
+  font-size: 22px;
+}
 
+#title {
+  text-align: center;
+  padding-top: 74px;
+}
 
+.image-holder {
+  position: relative;
+  left: 32%;
+}
 
-
-
-
+pre {
+  display: inline;
+}
