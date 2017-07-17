@@ -189,7 +189,7 @@ section p {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 700;
-    padding: 0.2em 0.4em;
+    padding: 1.5em 0.4em;
     margin: 0 0.4em 0;
     font-size: 0.8em;
     cursor: pointer;
@@ -198,8 +198,28 @@ section p {
     text-decoration: none;
 }
 
+.ha-header nav select {
+	display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 0.2em 0.4em;
+  margin: 0 0.4em 0;
+  font-size: 0.8em;
+  cursor: pointer;
+  color: black;
+  outline: none;
+  text-decoration: none;
+  border: 2px solid #af1111;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
 .ha-header nav a:hover {
 	color: gray;
+	cursor: pointer;
 }
 
 .ha-header nav a:last-child {
@@ -209,11 +229,15 @@ section p {
 .ha-header .ha-header-front nav a:first-child,
 .ha-header .ha-header-front nav a:last-child {
 	border: 2px solid #267d8e;
+  padding: 0.2em 0.4em;
+
 }
 
 .ha-header .ha-header-front nav a:first-child:hover,
 .ha-header .ha-header-front nav a:last-child:hover {
 	border: 2px solid #bc3c2f;
+  padding: 0.2em 0.4em;
+	
 }
 
 /* Individual states */

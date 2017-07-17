@@ -17,6 +17,15 @@ class PostsController < ApplicationController
     @post = post.new
   end
 
+
+  def feed
+    @blog_articles = Post.all
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
+
   # GET /posts/1/edit
   def edit
   end

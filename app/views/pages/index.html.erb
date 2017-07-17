@@ -17,7 +17,71 @@ p {
   font-size: 1em;
   line-height: 24px
 }
+#postsCarrier {
+  transition: all 0.5s ease;
+  height: 120%;
+  width: 100%;
+  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
+}
 
+#postsCarrier:hover {
+  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
+  opacity: 1;
+
+}
+
+.ha-header-front:hover {
+
+}
+
+.inner-post-carrier {
+  display: table;
+  width: 100%;
+  padding: 2em 0em;
+}
+
+.post-holder {
+  position: relative;
+  margin: 0 1em;
+  height: 10em;
+  width: 15%;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.post-img {
+  margin: 0 0 0.4em 0em;
+  height: 10em;
+  width: 100%;
+}
+.post-title {
+  color: white;
+
+}
+
+.expand {
+  height: 120% !important;
+}
+
+#blogFromNav:hover, #postCarrier:hover {
+    /*height: 120%;*/
+}
+
+#blogDownArrow {
+  bottom: 2px;
+  font-size: 6px;
+  position: relative;
+}
+
+.ha-header-front {
+  /*background: linear-gradient(to bottom,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.5) 50%,rgba(0,0,0,0) 100%);*/
+}
+
+/*#navLi > a {
+  padding-bottom: 20px;
+}
+*/
 #down-arrow {
               animation: bounce 2s infinite;
             -webkit-animation: bounce 2s infinite;
@@ -59,17 +123,31 @@ p {
       <header id="ha-header" class="ha-header">
         <div class="ha-header-perspective">
           <div class="ha-header-front">
-            <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative;display: none'%></span></h1>
+            <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative; transition: all 0.5s ease'%></span></h1>
             <nav id="navLi">
       <a style="cursor: pointer" id="aboutFromNav">About</a>
-      <a style="cursor: pointer" id="blogFromNav">Blog</a>
-
-      <a style="cursor: pointer" id="projectsFromNav">Projects</a>
-      <a style="cursor: pointer" id="educationFromNav">Education</a>
-      <a style="cursor: pointer" id="skillsFromNav">Skills</a>
+      <a style="" class="blog-from-nav extra-padding" id="blogFromNav">Blog
+        <i id="blogDownArrow" class="fa fa-chevron-down" aria-hidden="true"></i></a>
+      <a style="cursor: pointer" class="extra-padding" id="projectsFromNav">Projects</a>
+      <a style="cursor: pointer" class="extra-padding" id="educationFromNav">Education</a>
+      <a style="cursor: pointer" class="extra-padding" id="skillsFromNav">Skills</a>
       <a style="cursor: pointer" id="contactFromNav">Contact</a>
             </nav>
+
           </div>
+      <div id="postsCarrier" class="posts-carrier" style="opacity: 0">
+          <div class="inner-post-carrier">
+
+          
+      <% Post.all.each do |post| %>
+        <a id="<%= post.id %>" class="post-holder hvr-glow animated fadeInDown" data-iziModal-open="post1-iframe" style="display: none">
+            <div class="post-img" style="background-image: url('<%= asset_path('post1.jpeg')%>'); background-size: cover"></div>
+            <div class="post-title"><%= post.title %></div>
+        </a>
+      <% end %>
+
+        </div>
+      </div>
           <!-- <div class="ha-header-bottom">
             <nav>
               <a>Dalliance</a>
@@ -106,7 +184,7 @@ p {
 
 <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
 
-<%= image_tag "CA Logo.png",class: 'logo animated', style: 'position: relative;display:none;width: 30%'%>
+<%= image_tag "CA Logo.png",class: 'logo animated', style: 'position: relative;display:none;width: 30%;'%>
                 
 
 <div style="width: 90%;margin: 0 0 0 5%">
@@ -114,6 +192,7 @@ p {
 </div>
           <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
     Web Developer&nbsp;</a>in New York, USA.</p>
+
                 <div class="jumbotron-social" style="font-size: .6em">
           <ul class="ul-social">
             <li class="li-social-links">
@@ -151,6 +230,14 @@ p {
             <p style="text-align: left">High preference for Object Oriented backends and intuitive frontends with responsive designs. I am also experienced on SQLite, PostgreSQL and CRUD functionalities overall. Deployments made with Github for version control and Heroku as host.</p>
             <p style="text-align: left"></p>
           </div>
+          <div class="wrapper typo">
+  <!--
+  .select
+    select.typo
+      - each item in ['lorem', 'ipsum', 'dolor', 'sit', 'amet']
+        option.typo 
+  -->
+</div>
         </div>
         <div class="side-content"></div>
       </div>
@@ -365,7 +452,7 @@ p {
 
 
 
-<div id="modal-iframe"</div>
+<div id="post1-iframe"</div>
   
     <%= javascript_include_tag 'modernizr.custom' %>
     <%= javascript_include_tag 'waypoints.min' %>
@@ -438,7 +525,7 @@ $("#contactFromNav").click(function() {
     }
   $('#preloader').delay(100).fadeOut("slow");
   $('.ha-header').delay(400).css('display', '');
-  $('.logo').delay(400).css('display', '');
+  logoMain.delay(400).css('display', '');
   $('#jumbotronFullTitleAndLocation').delay(400).css('display', '');
 
 
@@ -485,37 +572,39 @@ var $head = $( '#ha-header' );
       } );
 
 
+var logoMain = $('.logo')
 
 
 function myResize(height, width) {
+
 // RESIZE FULLNAME && LOGO
 
   if (width < 601 && width > 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2.3em;margin-top: -20px')
-    $('.logo').attr('style', 'width:75%')
+    logoMain.width('75%')
   };
 
 
   if (width > 601 && width < 830) {
     $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
-    $('.logo').attr('style', 'width:44%; margin-top: -10px')
+    logoMain.attr('style', 'width:44%; margin-top: -10px')
   };
 
 
 // LOGO ONLY
   if (width > 470 && width < 601) {
-    $('.logo').attr('style', 'width:72%')
+    logoMain.attr('style', 'width:72%')
   };
 
 
   if (width > 830) {
-    $('.logo').attr('style', 'width:33%')
+    logoMain.attr('style', 'width:33%;')
   };
 
 
   if (width < 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
-    $('.logo').attr('style', 'width:75%')
+    logoMain.attr('style', 'width:75%')
   };
 
 
@@ -562,15 +651,15 @@ function myResize(height, width) {
 
 // RESIZE LOGO ON HEIGHT
   if (height < 735) {
-    $('.logo').removeClass('fadeInDown');
-    $('.logo').addClass('fadeOutUp');
+    logoMain.removeClass('fadeInDown');
+    logoMain.addClass('fadeOutUp');
 
   };
 
 
   if (height > 735) {
-    $('.logo').removeClass('fadeOutUp');
-    $('.logo').addClass('fadeInDown');
+    logoMain.removeClass('fadeOutUp');
+    logoMain.addClass('fadeInDown');
   };
 
 
@@ -683,17 +772,47 @@ $(window).on( "scroll", function() {
 $(document).ready(function(){
   myResize($(window).height(), $(window).width());
 
-$("#modal-iframe").iziModal({
+$("#post1-iframe").iziModal({
                         iframe: true,
-                        iframeHeight: 800,
-                        iframeURL: "/posts/1",
+                        iframeHeight: 700,
+                        iframeWidth: 700,
                         closeOnEscape: true,
+                        closeButton: true,
+                        iframeURL: "/posts/1",
+                        overlayClose: true,
+                        overlayColor: 'rgba(0, 0, 0, 0.4)',
+                        bodyOverflow: true,
                     });
+
+
+
+
+
 })
 
-$("#blogFromNav").click(function() {
-  $("#modal-iframe").iziModal('open');
-})
+  $("#blogFromNav").on('mouseenter', function() {
+    $('#postsCarrier').css('opacity', '1')
+    $('#postsCarrier').show()
+    setTimeout(function() {
+        $('#1').show()
+      }, 100);
+  });
+
+    $("#postsCarrier").on('mouseleave', function() {
+
+      setTimeout(function() {
+        $('#postsCarrier').hide();
+        $('#1').hide();
+        $('#postsCarrier').css('opacity', '0');
+
+      }, 300);
+  });
+
+// logoMain.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+//     function() {
+//       logoMain.attr('style', 'display: none')
+//     });
+
 </script>
 
 

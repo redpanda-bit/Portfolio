@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706021523) do
+ActiveRecord::Schema.define(version: 20170715150629) do
 
   create_table "pages", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170706021523) do
     t.text   "body"
     t.string "author"
     t.string "tags"
+    t.string "img_url"
   end
 
 end
