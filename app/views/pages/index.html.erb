@@ -140,8 +140,8 @@ p {
 
           
       <% Post.all.each do |post| %>
-        <a id="<%= post.id %>" class="post-holder hvr-glow animated fadeInDown" data-iziModal-open="post1-iframe" style="display: none">
-            <div class="post-img" style="background-image: url('<%= asset_path('post1.jpeg')%>'); background-size: cover"></div>
+        <a id="<%= post.id %>" class="post-holder hvr-glow animated fadeInDown" data-iziModal-open="post1-iframe">
+            <div class="post-img" style="background-image: url('<%= asset_path('post1.jpg')%>'); background-size: cover"></div>
             <div class="post-title"><%= post.title %></div>
         </a>
       <% end %>
@@ -395,7 +395,6 @@ p {
       </section>
       <!-- END EDUCATION -->
 
-      
 
       <!-- BEGIN SKILLS -->
       <section id="skills" class="ha-waypoint">
@@ -791,8 +790,8 @@ $("#post1-iframe").iziModal({
 })
 
   $("#blogFromNav").on('mouseenter', function() {
+    $('#postsCarrier').fadeIn()
     $('#postsCarrier').css('opacity', '1')
-    $('#postsCarrier').show()
     setTimeout(function() {
         $('#1').show()
       }, 100);
@@ -802,10 +801,8 @@ $("#post1-iframe").iziModal({
 
       setTimeout(function() {
         $('#postsCarrier').hide();
-        $('#1').hide();
-        $('#postsCarrier').css('opacity', '0');
 
-      }, 300);
+      }, 200);
   });
 
 // logoMain.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
