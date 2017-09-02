@@ -1,13 +1,13 @@
 <style>
-  .overlay{
-    opacity:1;
-    background-color:#ccc;
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px;
-    z-index:1000;
+.overlay{
+  opacity:1;
+  background-color:#ccc;
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;
 }
 h2 {
   font-size: 2em;
@@ -23,23 +23,17 @@ p {
   width: 100%;
   background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
 }
-
 #postsCarrier:hover {
   background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
   opacity: 1;
-
 }
-
 .ha-header-front:hover {
-
 }
-
 .inner-post-carrier {
   display: table;
   width: 100%;
   padding: 2em 0em;
 }
-
 .post-holder {
   position: relative;
   margin: 0 1em;
@@ -49,7 +43,6 @@ p {
   display: inline-block;
   cursor: pointer;
 }
-
 .post-img {
   margin: 0 0 0.4em 0em;
   height: 10em;
@@ -57,760 +50,594 @@ p {
 }
 .post-title {
   color: white;
-
 }
-
 .expand {
   height: 120% !important;
 }
-
 #blogFromNav:hover, #postCarrier:hover {
-    /*height: 120%;*/
+  /*height: 120%;*/
 }
-
 #blogDownArrow {
   bottom: 2px;
   font-size: 6px;
   position: relative;
 }
-
 .ha-header-front {
   /*background: linear-gradient(to bottom,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.5) 50%,rgba(0,0,0,0) 100%);*/
 }
-
 /*#navLi > a {
   padding-bottom: 20px;
 }
 */
 #down-arrow {
-              animation: bounce 2s infinite;
-            -webkit-animation: bounce 2s infinite;
-            -moz-animation: bounce 2s infinite;
-            -o-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  -moz-animation: bounce 2s infinite;
+  -o-animation: bounce 2s infinite;
 }
-
 @-webkit-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
-    40% {-webkit-transform: translateY(-30px);}
-    60% {-webkit-transform: translateY(-15px);}
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-30px);}
+  60% {-webkit-transform: translateY(-15px);}
 }
-
 @-moz-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
-    40% {-moz-transform: translateY(-30px);}
-    60% {-moz-transform: translateY(-15px);}
+  0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+  40% {-moz-transform: translateY(-30px);}
+  60% {-moz-transform: translateY(-15px);}
 }
-
 @-o-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
-    40% {-o-transform: translateY(-30px);}
-    60% {-o-transform: translateY(-15px);}
+  0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+  40% {-o-transform: translateY(-30px);}
+  60% {-o-transform: translateY(-15px);}
 }
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-30px);}
-    60% {transform: translateY(-15px);}
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-15px);}
 }
 </style>
+
+<div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: white">
   
-
-
-
-  <div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: white">
-    
-  </div>
-
-      <header id="ha-header" class="ha-header">
-        <div class="ha-header-perspective">
-          <div class="ha-header-front">
-            <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative; transition: all 0.5s ease'%></span></h1>
-            <nav id="navLi">
-      <a style="cursor: pointer" id="aboutFromNav">About</a>
-      <a style="" class="blog-from-nav extra-padding" id="blogFromNav">Blog
-        <i id="blogDownArrow" class="fa fa-chevron-down" aria-hidden="true"></i></a>
-      <a style="cursor: pointer" class="extra-padding" id="projectsFromNav">Projects</a>
-      <a style="cursor: pointer" class="extra-padding" id="educationFromNav">Education</a>
-      <a style="cursor: pointer" class="extra-padding" id="skillsFromNav">Skills</a>
-      <a style="cursor: pointer" id="contactFromNav">Contact</a>
-            </nav>
-
-          </div>
-      <div id="postsCarrier" class="posts-carrier" style="opacity: 0">
-          <div class="inner-post-carrier">
-
-          
-      <% Post.all.each do |post| %>
-        <a id="<%= post.id %>" class="post-holder hvr-glow animated fadeInDown" data-iziModal-open="post1-iframe">
-            <div class="post-img" style="background-image: url('<%= asset_path('post1.jpg')%>'); background-size: cover"></div>
-            <div class="post-title"><%= post.title %></div>
-        </a>
-      <% end %>
-
-        </div>
-      </div>
-          <!-- <div class="ha-header-bottom">
-            <nav>
-              <a>Dalliance</a>
-              <a>Inglenook</a>
-              <a>Lagniappe</a>
-              <a>Mellifluous</a>
-              <a>Erstwhile</a>
-              <a>Wafture</a>
-              <a>Serendipity</a>
-              <a>Love</a>
-            </nav>
-          </div> -->
-        </div>
-      </header>
-
-
-
-    <!-- BEGIN NAVBAR -->
-<!--     <header id="ha-header" class="ha-header ha-header-subshow animated fadeInUp" style="z-index: 8888; display: none">
-      <a href="" style="height: 0px">
-
-
-      </a>
-
-    </header> -->
-    <!-- END NAVBAR -->
-
-    <div id="" class="container">
-      <!-- HEADER -->
-      <div class="jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg.jpg' %>'); background-size: cover">
-
-<div id="containLogoNameAndTitle" style="position: center">
-        <div class="jumbotron-text" style="position: absolute; bottom: 0%; left: 10%;width: 80%">
-
-<!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
-
-<%= image_tag "CA Logo.png",class: 'logo animated', style: 'position: relative;display:none;width: 30%;'%>
-                
-
-<div style="width: 90%;margin: 0 0 0 5%">
-          <h1 id="jumbotronFullName" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%">Carlos Almonte</h1>
 </div>
-          <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
-    Web Developer&nbsp;</a>in New York, USA.</p>
-
-                <div class="jumbotron-social" style="font-size: .6em">
+<header id="ha-header" class="ha-header">
+  <div class="ha-header-perspective">
+    <div class="ha-header-front">
+      <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative; transition: all 0.5s ease'%></span></h1>
+      <nav id="navLi">
+        <a style="cursor: pointer" id="aboutFromNav">About</a>
+        <a style="" class="blog-from-nav extra-padding" id="blogFromNav">Blog
+        <i id="blogDownArrow" class="fa fa-chevron-down" aria-hidden="true"></i></a>
+        <a style="cursor: pointer" class="extra-padding" id="projectsFromNav">Projects</a>
+        <a style="cursor: pointer" class="extra-padding" id="educationFromNav">Education</a>
+        <a style="cursor: pointer" class="extra-padding" id="skillsFromNav">Skills</a>
+        <a style="cursor: pointer" id="contactFromNav">Contact</a>
+      </nav>
+    </div>
+    <div id="postsCarrier" class="posts-carrier" style="opacity: 0">
+      <div class="inner-post-carrier">
+        
+        <% Post.all.each do |post| %>
+        <a id="<%= post.id %>" class="post-holder hvr-glow animated fadeInDown" data-iziModal-open="post1-iframe">
+          <div class="post-img" style="background-image: url('<%= asset_path('post1.jpg')%>'); background-size: cover"></div>
+          <div class="post-title"><%= post.title %></div>
+        </a>
+        <% end %>
+      </div>
+    </div>
+    <!-- <div class="ha-header-bottom">
+      <nav>
+        <a>Dalliance</a>
+        <a>Inglenook</a>
+        <a>Lagniappe</a>
+        <a>Mellifluous</a>
+        <a>Erstwhile</a>
+        <a>Wafture</a>
+        <a>Serendipity</a>
+        <a>Love</a>
+      </nav>
+    </div> -->
+  </div>
+</header>
+<!-- BEGIN NAVBAR -->
+<!--     <header id="ha-header" class="ha-header ha-header-subshow animated fadeInUp" style="z-index: 8888; display: none">
+  <a href="" style="height: 0px">
+  </a>
+</header> -->
+<!-- END NAVBAR -->
+<div id="" class="container">
+  <!-- HEADER -->
+  <div class="jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg copy.jpg' %>'); background-size: cover">
+    <div id="containLogoNameAndTitle" style="position: center">
+      <div class="jumbotron-text" style="position: absolute; bottom: 0%; left: 10%;width: 80%">
+        <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
+        <%= image_tag "CA Logo.png",class: 'logo animated', style: 'position: relative;display:none;width: 30%;'%>
+        
+        <div style="width: 90%;margin: 0 0 0 5%">
+          <h1 id="jumbotronFullName" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%;">Carlos Almonte</h1>
+        </div>
+        <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
+        Web Developer&nbsp;</a>in New York, USA.</p>
+        <div class="jumbotron-social" style="font-size: .6em">
           <ul class="ul-social">
             <li class="li-social-links">
-              <a class="social" href="https://github.com/carlosalmonte04" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+              <a class="social" href="https://github.com/carlosalmonte04" target="_blank"><i class="fa fa-github fa-inverse" aria-hidden="true"></i></a>
             </li>
             <li class="li-social-links">
-              <a class="social" href="https://linkedin.com/in/carlos-almonte-177a18aa/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              <a class="social" href="https://linkedin.com/in/carlos-almonte-177a18aa/" target="_blank"><i class="fa fa-linkedin fa-inverse" aria-hidden="true"></i></a>
+            </li>
+            <li class="li-social-links">
+              <a class="social" href="https://medium.com/@carlosalmonte04" target="_blank"><i class="fa fa-medium fa-inverse" aria-hidden="true"></i></a>
             </li>
           </ul>
         </div>
-                <div id="down-arrow" style="font-size: .5em">
-          <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></span>
+        <div id="down-arrow" style="font-size: .5em">
+          <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down fa-inverse" aria-hidden="true"></i></a></span>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- END HEADER -->
+  <!-- BEGIN ABOUT -->
+  <section id="about" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style="z-index: 0000">
+    <div class="row box-shadow" style="background-color: white" >
+      <div class="side-content"></div>
+      <div class="main-content">
+        <div class="content-header">
+          <a class="anchor" name="about"></a>
+          <h2> <a style="cursor: default">About</a></h2>
+          <p></p>
         </div>
-
-      </div>
-      </div>
-
-      <!-- END HEADER -->
-
-
-
-      <!-- BEGIN ABOUT -->
-      <section id="about" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style="z-index: 0000">
-      <div class="row box-shadow" style="background-color: white" >
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-            <a class="anchor" name="about"></a>
-            <h2> <a style="cursor: default">About</a></h2>
-            <p></p>
-          </div>
-          <div class="content-body" style="color: black">
-            <p style="text-align: left">Academic and career background in Clinical Nutrition, passion and intermediate knowledge of Web Development, primarily using Ruby on Rails but also familiar with Node JS.</p>
-            <p style="text-align: left">High preference for Object Oriented backends and intuitive frontends with responsive designs. I am also experienced on SQLite, PostgreSQL and CRUD functionalities overall. Deployments made with Github for version control and Heroku as host.</p>
-            <p style="text-align: left"></p>
-          </div>
-          <div class="wrapper typo">
-  <!--
-  .select
-    select.typo
-      - each item in ['lorem', 'ipsum', 'dolor', 'sit', 'amet']
-        option.typo 
-  -->
-</div>
+        <div class="content-body" style="color: black">
+          <p style="text-align: left">Academic and career background in Clinical Nutrition, passion and intermediate knowledge of Web Development, primarily using React, Ruby on Rails and NodeJS.</p>
+          <p style="text-align: left">High preference for Object Oriented backends and intuitive frontends with responsive designs. I am also proficient on Javascript functional programming and asynchronous API calls to enable Single Page Applications (SPAs). Also experienced on Github version control management and Heroku deployments and debugging.</p>
+          <p>Feel free to get in touch with me through email using the contact box at the end of this page, or any social medial link provided above.</p>
+          <p style="text-align: left"></p>
         </div>
-        <div class="side-content"></div>
-      </div>
-      </section>
-      <!-- END ABOUT -->
-      
-<!-- BEGIN PROJECTS -->
-      <section id="projects" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
-      <div class="row">
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-            <a class="anchor" name="projects"></a>
-            <h2>Projects</h2>
-          </div>
-          <div class="content-body">
-            <!-- CARD #1 -->
-              </div>
-            <div class="project-card hvr-glow" style="width: 100%">
-
-              <div class="project-content" style="display: inline-block;width: 55%;position: relative; left: 23px">
-                <h4>Dietitian.Help</h4>
-                <p>Prototype of a small CRUD application with user authentication and individualized database access for each user. Functions as a Electronic Medical Record (EMR) designed specifically for Dietitians and healthcare providers seeking to ease the Medical Nutrition Therapy process.</p>
-                <ul>
-                  <li><p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://dietitian.help" target="_blank">Dietitian.Help</a><br></li>
-                <li><p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/carlosalmonte04/DietitianHelp" target="_blank">See on GitHub</a></li>
-                
-</ul>
-              </div>
-              <div style="width: 40%;height: 201px;float: right">
-                            <a href="www.dietitian.help"><div class="project-image" style="margin-top: 20px;height: 100%;background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: contain;background-repeat: no-repeat" >
-                              </div>
-                              </a>
-              </div>
-            </div>
-
-
-            <!-- CARD #2 -->
-            <div class="project-card hvr-glow" style="width: 100%">
-              <div class="project-content" style="display: inline-block;position: relative;width: 60%">
-                <h4>Nostalgia Experience</h4>
-                <p>Web app for music group "Nostalgia."</p>
-                <p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://wearenostalgia.xyz" target="_blank">wearenostalgia.xyz</a><br>
-                <p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/carlosalmonte04/nostalgiaexperience" target="_blank">See on GitHub</a>
-              </div>
-              <div class="project-image" style="float: right;width: 40%" >
-<%= image_tag "ezgif-1-af57977208.jpg",class: 'project2', style: "width: 100%" %>
-              </div>
-            </div>
-          </div>
+        <div class="wrapper typo">
         </div>
-        <div class="side-content"></div>
       </div>
-      </section>
-      <!-- END PROJECTS -->
-
-      <!-- BEGIN EPERIENCE -->
-
-   <!--   
-      <section id="experience" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
-      <div class="row">
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-            <a class="anchor" name="experience"></a>
-            <h2>Experience</h2>
-          </div>
+      <div class="side-content"></div>
+    </div>
+  </section>
+  <!-- END ABOUT -->
+  
+  <!-- BEGIN PROJECTS -->
+  <section id="projects" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
+    <div class="row">
+      <div class="side-content"></div>
+      <div class="main-content">
+        <div class="content-header">
+          <a class="anchor" name="projects"></a>
+          <h2>Projects</h2>
+        </div>
+        <div class="content-body">
           <!-- CARD #1 -->
-
-          <!--
-          <div class="content-body">
-            <div class="card hvr-glow" style="width: 100%">
-              <div class="card-header">
-                <h4>Grand Manor Nursing Home  —  April 2016 - Present<span class="job-title">Dietitian</span></h4>
-              </div>
-              <div class="card-content">
-                <p>
-- Create diet recommendations based on diagnosis, labs and other pathological status. <br>
-- Perform admission assessments to determine appropriate goals, interventions and recommendations.
-- Perform follow up assessments to monitor resident's nutritional status during stay. <br>
-- Educate residents and staff on food choices according to diagnosis. <br>
-- Document appropriate information in medical record according to government agencies’ standards. <br>
-- Monitor pressure ulcers, significant weight changes and tube feeding parameters.</p>
-              </div>
-            </div>
-
-          <!-- CARD #2 -->
-
-          <!--
-
-            <div class="card hvr-glow" style="width: 100%">
-              <div class="card-header">
-                <h4>Delta Air Lines  —  July 2016 - Present <span class="job-title">Airport Customer Service Agent</span></h4>
-              </div>
-              <div class="card-content">
-                <p>
-- Inform passengers of flight schedules and baggage booking procedures. <br>
-- Resolve passengers’ issues regarding flight changes and seating arrangements. <br>
-- Rebook passengers as needed. <br>
-- Inspect and accept check-in luggages. <br>
-- Coordinate with management to have passengers accommodated when required. <br>
-- Make sure all check-in luggages comply with the Airport's and Airline's regulations.</p>
-              </div>
-            </div>
-
-          <!-- CARD #3 -->
-
-<!--
-            <div class="card hvr-glow" style="width: 100%">
-              <div class="card-header">
-                <h4>ASIG  —  February 2016 - July 2016<span class="job-title">Airport Customer Service Agent</span></h4>
-              </div>
-              <div class="card-content">
-                <p>
-- Made sure passengers met all destination's travel requirements during check-in process. <br>
-- Informed passengers of flight schedules and baggage booking procedures. <br>
-- Resolve passengers’ issues regarding flight changes and seating arrangements. <br>
-- Made sure all check in luggages complied with the Airport's and Airline's regulations. <br>
-- Assisted during boarding process to ensure on time departure.</p>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="side-content"></div>
-      </div>
-      </section>
-      <!-- END EXPERIENCE -->
-
-
-
-      <!-- BEGIN EDUCATION -->
-      <section id="education" class="ha-waypoint">
-      <div class="row white box-shadow">
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-            <a class="anchor" name="education"></a>
-            <h2>Education</h2>
-          </div>
-          <div class="content-body">
-
-            <!-- EDUCATION 1 -->
-            <div class="card hvr-glow" style="width: 100%" style="background-color: white">
-              <div class="card-header">
-                <h4>Lehman College <span class="job-title">2012 - 2016</span></h4>
-              </div>
-              <div class="card-content">
-                <p>Bachelors of Science in Dietetics, Foods and Nutrition. <br></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="side-content"></div>
-      </div>
-      </section>
-      <!-- END EDUCATION -->
-
-
-      <!-- BEGIN SKILLS -->
-      <section id="skills" class="ha-waypoint">
-      <div class="row white box-shadow">
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-            <a class="anchor" name="skills"></a>
-            <h2>Skills</h2>
-          </div>
-          <div class="content-body">
-            <ul class="ul-skills">
-              <li class="li-skills hvr-glow">Ruby</li>
-              <li class="li-skills hvr-glow">Ruby on Rails</li>
-              <li class="li-skills hvr-glow">HTML</li>
-              <li class="li-skills hvr-glow">CSS</li>
-              <li class="li-skills hvr-glow">Javascript</li>
-              <li class="li-skills hvr-glow">JQuery</li>
-              <li class="li-skills hvr-glow">AJAX</li>
-              <li class="li-skills hvr-glow">jQuery</li>
-              <li class="li-skills hvr-glow">Bootstrap</li>
+        <div class="project-card hvr-glow" style="width: 100%">
+          <div class="project-content" style="display: inline-block;width: 55%;position: relative; left: 23px">
+            <h4>Dietitian.Help</h4>
+            <p>Prototype of a small CRUD application with user authentication and individualized database access for each user. Functions as a Electronic Medical Record (EMR) designed specifically for Dietitians and healthcare providers seeking to ease the Medical Nutrition Therapy process.</p>
+            <ul>
+              <li><p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://dietitian.help" target="_blank">Dietitian.Help</a><br></li>
+              <li><p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/carlosalmonte04/DietitianHelp" target="_blank">See on GitHub</a></li>
+              
             </ul>
           </div>
+          <div style="width: 40%;height: 201px;float: right">
+            <a href="www.dietitian.help"><div class="project-image" style="margin-top: 20px;height: 100%;background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: contain;background-repeat: no-repeat" >
+            </div>
+          </a>
         </div>
-        <div class="side-content"></div>
       </div>
-      </section>
-      <!-- END SKILLS -->
-
-      <!-- BEGIN CONTACT -->
-<section id="contact" class="cd-section">
-      <div class="row dark-gray">
-        <div class="side-content"></div>
-        <div class="main-content">
-          <div class="content-header">
-            <a class="anchor" name="contact"></a>
-            <h2 class="white-text">Contact Me</h2>
-          </div>
-          <div class="contact content-body">
-            <form method="POST" action="https://formspree.io/c.darioalmonte@gmail.com">
-                <input type="hidden" name="_subject" value="Contact request from personal website" />
-                <input type="email" name="_replyto" placeholder="Your email" required>
-                <textarea name="message" placeholder="Your message" required></textarea>
-                <button type="submit">Send</button>
-            </form>
-          </div>
+      <!-- CARD #2 -->
+      <div class="project-card hvr-glow" style="width: 100%">
+        <div class="project-content" style="display: inline-block;position: relative;width: 60%">
+          <h4>Nostalgia Experience</h4>
+          <p>Web app for music group "Nostalgia."</p>
+          <p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://wearenostalgia.xyz" target="_blank">wearenostalgia.xyz</a><br>
+          <p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/carlosalmonte04/nostalgiaexperience" target="_blank">See on GitHub</a>
         </div>
-        <div class="side-content"></div>
+        <div class="project-image" style="float: right;width: 40%" >
+          <%= image_tag "ezgif-1-af57977208.jpg",class: 'project2', style: "width: 100%" %>
+        </div>
       </div>
-      </section>
-      <!-- END CONTACT -->
-
     </div>
-
-
-
+  </div>
+  <div class="side-content"></div>
+</div>
+</section>
+<!-- END PROJECTS -->
+<!-- BEGIN EPERIENCE -->
+<!--
+<section id="experience" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
+<div class="row">
+  <div class="side-content"></div>
+  <div class="main-content">
+    <div class="content-header">
+      <a class="anchor" name="experience"></a>
+      <h2>Experience</h2>
+    </div>
+    <!-- CARD #1 -->
+    <!--
+    <div class="content-body">
+      <div class="card hvr-glow" style="width: 100%">
+        <div class="card-header">
+          <h4>Grand Manor Nursing Home  —  April 2016 - Present<span class="job-title">Dietitian</span></h4>
+        </div>
+        <div class="card-content">
+          <p>
+            - Create diet recommendations based on diagnosis, labs and other pathological status. <br>
+            - Perform admission assessments to determine appropriate goals, interventions and recommendations.
+            - Perform follow up assessments to monitor resident's nutritional status during stay. <br>
+            - Educate residents and staff on food choices according to diagnosis. <br>
+            - Document appropriate information in medical record according to government agencies’ standards. <br>
+          - Monitor pressure ulcers, significant weight changes and tube feeding parameters.</p>
+        </div>
+      </div>
+      <!-- CARD #2 -->
+      <!--
+      <div class="card hvr-glow" style="width: 100%">
+        <div class="card-header">
+          <h4>Delta Air Lines  —  July 2016 - Present <span class="job-title">Airport Customer Service Agent</span></h4>
+        </div>
+        <div class="card-content">
+          <p>
+            - Inform passengers of flight schedules and baggage booking procedures. <br>
+            - Resolve passengers’ issues regarding flight changes and seating arrangements. <br>
+            - Rebook passengers as needed. <br>
+            - Inspect and accept check-in luggages. <br>
+            - Coordinate with management to have passengers accommodated when required. <br>
+          - Make sure all check-in luggages comply with the Airport's and Airline's regulations.</p>
+        </div>
+      </div>
+      <!-- CARD #3 -->
+      <!--
+      <div class="card hvr-glow" style="width: 100%">
+        <div class="card-header">
+          <h4>ASIG  —  February 2016 - July 2016<span class="job-title">Airport Customer Service Agent</span></h4>
+        </div>
+        <div class="card-content">
+          <p>
+            - Made sure passengers met all destination's travel requirements during check-in process. <br>
+            - Informed passengers of flight schedules and baggage booking procedures. <br>
+            - Resolve passengers’ issues regarding flight changes and seating arrangements. <br>
+            - Made sure all check in luggages complied with the Airport's and Airline's regulations. <br>
+          - Assisted during boarding process to ensure on time departure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side-content"></div>
+</div>
+</section>
+<!-- END EXPERIENCE -->
+<!-- BEGIN EDUCATION -->
+<section id="education" class="ha-waypoint">
+<div class="row white box-shadow">
+  <div class="side-content"></div>
+  <div class="main-content">
+    <div class="content-header">
+      <a class="anchor" name="education"></a>
+      <h2>Education</h2>
+    </div>
+    <div class="content-body">
+      <!-- EDUCATION 1 -->
+      <div class="card hvr-glow" style="width: 100%" style="background-color: white">
+        <div class="card-header">
+          <h4>Lehman College <span class="job-title">2012 - 2016</span></h4>
+        </div>
+        <div class="card-content">
+          <p>Bachelors of Science in Dietetics, Foods and Nutrition. <br></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side-content"></div>
+</div>
+</section>
+<!-- END EDUCATION -->
+<!-- BEGIN SKILLS -->
+<section id="skills" class="ha-waypoint">
+<div class="row white box-shadow">
+  <div class="side-content"></div>
+  <div class="main-content">
+    <div class="content-header">
+      <a class="anchor" name="skills"></a>
+      <h2>Skills</h2>
+    </div>
+    <div class="content-body">
+      <ul class="ul-skills">
+        <li class="li-skills hvr-glow">React</li>
+        <li class="li-skills hvr-glow">Ruby</li>
+        <li class="li-skills hvr-glow">Ruby on Rails</li>
+        <li class="li-skills hvr-glow">HTML</li>
+        <li class="li-skills hvr-glow">CSS</li>
+        <li class="li-skills hvr-glow">Javascript</li>
+        <li class="li-skills hvr-glow">JQuery</li>
+        <li class="li-skills hvr-glow">AJAX</li>
+        <li class="li-skills hvr-glow">Bootstrap</li>
+      </ul>
+    </div>
+  </div>
+  <div class="side-content"></div>
+</div>
+</section>
+<!-- END SKILLS -->
+<!-- BEGIN CONTACT -->
+<section id="contact" class="cd-section">
+<div class="row dark-gray">
+  <div class="side-content"></div>
+  <div class="main-content">
+    <div class="content-header">
+      <a class="anchor" name="contact"></a>
+      <h2 class="white-text">Contact Me</h2>
+    </div>
+    <div class="contact content-body">
+      <form method="POST" action="https://formspree.io/c.darioalmonte@gmail.com">
+        <input type="hidden" name="_subject" value="Contact request from personal website" />
+        <input type="email" name="_replyto" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="side-content"></div>
+</div>
+</section>
+<!-- END CONTACT -->
+</div>
 <div id="post1-iframe"</div>
-  
-    <%= javascript_include_tag 'modernizr.custom' %>
-    <%= javascript_include_tag 'waypoints.min' %>
-    <%= javascript_include_tag 'anime.min' %>
-    <%= javascript_include_tag 'imghover' %>
 
-
-
-
-
-
-  <script>
-
-
-  // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
-  // $("#jumbotronFullName").typed({
-  // strings: ['carlos almonte'],
-  // typeSpeed: 4,
-  // startDelay: 100,
-  // cursorChar: "",
-  // });
-
+<%= javascript_include_tag 'modernizr.custom' %>
+<%= javascript_include_tag 'waypoints.min' %>
+<%= javascript_include_tag 'anime.min' %>
+<%= javascript_include_tag 'imghover' %>
+<script>
+// TYPING EFFECT FOR FULL NAME ON JUMBOTRON
+// $("#jumbotronFullName").typed({
+// strings: ['carlos almonte'],
+// typeSpeed: 4,
+// startDelay: 100,
+// cursorChar: "",
+// });
 $("#aboutFromNav").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#about").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#about").offset().top - 25
+  }, 400);
 });
-
 $("#aboutFromJumbotron").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#about").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#about").offset().top - 25
+  }, 400);
 });
-
 $("#experienceFromNav").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#experience").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#experience").offset().top - 25
+  }, 400);
 });
-
 $("#educationFromNav").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#education").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#education").offset().top - 25
+  }, 400);
 });
-
 $("#projectsFromNav").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#projects").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#projects").offset().top - 25
+  }, 400);
 });
-
 $("#skillsFromNav").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#skills").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#skills").offset().top - 25
+  }, 400);
 });
-
 $("#contactFromNav").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#contact").offset().top - 25
-    }, 400);
+  $('html, body').animate({
+    scrollTop: $("#contact").offset().top - 25
+  }, 400);
 });
-
- window.onload = function() {
-
-
-  if($(window).scrollTop() < 384){
-  $('.ha-header').delay(400).addClass('ha-header-shrink');
-    }
+window.onload = function() {
+  if ($(window).scrollTop() < 384) {
+    $('.ha-header').delay(400).addClass('ha-header-shrink');
+  }
   $('#preloader').delay(100).fadeOut("slow");
   $('.ha-header').delay(400).css('display', '');
   logoMain.delay(400).css('display', '');
   $('#jumbotronFullTitleAndLocation').delay(400).css('display', '');
-
-
   // PNG TO GIF (ANIMATES PICTURES ON HOVER)
-    $("#project1").hover(
-        function()
-        {
-          var src = $(this).attr("src");
-          $(this).attr("src", '/assets/ezgif-1-b329556bfd-5f572dc96e85c6cd0ed34764dc5197195b6ec9995d501579d3cd09045d93b188.gif');
-        },
-        function()
-        {
-          var src = $(this).attr("src");
-          $(this).attr("src", '/assets/ezgif-1-b329556bfd-00794f1f40b1c2804ff249ccea95a5be8de7034fc3482c2b6d96198734aaf775.jpg');
-        });
-    $("#project2").hover(
-        function()
-        {
-          var src = $(this).attr("src");
-          $(this).attr("src", '/assets/ezgif-1-af57977208-7f9296b91a58a6b76ee63b14a6f423e7bd7fcfc2a7831f538f932d8e57752409.gif');
-        },
-        function()
-        {
-          var src = $(this).attr("src");
-          $(this).attr("src", '/assets/ezgif-1-af57977208-f0168f9a925cc356bba4c279f8f495c579aa84da0ca83a559f6fad5a0db59101.jpg');
-        });
-
-
+  $("#project1").hover(
+    function() {
+      var src = $(this).attr("src");
+      $(this).attr("src", '/assets/ezgif-1-b329556bfd-5f572dc96e85c6cd0ed34764dc5197195b6ec9995d501579d3cd09045d93b188.gif');
+    },
+    function() {
+      var src = $(this).attr("src");
+      $(this).attr("src", '/assets/ezgif-1-b329556bfd-00794f1f40b1c2804ff249ccea95a5be8de7034fc3482c2b6d96198734aaf775.jpg');
+    });
+  $("#project2").hover(
+    function() {
+      var src = $(this).attr("src");
+      $(this).attr("src", '/assets/ezgif-1-af57977208-7f9296b91a58a6b76ee63b14a6f423e7bd7fcfc2a7831f538f932d8e57752409.gif');
+    },
+    function() {
+      var src = $(this).attr("src");
+      $(this).attr("src", '/assets/ezgif-1-af57977208-f0168f9a925cc356bba4c279f8f495c579aa84da0ca83a559f6fad5a0db59101.jpg');
+    });
 };
-var $head = $( '#ha-header' );
-      $( '.ha-waypoint' ).each( function(i) {
-        var $el = $( this ),
-          animClassDown = $el.data( 'animateDown' ),
-          animClassUp = $el.data( 'animateUp' );
-
-        $el.waypoint( function( direction ) {
-          if( direction === 'down' && animClassDown ) {
-            $head.attr('class', 'ha-header ' + animClassDown);
-          }
-          else if( direction === 'up' && animClassUp ){
-            $head.attr('class', 'ha-header ' + animClassUp);
-          }
-        }, { offset: '100%' } );
-      } );
-
-
+var $head = $('#ha-header');
+$('.ha-waypoint').each(function(i) {
+  var $el = $(this),
+    animClassDown = $el.data('animateDown'),
+    animClassUp = $el.data('animateUp');
+  $el.waypoint(function(direction) {
+    if (direction === 'down' && animClassDown) {
+      $head.attr('class', 'ha-header ' + animClassDown);
+    } else if (direction === 'up' && animClassUp) {
+      $head.attr('class', 'ha-header ' + animClassUp);
+    }
+  }, {
+    offset: '100%'
+  });
+});
 var logoMain = $('.logo')
 
-
 function myResize(height, width) {
-
-// RESIZE FULLNAME && LOGO
-
+  // RESIZE FULLNAME && LOGO
   if (width < 601 && width > 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2.3em;margin-top: -20px')
     logoMain.width('75%')
   };
-
-
   if (width > 601 && width < 830) {
     $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
     logoMain.attr('style', 'width:44%; margin-top: -10px')
   };
-
-
-// LOGO ONLY
+  // LOGO ONLY
   if (width > 470 && width < 601) {
     logoMain.attr('style', 'width:72%')
   };
-
-
   if (width > 830) {
     logoMain.attr('style', 'width:33%;')
   };
-
-
   if (width < 470) {
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
     logoMain.attr('style', 'width:75%')
   };
-
-
-// RESIZE TITLE AND LOCATION
+  // RESIZE TITLE AND LOCATION
   if (width < 601 && width > 470) {
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .8em;margin-top: 7px')
   };
-
-
   if (width > 601) {
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;')
   };
-
-
   if (width < 470) {
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
   };
-
-
-  if($(window).scrollTop() > 384 && width > 970) {
+  if ($(window).scrollTop() > 384 && width > 970) {
     $('#logoOnHeader').show();
     $('#logoOnHeader').removeClass('fadeOutDownBig');
     $('#logoOnHeader').addClass('fadeInUp');
-  }
-
-
-  else if($(window).scrollTop() < 384 || width < 970){
+  } else if ($(window).scrollTop() < 384 || width < 970) {
     $('#logoOnHeader').addClass('fadeOutDownBig')
     $('#logoOnHeader').removeClass('fadeInUp')
-
-
   }
-
-
-  if(width < 970){
+  if (width < 970) {
     $('#navLi').attr('style', 'margin-top: -15px')
   }
-
-
-  if(width > 970){
+  if (width > 970) {
     $('#navLi').attr('style', 'margin-top: 0px')
   }
-
-
-// RESIZE LOGO ON HEIGHT
+  // RESIZE LOGO ON HEIGHT
   if (height < 735) {
     logoMain.removeClass('fadeInDown');
     logoMain.addClass('fadeOutUp');
-
   };
-
-
   if (height > 735) {
     logoMain.removeClass('fadeOutUp');
     logoMain.addClass('fadeInDown');
   };
-
-
-// POSITION JUMBOTRO TEXT WHEN HEIGHT RESIZE
+  // POSITION JUMBOTRO TEXT WHEN HEIGHT RESIZE
   if (height < 585) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -10%; left: 10%;width: 80%')
   };
-
-
   if (height > 585) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: 0%; left: 10%;width: 80%')
   };
-
-
   if (height < 465) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -20%; left: 10%;width: 80%')
   };
-
-
-    if (height < 410) {
-  $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
+  if (height < 410) {
+    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
-
-
   if (height < 384) {
     $('#ha-header').removeClass('animated fadeInDown')
     $('#ha-header').addClass('animated fadeOutUp')
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
-
-
   if (height > 384) {
-  var header = $('#ha-header')
+    var header = $('#ha-header')
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;margin-top: 7px')
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
-
-
-  if (header.hasClass('fadeOutUp')){
-    $('#ha-header').removeClass('animated fadeOutUp')
-    $('#ha-header').addClass('animated fadeInDown')
-  header.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-  function() {
-  if(header.hasClass('fadeOutUp')) {
-  }
-  else {
-    $('#ha-header').removeClass('animated fadeInDown')
-  }
-  });
-  }
+    if (header.hasClass('fadeOutUp')) {
+      $('#ha-header').removeClass('animated fadeOutUp')
+      $('#ha-header').addClass('animated fadeInDown')
+      header.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+        function() {
+          if (header.hasClass('fadeOutUp')) {} else {
+            $('#ha-header').removeClass('animated fadeInDown')
+          }
+        });
+    }
   };
-
-
   if (height < 300) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -28%; left: 10%;width: 80%')
     $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
-
-
   if (height < 250) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -38%; left: 10%;width: 80%')
     $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
-
-
   if (height < 200) {
     $('.jumbotron-text').attr('style', 'position: absolute; bottom: -58%; left: 10%;width: 80%')
     $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
-
-
-// IF SMALLEST
+  // IF SMALLEST
   if (height < 225 && width < 525) {
     $('#jumbotronFullName').attr('style', 'font-size: .9em;margin-top: -20px')
     $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .5em;margin-top: 7px')
   };
-
-
   if (height > 410) {
-  $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
+    $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
   };
-
-
   if (width < 572 && height > 400) {
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
-
-
-  if(width < 970){
+  if (width < 970) {
     $('#navLi').attr('style', 'margin-top: -15px')
   }
-
-
 }
-
-
-
 // ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
 $(window).resize(function() {
   myResize($(window).height(), $(window).width());
 });
-
-
 // ON SCROLL EVENT LISTENER FOR LOGO ON NAVBAR
-$(window).on( "scroll", function() {
+$(window).on("scroll", function() {
   myResize($(window).height(), $(window).width());
-    });
-
-
-$(document).ready(function(){
+});
+$(document).ready(function() {
   myResize($(window).height(), $(window).width());
-
-$("#post1-iframe").iziModal({
-                        iframe: true,
-                        iframeHeight: 700,
-                        iframeWidth: 700,
-                        closeOnEscape: true,
-                        closeButton: true,
-                        iframeURL: "/posts/1",
-                        overlayClose: true,
-                        overlayColor: 'rgba(0, 0, 0, 0.4)',
-                        bodyOverflow: true,
-                    });
-
-
-
-
-
+  $("#post1-iframe").iziModal({
+    iframe: true,
+    iframeHeight: 700,
+    iframeWidth: 700,
+    closeOnEscape: true,
+    closeButton: true,
+    iframeURL: "https://medium.com/@c.darioalmonte/self-taught-vs-coding-bootcamp-d8073bd10f37",
+    overlayClose: true,
+    overlayColor: 'rgba(0, 0, 0, 0.4)',
+    bodyOverflow: true,
+  });
+})
+$("#blogFromNav").on('mouseenter', function() {
+  $('#postsCarrier').fadeIn()
+  $('#postsCarrier').css('opacity', '1')
+  setTimeout(function() {
+    $('#1').show()
+  }, 100);
+});
+$("#postsCarrier").on('mouseleave', function() {
+  setTimeout(function() {
+    $('#postsCarrier').hide();
+  }, 200);
 })
 
-  $("#blogFromNav").on('mouseenter', function() {
-    $('#postsCarrier').fadeIn()
-    $('#postsCarrier').css('opacity', '1')
-    setTimeout(function() {
-        $('#1').show()
-      }, 100);
-  });
-
-    $("#postsCarrier").on('mouseleave', function() {
-
-      setTimeout(function() {
-        $('#postsCarrier').hide();
-
-      }, 200);
-  });
-
-// logoMain.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+$('.jumbotron-text').tilt({
+  perspective: 2000,
+  maxTilt: 10
+})
+// logoMain.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
 //     function() {
 //       logoMain.attr('style', 'display: none')
 //     });
-
 </script>
-
-
 </html>

@@ -35,10 +35,11 @@ body {
 /*JUMBOTRON*/
 .jumbotron {
   height: 100vh; /*height to 100% of view height*/
-  background: black; /*background color to blue*/
-  margin-bottom: 0; /*no bottom margin*/
+  background: white; 
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
+  transition: all 0.5s ease
 }
 
 .jumbotron-text {
@@ -53,7 +54,7 @@ body {
 .jumbotron-text h1 {
   /*YOUR NAME*/
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 100;
   font-size: 3em;
   margin-bottom: 0;
   margin-top: 0;
@@ -81,7 +82,7 @@ body {
 
 .social {
   font-size: 2em;
-  color: white;
+  color: black;
   padding: 20px;
 }
 
@@ -95,7 +96,7 @@ body {
 }
 
 #down-arrow a {
-  color: white;
+  color: black;
 }
 
 /*CONTENT*/
@@ -169,6 +170,9 @@ h2 {
   border-top-left-radius: .25rem;
   border-top-right-radius: .25rem;
 
+}
+header {
+  height: 8%;
 }
 
 .card-content {

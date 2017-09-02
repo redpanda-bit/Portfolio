@@ -87,7 +87,7 @@ section p {
 	background: #fff;
 	text-align: left;
 	padding: 0 7%;
-	height: 25%;
+	height: 100%;
 	width: 100%;
 	margin: 0 auto;
 	position: relative;
@@ -247,7 +247,7 @@ section p {
 }
 
 .ha-header-small {
-	height: 220px;
+	height: 8%;
 }
 
 .ha-header-hide {
@@ -290,7 +290,6 @@ section p {
 }
 
 .ha-header-shrink {
-	height: 220px;
 	top: 50px;
 	padding-left: 50px;
 	padding-right: 50px;
