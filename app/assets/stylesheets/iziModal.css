@@ -6,8 +6,8 @@
 .iziModal {
     display: none;
     position: fixed;
-    width: 81%;
-    left: 8%;
+    width: 68%;
+    left: 16%;
     top: 50%;
     background: #FFF;
     box-shadow: 0 0 8px rgba(0,0,0,.3);
@@ -43,6 +43,7 @@
 
 .iziModal *{
     -webkit-font-smoothing: antialiased;
+    text-align: left;
 }
 .iziModal::after{
     content: '';
@@ -232,7 +233,7 @@
 .iziModal .iziModal-content:before,
 .iziModal .iziModal-content:after { content:''; display:table }
 .iziModal .iziModal-content:after { clear:both }
-.iziModal .iziModal-content{ zoom:1; width: 100%; }
+.iziModal .iziModal-content{ zoom:1; width: 100%; padding-top: 40px !important;padding-bottom: 40px !important}
 .iziModal .iziModal-wrap{
     width: 100%;
     position: relative;

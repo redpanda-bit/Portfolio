@@ -15,38 +15,56 @@ h2 {
 }
 p {
   font-size: 1em;
-  line-height: 24px
+  line-height: 24px;
 }
-#postsCarrier {
-  transition: all 0.5s ease;
-  height: 120%;
+div.posts-container-container {
+  transition: height 0.3s ease;
+  height: 0%;
   width: 100%;
   background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
 }
-#postsCarrier:hover {
+div.posts-container-container:hover {
   background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
-  opacity: 1;
+  height: 440%;
+}
+div.posts-container-container.half-way {
+  height: 100%;
+}
+div.posts-container-container.full-way {
+  height: 440%;
 }
 .ha-header-front:hover {
 }
-.inner-post-carrier {
+.posts-container {
   display: table;
   width: 100%;
+  height: 0%;
   padding: 2em 0em;
+  transition: height 1s ease
+}
+div.posts-container-container:hover {
+  height: 440%;
 }
 .post-holder {
   position: relative;
   margin: 0 1em;
   height: 10em;
-  width: 15%;
+  width: 20%;
+  opacity: 0;
   text-align: center;
   display: inline-block;
   cursor: pointer;
+}
+.post-holder.animated {
+  opacity: 1;
 }
 .post-img {
   margin: 0 0 0.4em 0em;
   height: 10em;
   width: 100%;
+  background-position: -25px;
+  -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(70%);
 }
 .post-title {
   color: white;
@@ -54,9 +72,7 @@ p {
 .expand {
   height: 120% !important;
 }
-#blogFromNav:hover, #postCarrier:hover {
-  /*height: 120%;*/
-}
+
 #blogDownArrow {
   bottom: 2px;
   font-size: 6px;
@@ -90,10 +106,30 @@ p {
   40% {-o-transform: translateY(-30px);}
   60% {-o-transform: translateY(-15px);}
 }
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-  40% {transform: translateY(-30px);}
-  60% {transform: translateY(-15px);}
+@keyframes expandIn {
+  0%, 20%, 50%, 80%, 100% {max-heigh: (0 }
+  40% {max-height: -30px }
+  60% {max-height: -15px }
+}
+@-webkit-keyframes expandIn {
+  0%, 20%, 50%, 80%, 100% {-webkit-max-heigh: (0 }
+  40% {-webkit-max-height: -30px }
+  60% {-webkit-max-height: -15px }
+}
+@-moz-keyframes expandIn {
+  0%, 20%, 50%, 80%, 100% {-moz-max-heigh: (0 }
+  40% {-moz-max-height: -30px }
+  60% {-moz-max-height: -15px }
+}
+@-o-keyframes expandIn {
+  0%, 20%, 50%, 80%, 100% {-o-max-heigh: (0 }
+  40% {-o-max-height: -30px }
+  60% {-o-max-height: -15px }
+}
+@keyframes expandIn {
+  0%, 20%, 50%, 80%, 100% {max-heigh: (0 }
+  40% {max-height: -30px }
+  60% {max-height: -15px }
 }
 </style>
 
@@ -105,24 +141,17 @@ p {
     <div class="ha-header-front">
       <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative; transition: all 0.5s ease'%></span></h1>
       <nav id="navLi">
-        <a style="cursor: pointer" id="aboutFromNav">About</a>
-        <a style="" class="blog-from-nav extra-padding" id="blogFromNav">Blog
+        <a id="about-from-nav" class="link-from-nav"style="cursor: pointer" data-destination="about">About</a>
+        <a id="blog-from-nav" class="blog-from-nav extra-padding" data-destination="blog">Blog
         <i id="blogDownArrow" class="fa fa-chevron-down" aria-hidden="true"></i></a>
-        <a style="cursor: pointer" class="extra-padding" id="projectsFromNav">Projects</a>
-        <a style="cursor: pointer" class="extra-padding" id="educationFromNav">Education</a>
-        <a style="cursor: pointer" class="extra-padding" id="skillsFromNav">Skills</a>
-        <a style="cursor: pointer" id="contactFromNav">Contact</a>
+        <a id="projects-from-nav" style="cursor: pointer" class="extra-padding link-from-nav" data-destination="projects">Projects</a>
+        <a id="education-from-nav" style="cursor: pointer" class="extra-padding link-from-nav" data-destination="education">Education</a>
+        <a id="skills-from-nav" style="cursor: pointer" class="extra-padding link-from-nav" data-destination="skills">Skills</a>
+        <a id="contact-from-nav" style="cursor: pointer">Contact</a>
       </nav>
     </div>
-    <div id="postsCarrier" class="posts-carrier" style="opacity: 0">
-      <div class="inner-post-carrier">
-        
-        <% Post.all.each do |post| %>
-        <a id="<%= post.id %>" class="post-holder hvr-glow animated fadeInDown" data-iziModal-open="post1-iframe">
-          <div class="post-img" style="background-image: url('<%= asset_path('post1.jpg')%>'); background-size: cover"></div>
-          <div class="post-title"><%= post.title %></div>
-        </a>
-        <% end %>
+    <div class="posts-carrier posts-container-container">
+      <div id="posts-container" class="posts-container">
       </div>
     </div>
     <!-- <div class="ha-header-bottom">
@@ -151,7 +180,7 @@ p {
     <div id="containLogoNameAndTitle" style="position: center">
       <div class="jumbotron-text" style="position: absolute; bottom: 0%; left: 10%;width: 80%">
         <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
-        <%= image_tag "CA Logo.png",class: 'logo animated', style: 'position: relative;display:none;width: 30%;'%>
+        <%= image_tag "CA Logo.png",class: 'logo animated',style: 'position: relative;display:none;width: 30%;'%>
         
         <div style="width: 90%;margin: 0 0 0 5%">
           <h1 id="jumbotronFullName" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%;">Carlos Almonte</h1>
@@ -171,8 +200,8 @@ p {
             </li>
           </ul>
         </div>
-        <div id="down-arrow" style="font-size: .5em">
-          <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down fa-inverse" aria-hidden="true"></i></a></span>
+        <div id="down-arrow" style="font-size: .5em" class="link-from-nav" data-destination="about" >
+          <span><a id="aboutFromJumbotron" style="cursor: pointer"><i class="fa fa-chevron-down fa-inverse link-from-nav" data-destination="about" aria-hidden="true"></i></a></span>
         </div>
       </div>
     </div>
@@ -189,10 +218,9 @@ p {
           <p></p>
         </div>
         <div class="content-body" style="color: black">
-          <p style="text-align: left">Academic and career background in Clinical Nutrition, passion and intermediate knowledge of Web Development, primarily using React, Ruby on Rails and NodeJS.</p>
-          <p style="text-align: left">High preference for Object Oriented backends and intuitive frontends with responsive designs. I am also proficient on Javascript functional programming and asynchronous API calls to enable Single Page Applications (SPAs). Also experienced on Github version control management and Heroku deployments and debugging.</p>
+          <p>Academic and career background in Clinical Nutrition, passion and intermediate knowledge of Web Development, primarily using React, Ruby on Rails and NodeJS.</p>
+          <p>High preference for Object Oriented backends and intuitive frontends with responsive designs. I am also proficient on Javascript functional programming and asynchronous API calls to enable Single Page Applications (SPAs). Also experienced on Github version control management and Heroku deployments and debugging.</p>
           <p>Feel free to get in touch with me through email using the contact box at the end of this page, or any social medial link provided above.</p>
-          <p style="text-align: left"></p>
         </div>
         <div class="wrapper typo">
         </div>
@@ -387,7 +415,7 @@ p {
 </section>
 <!-- END CONTACT -->
 </div>
-<div id="post1-iframe"</div>
+<div id="iframes-holder"></div>
 
 <%= javascript_include_tag 'modernizr.custom' %>
 <%= javascript_include_tag 'waypoints.min' %>
@@ -401,41 +429,13 @@ p {
 // startDelay: 100,
 // cursorChar: "",
 // });
-$("#aboutFromNav").click(function() {
+$(".link-from-nav").click(function(event) {
+  const destination = "#" + event.target.dataset.destination
   $('html, body').animate({
-    scrollTop: $("#about").offset().top - 25
+    scrollTop: $(destination).offset().top - 25
   }, 400);
 });
-$("#aboutFromJumbotron").click(function() {
-  $('html, body').animate({
-    scrollTop: $("#about").offset().top - 25
-  }, 400);
-});
-$("#experienceFromNav").click(function() {
-  $('html, body').animate({
-    scrollTop: $("#experience").offset().top - 25
-  }, 400);
-});
-$("#educationFromNav").click(function() {
-  $('html, body').animate({
-    scrollTop: $("#education").offset().top - 25
-  }, 400);
-});
-$("#projectsFromNav").click(function() {
-  $('html, body').animate({
-    scrollTop: $("#projects").offset().top - 25
-  }, 400);
-});
-$("#skillsFromNav").click(function() {
-  $('html, body').animate({
-    scrollTop: $("#skills").offset().top - 25
-  }, 400);
-});
-$("#contactFromNav").click(function() {
-  $('html, body').animate({
-    scrollTop: $("#contact").offset().top - 25
-  }, 400);
-});
+
 window.onload = function() {
   if ($(window).scrollTop() < 384) {
     $('.ha-header').delay(400).addClass('ha-header-shrink');
@@ -593,7 +593,7 @@ function myResize(height, width) {
     $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
   };
   if (width < 970) {
-    $('#navLi').attr('style', 'margin-top: -15px')
+    $('#navLi').attr('style', 'margin-top: -30px')
   }
 }
 // ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
@@ -606,30 +606,39 @@ $(window).on("scroll", function() {
 });
 $(document).ready(function() {
   myResize($(window).height(), $(window).width());
-  $("#post1-iframe").iziModal({
-    iframe: true,
-    iframeHeight: 700,
-    iframeWidth: 700,
-    closeOnEscape: true,
-    closeButton: true,
-    iframeURL: "https://medium.com/@c.darioalmonte/self-taught-vs-coding-bootcamp-d8073bd10f37",
-    overlayClose: true,
-    overlayColor: 'rgba(0, 0, 0, 0.4)',
-    bodyOverflow: true,
-  });
 })
-$("#blogFromNav").on('mouseenter', function() {
-  $('#postsCarrier').fadeIn()
-  $('#postsCarrier').css('opacity', '1')
-  setTimeout(function() {
-    $('#1').show()
-  }, 100);
-});
-$("#postsCarrier").on('mouseleave', function() {
-  setTimeout(function() {
-    $('#postsCarrier').hide();
-  }, 200);
+const blogLinkFromNav = $('#blog-from-nav')
+
+blogLinkFromNav.hover(function() {
+  $('.posts-container-container').addClass('half-way')
 })
+  .one('click', function() {
+  $('.posts-container-container').addClass('full-way')
+  fetchPostsThumbnails()
+})
+  .on('mouseleave', function() {
+  $('.posts-container-container').removeClass('half-way full-way')
+})
+$('.posts-container-container').one('mouseenter', function() {
+  fetchPostsThumbnails()
+})
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function fadeItIn(el) {
+  if(!!el) {
+    $(el).addClass('animated slideInUp')
+    await sleep(80)
+    // $(el).one('animationend', function() {
+      fadeItIn(el.nextSibling)
+      // })
+      return
+    }
+  else {
+    return
+  }
+}
 
 $('.jumbotron-text').tilt({
   perspective: 2000,
@@ -639,5 +648,142 @@ $('.jumbotron-text').tilt({
 //     function() {
 //       logoMain.attr('style', 'display: none')
 //     });
+
+const Post = (function() {
+  const all = []
+  let counter = 0
+  const postsImages = ['<%= raw asset_path('post4.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post1.jpg')%>']
+ 
+  return function Post(title, link, date, content) {
+            this.title = title
+            this.link  = link
+            this.date  = date
+            this.content = content
+            if (title != undefined) {
+              this.id = ++counter
+              all.push(this)
+              this.renderThumbnail = function() { 
+                return (
+                  `<a id='${this.id}' class='post-holder hvr-glow' data-iziModal-open='post${this.id}-iframe' onClick="getAndSetPostContent(${this.id})">
+                  <div class='post-img' style='background-image: url(${postsImages[this.id - 1]}); background-size: cover'></div>
+                  <div class='post-title'>${this.title}</div>
+                  </a>`
+                )
+              }
+            }
+            this.all = all
+        }
+
+})()
+
+
+function createPostsFromXML(xml) {
+
+  const postsFromXml = $( $(xml).find('item') ).toArray()
+
+  postsFromXml.forEach(function(post, idx) {
+    const postTitle = $($(xml).find('item')[idx]).find('title').text()
+    const postLink  = $($($(xml).find('item')[idx]).find('link')[0]).text()
+    const postDate  = $($(xml).find('item')[0]).find('pubDate').text()
+
+    new Post(postTitle, postLink, postDate)
+  })
+  return Post.getAll()
+}
+
+function fetchPostsThumbnails() {
+
+fetch('https://medium.com/feed/@carlosalmonte04')
+  .then(res => res.text())
+  .then(textRes => $.parseXML(textRes))
+  .then(xmlRes => createPostsFromXML(xmlRes))
+  .then(posts => renderPostsThumbnails(posts))
+}
+p = new Post()
+Post.getAll = function() { return p.all }
+Post.find = function(id) { return Post.getAll().filter(post => post.id.toString() === id.toString())[0]}
+
+async function addPostModalToDOM(post) {
+
+  $('#iframes-holder').append(`<div id="post${post.id}-iframe"></div>`)
+  initializePostModal(post)
+}
+
+
+function initializePostModal(post) {
+  $(`#post${post.id}-iframe`).iziModal({
+  closeOnEscape: true,
+  closeButton: true,
+  overlayClose: true,
+  overlayColor: 'rgba(0, 0, 0, 0.4)',
+  bodyOverflow: true,
+  onOpening: function() {
+    setTimeout(function() {
+      iziToast.show({
+        theme: 'dark',
+        title: 'Hey!',
+        message: 'All my Blog Posts look better on Medium.com!',
+        position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+        progressBarColor: 'rgb(0, 255, 184)',
+        buttons: [
+          ['<button>See on Medium</button>', function(instance, toast) {
+            instance.hide({
+              transitionOut: 'fadeOutUp',
+            }, toast, 'close', 'btn2');
+            window.open(post.link)
+          }],
+          ['<button>Stay Here</button>', function(instance, toast) {
+            instance.hide({
+              transitionOut: 'fadeOutUp',
+            }, toast, 'close', 'btn2');
+          }]
+        ],
+      });
+    }, 1500)
+  }
+});
+}
+
+function getAndSetPostContent(postId) {
+  const post      = Post.find(postId)
+  const postModal = $(`#post${post.id}-iframe .iziModal-content`)
+
+  if (!post.content) {
+
+    const setPostContent = fetch(post.link)
+      .then(res => res.text())
+      .then(res => {
+        const content = scrapePostContentFromResponse(res)
+        post.content  = content
+
+        postModal.html(post.content)
+      })
+
+    return setPostContent
+  }
+}
+
+function renderPostsThumbnails(posts) {
+  const postsThumbnailsContainer = $('#posts-container')
+
+  const allPostsThumbnailsHTML   = posts.map(function(post){
+    addPostModalToDOM(post)
+    return post.renderThumbnail()
+  }).join('')
+
+    postsThumbnailsContainer.html(allPostsThumbnailsHTML)
+    fadeItIn($('.post-holder')[0])
+
+}
+
+function scrapePostContentFromResponse(res) {
+  const content = $.parseHTML(res)
+          .find(el => el.className === 'site-main')
+          .getElementsByClassName('postArticle-content')[0]
+
+  return content
+}
+
+
 </script>
 </html>
