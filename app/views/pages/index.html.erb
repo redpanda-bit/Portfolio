@@ -614,13 +614,13 @@ blogLinkFromNav.hover(function() {
 })
   .one('click', function() {
   $('.posts-container-container').addClass('full-way')
-  fetchPostsThumbnails()
+  fetchPostsThumbnailsFromDB()
 })
   .on('mouseleave', function() {
   $('.posts-container-container').removeClass('half-way full-way')
 })
 $('.posts-container-container').one('mouseenter', function() {
-  fetchPostsThumbnails()
+  fetchPostsThumbnailsFromDB()
 })
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -651,20 +651,17 @@ $('.jumbotron-text').tilt({
 
 const Post = (function() {
   const all = []
-  let counter = 0
-  const postsImages = ['<%= raw asset_path('post4.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post1.jpg')%>']
+  const postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
  
-  return function Post(title, link, date, content) {
+  return function Post(title, link, id, img) {
             this.title = title
             this.link  = link
-            this.date  = date
-            this.content = content
             if (title != undefined) {
-              this.id = ++counter
+              this.id = id
               all.push(this)
               this.renderThumbnail = function() { 
                 return (
-                  `<a id='${this.id}' class='post-holder hvr-glow' data-iziModal-open='post${this.id}-iframe' onClick="getAndSetPostContent(${this.id})">
+                  `<a id='${this.id}' href="${this.link}" target="_blank" class='post-holder hvr-glow'>
                   <div class='post-img' style='background-image: url(${postsImages[this.id - 1]}); background-size: cover'></div>
                   <div class='post-title'>${this.title}</div>
                   </a>`
@@ -692,8 +689,15 @@ function createPostsFromXML(xml) {
 }
 
 function fetchPostsThumbnails() {
+  const myHeaders = new Headers({
+    'X-CSRF-Token': $('[name="csrf-token"]')[0].content
+  })
+  const params = { method: 'GET',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' }
 
-fetch('https://medium.com/feed/@carlosalmonte04')
+fetch('/posts')
   .then(res => res.text())
   .then(textRes => $.parseXML(textRes))
   .then(xmlRes => createPostsFromXML(xmlRes))
@@ -705,8 +709,8 @@ Post.find = function(id) { return Post.getAll().filter(post => post.id.toString(
 
 async function addPostModalToDOM(post) {
 
-  $('#iframes-holder').append(`<div id="post${post.id}-iframe"></div>`)
-  initializePostModal(post)
+  // $('#iframes-holder').append(`<div id="post${post.id}-iframe"></div>`)
+  // initializePostModal(post)
 }
 
 
@@ -767,7 +771,7 @@ function renderPostsThumbnails(posts) {
   const postsThumbnailsContainer = $('#posts-container')
 
   const allPostsThumbnailsHTML   = posts.map(function(post){
-    addPostModalToDOM(post)
+    // addPostModalToDOM(post)
     return post.renderThumbnail()
   }).join('')
 
@@ -782,6 +786,23 @@ function scrapePostContentFromResponse(res) {
           .getElementsByClassName('postArticle-content')[0]
 
   return content
+}
+
+var fetched = false
+function fetchPostsThumbnailsFromDB() {
+  if (!fetched) {
+    fetch('/posts')
+    .then(res => res.json())
+    .then(postsJSON => createPostsFromJSON(postsJSON))
+    .then(posts => renderPostsThumbnails(posts))
+    .then(() => fetched = true)
+  }
+}
+function createPostsFromJSON(posts) {
+  posts.reverse().forEach(function(post) {
+    const newPost = new Post(post.title, post.link, post.id)
+  })
+  return Post.getAll()
 }
 
 

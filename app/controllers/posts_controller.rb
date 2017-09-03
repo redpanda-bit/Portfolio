@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
+skip_before_action :verify_authenticity_token
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+
 
   # GET /posts
   # GET /posts.json
   def index
+    posts = Post.all
+    render json: posts.to_json
   end
 
   # GET /posts/1
@@ -78,6 +82,27 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.fetch(:post, {})
+      params.require(:post).permit(:title, :id, :content)
     end
 end
+
+
+# Post.getAll().forEach(function(post) {
+#  fetch('posts', {
+#   method: 'post', 
+#   headers: {
+#     'X-CSRF-Token': $('[name="csrf-token"]')[0].content, 
+#     'authenticity_token': $('[name="csrf-token"]')[0].content, 
+#     'Content-Type': 'application/json',
+#     'Accept': 'application/json'
+#   },
+#   body: JSON.stringify({
+#       credentials: 'same-origin',
+#     "post": {
+#       "title" :"bye"
+#     },
+#     'X-CSRF-Token': $('[name="csrf-token"]')[0].content
+#     'authenticity_token': $('[name="csrf-token"]')[0].content, 
+#   })
+# })
+#  })
