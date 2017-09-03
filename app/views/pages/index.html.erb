@@ -791,11 +791,11 @@ function scrapePostContentFromResponse(res) {
 var fetched = false
 function fetchPostsThumbnailsFromDB() {
   if (!fetched) {
+    fetched = true
     fetch('/posts')
     .then(res => res.json())
     .then(postsJSON => createPostsFromJSON(postsJSON))
     .then(posts => renderPostsThumbnails(posts))
-    .then(() => fetched = true)
   }
 }
 function createPostsFromJSON(posts) {
