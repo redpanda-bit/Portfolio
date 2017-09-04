@@ -364,7 +364,7 @@ browser = {
 
 if (browser.iPhone) {
   console.log("yeah")
-  $('.jumbotron-text').css('bottom', '32%')
+  // $('.jumbotron-text').css('top', '32%')
 };
 
 
@@ -439,7 +439,7 @@ function myResize(height, width) {
   };
   if (height > 384) {
     console.log("> 384:", $(this).width())
-    jumbotronText.css('top', '20%')
+    jumbotronText.css('top', '40%')
     width > 600 ? jumbotronText.css('top', '20%') : ''
 
     jumbotronFullTitleAndLocation.attr('style', 'font-size: 1em;margin-top: 7px')
