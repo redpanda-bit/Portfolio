@@ -294,6 +294,7 @@
   const jumbotronText = $('.jumbotron-text')
   const header = $('#header')
   const logoOnHeader = $('#logo-on-header')
+  const postsContainerContainer = $('.posts-container-container')
 
 
 // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
@@ -513,15 +514,17 @@ blogLinkFromNav.hover(function() {
   $('.posts-container-container').addClass('half-way')
 })
   .on('click', function() {
-  $('.posts-container-container').addClass('full-way')
+  postsContainerContainer.toggleClass('half-way full-way')
   fetchPostsThumbnailsFromDB()
 })
   .on('mouseleave', function() {
-  $('.posts-container-container').removeClass('half-way full-way')
+  postsContainerContainer.removeClass('half-way full-way')
 })
-$('.posts-container-container').one('mouseenter', function() {
+postsContainerContainer.one('mouseenter', function() {
   fetchPostsThumbnailsFromDB()
 })
+
+
   var postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
 </script>
 </html>
