@@ -288,15 +288,6 @@
 <%= javascript_include_tag 'imghover' %>
 <script>
 
-  // RESIABLE AND REPOSITIONABLE ELEMENTS
-  const jumbotronFullName = $('#jumbotron-full-name')
-  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
-  const jumbotronText = $('.jumbotron-text')
-  const header = $('#header')
-  const logoOnHeader = $('#logo-on-header')
-  const postsContainerContainer = $('.posts-container-container')
-
-
 // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
 // $("#jumbotronFullName").typed({
 // strings: ['carlos almonte'],
@@ -312,6 +303,13 @@ $(".link-from-nav").click(function(event) {
 });
 
 window.onload = function() {
+      // RESIABLE AND REPOSITIONABLE ELEMENTS
+  const jumbotronFullName = $('#jumbotron-full-name')
+  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
+  const jumbotronText = $('.jumbotron-text')
+  const header = $('#header')
+  const logoOnHeader = $('#logo-on-header')
+  const postsContainerContainer = $('.posts-container-container')
   if ($(window).scrollTop() < 384) {
     $('.ha-header').delay(400).addClass('ha-header-shrink');
   }
@@ -369,6 +367,16 @@ if (browser.iPhone) {
 
 
 function myResize(height, width) {
+    // RESIABLE AND REPOSITIONABLE ELEMENTS
+  const jumbotronFullName = $('#jumbotron-full-name')
+  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
+  const jumbotronText = $('.jumbotron-text')
+  const header = $('#header')
+  const logoOnHeader = $('#logo-on-header')
+  const postsContainerContainer = $('.posts-container-container')
+
+
+
   // RESIZE FULLNAME && LOGO
   if (width < 601 && width > 470) {
     jumbotronFullName.attr('style', 'font-size: 2.3em;margin-top: -20px')
@@ -502,6 +510,7 @@ $(window).on("scroll", function() {
   myResize($(window).height(), $(window).width());
 });
 $(document).ready(function() {
+  const jumbotronText = $('.jumbotron-text')
   jumbotronText.tilt({
     perspective: 2000,
     maxTilt: 10
@@ -520,11 +529,10 @@ blogLinkFromNav.hover(function() {
   .on('mouseleave', function() {
   postsContainerContainer.removeClass('half-way full-way')
 })
-postsContainerContainer.one('mouseenter', function() {
+$('.posts-container-container').one('mouseenter', function() {
   fetchPostsThumbnailsFromDB()
 })
 
   var postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
-  myResize()
 </script>
 </html>
