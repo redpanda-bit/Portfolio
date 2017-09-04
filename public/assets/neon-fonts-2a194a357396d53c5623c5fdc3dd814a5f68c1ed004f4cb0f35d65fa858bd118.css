@@ -1,6 +1,7 @@
 
 
 /*setup*/
+
 *{
   margin: 0;
   padding: 0;
@@ -565,7 +566,7 @@ color:#ffffff;
     width: 100%;
   }
   
-  p{
+  p {
     font-size:3.5em;
   }
 
