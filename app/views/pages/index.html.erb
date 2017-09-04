@@ -4,7 +4,7 @@
 <header id="ha-header" class="ha-header">
   <div class="ha-header-perspective">
     <div class="ha-header-front">
-      <h1><span><%= image_tag "CA Logo.png", id: 'logoOnHeader', class: 'animated', style: 'top: -5px;height: 60px;position: relative; transition: all 0.5s ease'%></span></h1>
+      <h1><span><%= image_tag "CA Logo.png", id: 'logo-on-header', class: 'animated', style: 'top: -5px;height: 60px;position: relative; transition: all 0.5s ease'%></span></h1>
       <nav id="navLi">
         <a id="about-from-nav" class="link-from-nav"style="cursor: pointer" data-destination="about">About</a>
         <a id="blog-from-nav" class="blog-from-nav extra-padding" data-destination="blog">Blog
@@ -293,7 +293,7 @@
   const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
   const jumbotronText = $('.jumbotron-text')
   const header = $('#header')
-  const logoOnHeader = $('#logoOnHeader')
+  const logoOnHeader = $('#logo-on-header')
 
 
 // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
@@ -502,8 +502,8 @@ $(window).on("scroll", function() {
 });
 $(document).ready(function() {
   jumbotronText.tilt({
-  perspective: 2000,
-  maxTilt: 10
+    perspective: 2000,
+    maxTilt: 10
 })
   myResize($(window).height(), $(window).width());
 })
@@ -512,7 +512,7 @@ const blogLinkFromNav = $('#blog-from-nav')
 blogLinkFromNav.hover(function() {
   $('.posts-container-container').addClass('half-way')
 })
-  .one('click', function() {
+  .on('click', function() {
   $('.posts-container-container').addClass('full-way')
   fetchPostsThumbnailsFromDB()
 })
@@ -523,7 +523,5 @@ $('.posts-container-container').one('mouseenter', function() {
   fetchPostsThumbnailsFromDB()
 })
   var postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
-
-
 </script>
 </html>
