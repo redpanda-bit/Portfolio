@@ -1,139 +1,4 @@
-<style>
-.overlay{
-  opacity:1;
-  background-color:#ccc;
-  position:fixed;
-  width:100%;
-  height:100%;
-  top:0px;
-  left:0px;
-  z-index:1000;
-}
-h2 {
-  font-size: 2em;
-  line-height: 40px;
-}
-p {
-  font-size: 1em;
-  line-height: 24px;
-}
-div.posts-container-container {
-  transition: height 0.3s ease;
-  height: 0%;
-  width: 100%;
-  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
-}
-div.posts-container-container:hover {
-  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.5) 50%,rgba(0, 0, 0, 0) 100%);
-  height: 440%;
-}
-div.posts-container-container.half-way {
-  height: 100%;
-}
-div.posts-container-container.full-way {
-  height: 440%;
-}
-.ha-header-front:hover {
-}
-.posts-container {
-  display: table;
-  width: 100%;
-  height: 0%;
-  padding: 2em 0em;
-  transition: height 1s ease
-}
-div.posts-container-container:hover {
-  height: 440%;
-}
-.post-holder {
-  position: relative;
-  margin: 0 1em;
-  height: 10em;
-  width: 20%;
-  opacity: 0;
-  text-align: center;
-  display: inline-block;
-  cursor: pointer;
-}
-.post-holder.animated {
-  opacity: 1;
-}
-.post-img {
-  margin: 0 0 0.4em 0em;
-  height: 10em;
-  width: 100%;
-  background-position: -25px;
-  -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(70%);
-}
-.post-title {
-  color: white;
-}
-.expand {
-  height: 120% !important;
-}
-
-#blogDownArrow {
-  bottom: 2px;
-  font-size: 6px;
-  position: relative;
-}
-.ha-header-front {
-  /*background: linear-gradient(to bottom,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.5) 50%,rgba(0,0,0,0) 100%);*/
-}
-/*#navLi > a {
-  padding-bottom: 20px;
-}
-*/
-#down-arrow {
-  animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
-  -moz-animation: bounce 2s infinite;
-  -o-animation: bounce 2s infinite;
-}
-@-webkit-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
-  40% {-webkit-transform: translateY(-30px);}
-  60% {-webkit-transform: translateY(-15px);}
-}
-@-moz-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
-  40% {-moz-transform: translateY(-30px);}
-  60% {-moz-transform: translateY(-15px);}
-}
-@-o-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
-  40% {-o-transform: translateY(-30px);}
-  60% {-o-transform: translateY(-15px);}
-}
-@keyframes expandIn {
-  0%, 20%, 50%, 80%, 100% {max-heigh: (0 }
-  40% {max-height: -30px }
-  60% {max-height: -15px }
-}
-@-webkit-keyframes expandIn {
-  0%, 20%, 50%, 80%, 100% {-webkit-max-heigh: (0 }
-  40% {-webkit-max-height: -30px }
-  60% {-webkit-max-height: -15px }
-}
-@-moz-keyframes expandIn {
-  0%, 20%, 50%, 80%, 100% {-moz-max-heigh: (0 }
-  40% {-moz-max-height: -30px }
-  60% {-moz-max-height: -15px }
-}
-@-o-keyframes expandIn {
-  0%, 20%, 50%, 80%, 100% {-o-max-heigh: (0 }
-  40% {-o-max-height: -30px }
-  60% {-o-max-height: -15px }
-}
-@keyframes expandIn {
-  0%, 20%, 50%, 80%, 100% {max-heigh: (0 }
-  40% {max-height: -30px }
-  60% {max-height: -15px }
-}
-</style>
-
-<div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: white">
+<!-- <div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: black"> -->
   
 </div>
 <header id="ha-header" class="ha-header">
@@ -178,14 +43,14 @@ div.posts-container-container:hover {
   <!-- HEADER -->
   <div class="jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg copy.jpg' %>'); background-size: cover">
     <div id="containLogoNameAndTitle" style="position: center">
-      <div class="jumbotron-text" style="position: absolute; bottom: 0%; left: 10%;width: 80%">
+      <div class="jumbotron-text" style="position: absolute">
         <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
         <%= image_tag "CA Logo.png",class: 'logo animated',style: 'position: relative;display:none;width: 30%;'%>
         
         <div style="width: 90%;margin: 0 0 0 5%">
-          <h1 id="jumbotronFullName" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%;">Carlos Almonte</h1>
+          <h1 id="jumbotron-full-name" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%;">Carlos Almonte</h1>
         </div>
-        <p id="jumbotronFullTitleAndLocation" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
+        <p id="jumbotron-full-title-and-location" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
         Web Developer&nbsp;</a>in New York, USA.</p>
         <div class="jumbotron-social" style="font-size: .6em">
           <ul class="ul-social">
@@ -422,6 +287,15 @@ div.posts-container-container:hover {
 <%= javascript_include_tag 'anime.min' %>
 <%= javascript_include_tag 'imghover' %>
 <script>
+
+  // RESIABLE AND REPOSITIONABLE ELEMENTS
+  const jumbotronFullName = $('#jumbotron-full-name')
+  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
+  const jumbotronText = $('.jumbotron-text')
+  const header = $('#header')
+  const logoOnHeader = $('#logoOnHeader')
+
+
 // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
 // $("#jumbotronFullName").typed({
 // strings: ['carlos almonte'],
@@ -443,7 +317,7 @@ window.onload = function() {
   $('#preloader').delay(100).fadeOut("slow");
   $('.ha-header').delay(400).css('display', '');
   logoMain.delay(400).css('display', '');
-  $('#jumbotronFullTitleAndLocation').delay(400).css('display', '');
+  jumbotronFullTitleAndLocation.delay(400).css('display', '');
   // PNG TO GIF (ANIMATES PICTURES ON HOVER)
   $("#project1").hover(
     function() {
@@ -481,14 +355,27 @@ $('.ha-waypoint').each(function(i) {
 });
 var logoMain = $('.logo')
 
+var ua = navigator.userAgent,
+browser = {
+    iPad: /iPad/.test(ua),
+    iPhone: /iPhone/.test(ua),
+    Android4: /Android 4/.test(ua)
+}
+
+if (browser.iPhone) {
+  console.log("yeah")
+  $('.jumbotron-text').css('bottom', '32%')
+};
+
+
 function myResize(height, width) {
   // RESIZE FULLNAME && LOGO
   if (width < 601 && width > 470) {
-    $('#jumbotronFullName').attr('style', 'font-size: 2.3em;margin-top: -20px')
+    jumbotronFullName.attr('style', 'font-size: 2.3em;margin-top: -20px')
     logoMain.width('75%')
   };
   if (width > 601 && width < 830) {
-    $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
+    jumbotronFullName.attr('style', 'font-size: 3em;margin-top: -20px')
     logoMain.attr('style', 'width:44%; margin-top: -10px')
   };
   // LOGO ONLY
@@ -499,26 +386,27 @@ function myResize(height, width) {
     logoMain.attr('style', 'width:33%;')
   };
   if (width < 470) {
-    $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
     logoMain.attr('style', 'width:75%')
   };
   // RESIZE TITLE AND LOCATION
   if (width < 601 && width > 470) {
-    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .8em;margin-top: 7px')
+    jumbotronFullTitleAndLocation.attr('style', 'font-size: .8em;margin-top: 7px')
   };
   if (width > 601) {
-    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;')
+    jumbotronFullTitleAndLocation.attr('style', 'font-size: 1em;')
   };
   if (width < 470) {
-    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
+    jumbotronFullTitleAndLocation.attr('style', 'font-size: .7em;margin-top: 7px')
   };
   if ($(window).scrollTop() > 384 && width > 970) {
-    $('#logoOnHeader').show();
-    $('#logoOnHeader').removeClass('fadeOutDownBig');
-    $('#logoOnHeader').addClass('fadeInUp');
-  } else if ($(window).scrollTop() < 384 || width < 970) {
-    $('#logoOnHeader').addClass('fadeOutDownBig')
-    $('#logoOnHeader').removeClass('fadeInUp')
+    logoOnHeader.show();
+    logoOnHeader.removeClass('fadeOutDownBig');
+    logoOnHeader.addClass('fadeInUp');
+  } 
+  else if ($(window).scrollTop() < 384 || width < 970) {
+    logoOnHeader.addClass('fadeOutDownBig')
+    logoOnHeader.removeClass('fadeInUp')
   }
   if (width < 970) {
     $('#navLi').attr('style', 'margin-top: -15px')
@@ -535,32 +423,30 @@ function myResize(height, width) {
     logoMain.removeClass('fadeOutUp');
     logoMain.addClass('fadeInDown');
   };
-  // POSITION JUMBOTRO TEXT WHEN HEIGHT RESIZE
-  if (height < 585) {
-    $('.jumbotron-text').attr('style', 'position: absolute; bottom: -10%; left: 10%;width: 80%')
-  };
-  if (height > 585) {
-    $('.jumbotron-text').attr('style', 'position: absolute; bottom: 0%; left: 10%;width: 80%')
-  };
-  if (height < 465) {
-    $('.jumbotron-text').attr('style', 'position: absolute; bottom: -20%; left: 10%;width: 80%')
-  };
+
+  // POSITION JUMBOTRO TEXT (LOGO, SOCIAL, LOCATION) WHEN HEIGHT RESIZE
   if (height < 410) {
-    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .7em;margin-top: 7px')
-    $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+    console.log("< 410")
+    jumbotronFullTitleAndLocation.attr('style', 'font-size: .7em;margin-top: 7px')
+    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
   };
   if (height < 384) {
+    console.log("< 384:", $(this).height(), "width:", $(this).width())
+    width < 600 ? jumbotronText.css('top', '-65%') : jumbotronText.css('top', '-40%')
     $('#ha-header').removeClass('animated fadeInDown')
     $('#ha-header').addClass('animated fadeOutUp')
-    $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
   };
   if (height > 384) {
-    var header = $('#ha-header')
-    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: 1em;margin-top: 7px')
-    $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+    console.log("> 384:", $(this).width())
+    jumbotronText.css('top', '20%')
+    width > 600 ? jumbotronText.css('top', '20%') : ''
+
+    jumbotronFullTitleAndLocation.attr('style', 'font-size: 1em;margin-top: 7px')
+    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
     if (header.hasClass('fadeOutUp')) {
-      $('#ha-header').removeClass('animated fadeOutUp')
-      $('#ha-header').addClass('animated fadeInDown')
+      header.removeClass('animated fadeOutUp')
+      header.addClass('animated fadeInDown')
       header.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
         function() {
           if (header.hasClass('fadeOutUp')) {} else {
@@ -570,27 +456,37 @@ function myResize(height, width) {
     }
   };
   if (height < 300) {
-    $('.jumbotron-text').attr('style', 'position: absolute; bottom: -28%; left: 10%;width: 80%')
-    $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
+    console.log("< 300")
+    width > 950 ? jumbotronText.css('top', '-50%') : ''
+    jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
   if (height < 250) {
-    $('.jumbotron-text').attr('style', 'position: absolute; bottom: -38%; left: 10%;width: 80%')
-    $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
+    console.log("< 250")
+    jumbotronText.css('top', '-70%')
+    jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
   if (height < 200) {
-    $('.jumbotron-text').attr('style', 'position: absolute; bottom: -58%; left: 10%;width: 80%')
-    $('#jumbotronFullName').attr('style', 'font-size: 1.3em;margin-top: -20px')
+    console.log("< 200:", $(this).height(), "width:", $(this).width())
+    width < 480 ? jumbotronText.css('top', '-94%') : jumbotronText.css('top', '-115%')
+    width > 511 && width < 600 ? jumbotronText.css('top', '-132%') : ''
+    width > 600 && width < 700 ? jumbotronText.css('top', '-79%') : ''
+    width > 700 && width < 1000 ? jumbotronText.css('top', '-100%') : ''
+    width > 1000 && width < 1200 ? jumbotronText.css('top', '-110%') : ''
+    width > 1200 && width < 1300 ? jumbotronText.css('top', '-140%') : ''
+    width > 1300 ? jumbotronText.css('top', '-160%') : ''
+
+    jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
   // IF SMALLEST
   if (height < 225 && width < 525) {
-    $('#jumbotronFullName').attr('style', 'font-size: .9em;margin-top: -20px')
-    $('#jumbotronFullTitleAndLocation').attr('style', 'font-size: .5em;margin-top: 7px')
+    jumbotronFullName.attr('style', 'font-size: .9em;margin-top: -20px')
+    jumbotronFullTitleAndLocation.attr('style', 'font-size: .5em;margin-top: 7px')
   };
   if (height > 410) {
-    $('#jumbotronFullName').attr('style', 'font-size: 3em;margin-top: -20px')
+    jumbotronFullName.attr('style', 'font-size: 3em;margin-top: -20px')
   };
   if (width < 572 && height > 400) {
-    $('#jumbotronFullName').attr('style', 'font-size: 2em;margin-top: -20px')
+    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
   };
   if (width < 970) {
     $('#navLi').attr('style', 'margin-top: -30px')
@@ -605,6 +501,10 @@ $(window).on("scroll", function() {
   myResize($(window).height(), $(window).width());
 });
 $(document).ready(function() {
+  jumbotronText.tilt({
+  perspective: 2000,
+  maxTilt: 10
+})
   myResize($(window).height(), $(window).width());
 })
 const blogLinkFromNav = $('#blog-from-nav')
@@ -622,188 +522,7 @@ blogLinkFromNav.hover(function() {
 $('.posts-container-container').one('mouseenter', function() {
   fetchPostsThumbnailsFromDB()
 })
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function fadeItIn(el) {
-  if(!!el) {
-    $(el).addClass('animated slideInUp')
-    await sleep(80)
-    // $(el).one('animationend', function() {
-      fadeItIn(el.nextSibling)
-      // })
-      return
-    }
-  else {
-    return
-  }
-}
-
-$('.jumbotron-text').tilt({
-  perspective: 2000,
-  maxTilt: 10
-})
-// logoMain.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-//     function() {
-//       logoMain.attr('style', 'display: none')
-//     });
-
-const Post = (function() {
-  const all = []
-  const postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
- 
-  return function Post(title, link, id, img) {
-            this.title = title
-            this.link  = link
-            if (title != undefined) {
-              this.id = id
-              all.push(this)
-              this.renderThumbnail = function() { 
-                return (
-                  `<a id='${this.id}' href="${this.link}" target="_blank" class='post-holder hvr-glow'>
-                  <div class='post-img' style='background-image: url(${postsImages[this.id - 1]}); background-size: cover'></div>
-                  <div class='post-title'>${this.title}</div>
-                  </a>`
-                )
-              }
-            }
-            this.all = all
-        }
-
-})()
-
-
-function createPostsFromXML(xml) {
-
-  const postsFromXml = $( $(xml).find('item') ).toArray()
-
-  postsFromXml.forEach(function(post, idx) {
-    const postTitle = $($(xml).find('item')[idx]).find('title').text()
-    const postLink  = $($($(xml).find('item')[idx]).find('link')[0]).text()
-    const postDate  = $($(xml).find('item')[0]).find('pubDate').text()
-
-    new Post(postTitle, postLink, postDate)
-  })
-  return Post.getAll()
-}
-
-function fetchPostsThumbnails() {
-  const myHeaders = new Headers({
-    'X-CSRF-Token': $('[name="csrf-token"]')[0].content
-  })
-  const params = { method: 'GET',
-               headers: myHeaders,
-               mode: 'cors',
-               cache: 'default' }
-
-fetch('/posts')
-  .then(res => res.text())
-  .then(textRes => $.parseXML(textRes))
-  .then(xmlRes => createPostsFromXML(xmlRes))
-  .then(posts => renderPostsThumbnails(posts))
-}
-p = new Post()
-Post.getAll = function() { return p.all }
-Post.find = function(id) { return Post.getAll().filter(post => post.id.toString() === id.toString())[0]}
-
-async function addPostModalToDOM(post) {
-
-  // $('#iframes-holder').append(`<div id="post${post.id}-iframe"></div>`)
-  // initializePostModal(post)
-}
-
-
-function initializePostModal(post) {
-  $(`#post${post.id}-iframe`).iziModal({
-  closeOnEscape: true,
-  closeButton: true,
-  overlayClose: true,
-  overlayColor: 'rgba(0, 0, 0, 0.4)',
-  bodyOverflow: true,
-  onOpening: function() {
-    setTimeout(function() {
-      iziToast.show({
-        theme: 'dark',
-        title: 'Hey!',
-        message: 'All my Blog Posts look better on Medium.com!',
-        position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-        progressBarColor: 'rgb(0, 255, 184)',
-        buttons: [
-          ['<button>See on Medium</button>', function(instance, toast) {
-            instance.hide({
-              transitionOut: 'fadeOutUp',
-            }, toast, 'close', 'btn2');
-            window.open(post.link)
-          }],
-          ['<button>Stay Here</button>', function(instance, toast) {
-            instance.hide({
-              transitionOut: 'fadeOutUp',
-            }, toast, 'close', 'btn2');
-          }]
-        ],
-      });
-    }, 1500)
-  }
-});
-}
-
-function getAndSetPostContent(postId) {
-  const post      = Post.find(postId)
-  const postModal = $(`#post${post.id}-iframe .iziModal-content`)
-
-  if (!post.content) {
-
-    const setPostContent = fetch(post.link)
-      .then(res => res.text())
-      .then(res => {
-        const content = scrapePostContentFromResponse(res)
-        post.content  = content
-
-        postModal.html(post.content)
-      })
-
-    return setPostContent
-  }
-}
-
-function renderPostsThumbnails(posts) {
-  const postsThumbnailsContainer = $('#posts-container')
-
-  const allPostsThumbnailsHTML   = posts.map(function(post){
-    // addPostModalToDOM(post)
-    return post.renderThumbnail()
-  }).join('')
-
-    postsThumbnailsContainer.html(allPostsThumbnailsHTML)
-    fadeItIn($('.post-holder')[0])
-
-}
-
-function scrapePostContentFromResponse(res) {
-  const content = $.parseHTML(res)
-          .find(el => el.className === 'site-main')
-          .getElementsByClassName('postArticle-content')[0]
-
-  return content
-}
-
-var fetched = false
-function fetchPostsThumbnailsFromDB() {
-  if (!fetched) {
-    fetched = true
-    fetch('/posts')
-    .then(res => res.json())
-    .then(postsJSON => createPostsFromJSON(postsJSON))
-    .then(posts => renderPostsThumbnails(posts))
-  }
-}
-function createPostsFromJSON(posts) {
-  posts.reverse().forEach(function(post) {
-    const newPost = new Post(post.title, post.link, post.id)
-  })
-  return Post.getAll()
-}
+  var postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
 
 
 </script>
