@@ -51,6 +51,7 @@
          * Set transition only on mouse leave and mouse enter so it doesn't influence mouse move transforms
          */
         const setTransition = function() {
+            debugger
             if (this.timeout !== undefined) clearTimeout(this.timeout);
             $(this).css({'transition': `${this.settings.speed}ms ${this.settings.easing}`});
             if(this.settings.glare) this.glareElement.css({'transition': `opacity ${this.settings.speed}ms ${this.settings.easing}`});

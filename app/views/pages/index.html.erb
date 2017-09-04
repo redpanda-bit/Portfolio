@@ -281,16 +281,16 @@
 <!-- END CONTACT -->
 </div>
 <div id="iframes-holder"></div>
-
-<%= javascript_include_tag 'modernizr.custom' %>
-<%= javascript_include_tag 'waypoints.min' %>
-<%= javascript_include_tag 'anime.min' %>
-<%= javascript_include_tag 'imghover' %>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
 <script>
+
+  // RESIABLE AND REPOSITIONABLE ELEMENTS
+  const jumbotronFullName = $('#jumbotron-full-name')
+  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
+  const jumbotronText = $('.jumbotron-text')
+  const header = $('#header')
+  const logoOnHeader = $('#logo-on-header')
+  const postsContainerContainer = $('.posts-container-container')
+
 
 // TYPING EFFECT FOR FULL NAME ON JUMBOTRON
 // $("#jumbotronFullName").typed({
@@ -307,13 +307,7 @@ $(".link-from-nav").click(function(event) {
 });
 
 window.onload = function() {
-      // RESIABLE AND REPOSITIONABLE ELEMENTS
-  const jumbotronFullName = $('#jumbotron-full-name')
-  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
-  const jumbotronText = $('.jumbotron-text')
-  const header = $('#header')
-  const logoOnHeader = $('#logo-on-header')
-  const postsContainerContainer = $('.posts-container-container')
+  myResize()
   if ($(window).scrollTop() < 384) {
     $('.ha-header').delay(400).addClass('ha-header-shrink');
   }
@@ -371,16 +365,6 @@ if (browser.iPhone) {
 
 
 function myResize(height, width) {
-    // RESIABLE AND REPOSITIONABLE ELEMENTS
-  const jumbotronFullName = $('#jumbotron-full-name')
-  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
-  const jumbotronText = $('.jumbotron-text')
-  const header = $('#header')
-  const logoOnHeader = $('#logo-on-header')
-  const postsContainerContainer = $('.posts-container-container')
-
-
-
   // RESIZE FULLNAME && LOGO
   if (width < 601 && width > 470) {
     jumbotronFullName.attr('style', 'font-size: 2.3em;margin-top: -20px')
@@ -438,19 +422,16 @@ function myResize(height, width) {
 
   // POSITION JUMBOTRO TEXT (LOGO, SOCIAL, LOCATION) WHEN HEIGHT RESIZE
   if (height < 410) {
-    console.log("< 410")
     jumbotronFullTitleAndLocation.attr('style', 'font-size: .7em;margin-top: 7px')
     jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
   };
   if (height < 384) {
-    console.log("< 384:", $(this).height(), "width:", $(this).width())
     width < 600 ? jumbotronText.css('top', '-65%') : jumbotronText.css('top', '-40%')
     $('#ha-header').removeClass('animated fadeInDown')
     $('#ha-header').addClass('animated fadeOutUp')
     jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
   };
   if (height > 384) {
-    console.log("> 384:", $(this).width())
     jumbotronText.css('top', '40%')
     width > 600 ? jumbotronText.css('top', '20%') : ''
     height > 1300 ? jumbotronText.css('top', '32%') : ''
@@ -469,17 +450,14 @@ function myResize(height, width) {
     }
   };
   if (height < 300) {
-    console.log("< 300")
     width > 950 ? jumbotronText.css('top', '-50%') : ''
     jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
   if (height < 250) {
-    console.log("< 250")
     jumbotronText.css('top', '-70%')
     jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
   };
   if (height < 200) {
-    console.log("< 200:", $(this).height(), "width:", $(this).width())
     width < 480 ? jumbotronText.css('top', '-94%') : jumbotronText.css('top', '-115%')
     width > 511 && width < 600 ? jumbotronText.css('top', '-132%') : ''
     width > 600 && width < 700 ? jumbotronText.css('top', '-79%') : ''
@@ -514,7 +492,6 @@ $(window).on("scroll", function() {
   myResize($(window).height(), $(window).width());
 });
 $(document).ready(function() {
-  const jumbotronText = $('.jumbotron-text')
   jumbotronText.tilt({
     perspective: 2000,
     maxTilt: 10
@@ -533,7 +510,7 @@ blogLinkFromNav.hover(function() {
   .on('mouseleave', function() {
   postsContainerContainer.removeClass('half-way full-way')
 })
-$('.posts-container-container').one('mouseenter', function() {
+postsContainerContainer.one('mouseenter', function() {
   fetchPostsThumbnailsFromDB()
 })
 

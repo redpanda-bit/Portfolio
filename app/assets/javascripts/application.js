@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require modernizr.custom
+//= require waypoints.min
+//= require anime.min
+//= require imghover
+//= require tilt
+
 //= require turbolinks
 //= require_tree .

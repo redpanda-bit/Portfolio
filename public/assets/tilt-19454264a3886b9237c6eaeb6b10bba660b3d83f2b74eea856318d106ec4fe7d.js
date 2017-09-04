@@ -54,7 +54,7 @@
             if (this.timeout !== undefined) clearTimeout(this.timeout);
             $(this).css({'transition': `${this.settings.speed}ms ${this.settings.easing}`});
             if(this.settings.glare) this.glareElement.css({'transition': `opacity ${this.settings.speed}ms ${this.settings.easing}`});
-            this.timeout = setTimeout(function() {
+            this.timeout = setTimeout(function( {
                 $(this).css({'transition': ''});
                 if(this.settings.glare) this.glareElement.css({'transition': ''});
             }, this.settings.speed);
@@ -243,7 +243,7 @@
                 this.mousePositions = getMousePositions.call(this);
                 this.settings = $(this).data('settings');
                 mouseLeave.call(this);
-                setTimeout(function() {
+                setTimeout(() => {
                     this.reset = false;
                 }, this.settings.transition);
             });
@@ -273,7 +273,7 @@
             }, options);
 
 
-            this.init = function() {
+            this.init = () => {
                 // Store settings
                 $(this).data('settings', this.settings);
 

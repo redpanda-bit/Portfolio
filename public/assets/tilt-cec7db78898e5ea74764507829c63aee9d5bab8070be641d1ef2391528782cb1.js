@@ -273,7 +273,7 @@
             }, options);
 
 
-            this.init = function() {
+            this.init = () => {
                 // Store settings
                 $(this).data('settings', this.settings);
 
