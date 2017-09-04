@@ -61,5 +61,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  gem 'rails_12factor'
  gem 'puma', '~> 3.0'
  gem 'pg'
-  gem 'sass-rails', '~> 5.0'
  end
