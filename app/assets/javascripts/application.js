@@ -18,5 +18,7 @@
 //= require imghover
 //= require tilt
 
+//= require main
+
 //= require turbolinks
 //= require_tree .
