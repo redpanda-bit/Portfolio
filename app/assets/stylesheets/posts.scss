@@ -1,0 +1,29 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.footer p {
+  color: #424242 !important;
+  font-size: 1em;
+}
+
+.post-body {
+  padding: 64px 13% 0px 13%;
+}
+
+.post-body p {
+  font-size: 22px;
+}
+
+#title {
+  text-align: center;
+  padding-top: 74px;
+}
+
+.image-holder {
+  position: relative;
+  left: 32%;
+}
+
+pre {
+  display: inline;
+}
