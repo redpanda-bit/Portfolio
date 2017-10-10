@@ -17,6 +17,7 @@
 //= require anime.min
 //= require imghover
 //= require tilt
+//= require iziModal
 
 //= require main
 

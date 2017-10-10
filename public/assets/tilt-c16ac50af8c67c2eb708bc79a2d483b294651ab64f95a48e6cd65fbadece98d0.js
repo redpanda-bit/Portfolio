@@ -56,8 +56,8 @@
             if(this.settings.glare) this.glareElement.css({'transition': `opacity ${this.settings.speed}ms ${this.settings.easing}`});
             this.timeout = setTimeout(function() {
                 $(this).css({'transition': ''});
-                if(this.settings.glare) this.glareElement.css({'transition': ''});
-            }.bind(this), this.settings.speed);
+                if(this.settings) this.settings.glare && this.glareElement.css({'transition': ''});
+            }, this.settings.speed);
         };
 
         /**

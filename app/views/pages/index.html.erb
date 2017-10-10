@@ -1,6 +1,3 @@
-<!-- <div id="preloader" class="overlay" style="z-index:9999; display:block; background-color: black"> -->
-  
-</div>
 <header id="ha-header" class="ha-header">
   <div class="ha-header-perspective">
     <div class="ha-header-front">
@@ -17,23 +14,36 @@
     </div>
     <div class="posts-carrier posts-container-container">
       <div id="posts-container" class="posts-container">
+        <a href="https://medium.com/@carlosalmonte04/react-on-plain-javascript-terms-7521d00f0d99" target="_blank" class='post-holder hvr-glow'>
+          <div class='post-img' style='background-image: url(<%= asset_path('post4.jpg')%>); background-size: cover'></div>
+          <div class='post-title'>React on Plain Javascript Terms</div>
+        </a>
+        <a href="https://medium.com/@carlosalmonte04/bleach-the-views-with-ajax-737443c6dc88" target="_blank" class='post-holder hvr-glow'>
+          <div class='post-img' style='background-image: url(<%= asset_path('post2.png')%>); background-size: cover'></div>
+          <div class='post-title'>Bleach The Views With AJAX</div>
+        </a>
+        <a href="https://medium.com/@carlosalmonte04/tdd-why-use-it-7747e6e091c4" target="_blank" class='post-holder hvr-glow'>
+          <div class='post-img' style='background-image: url(<%= asset_path('post3.jpg')%>); background-size: cover'></div>
+          <div class='post-title'>TDD, why use it?</div>
+        </a>
       </div>
     </div>
   </div>
 </header>
+
 <div id="" class="container">
-  <!-- HEADER -->
+
+  <!-- HERO/JUMBOTRON -->
   <section class="cd-section jumbotron" id="jumbotron" style="background-image: url('<%= asset_path 'bg copy.jpg' %>'); background-size: cover">
     <div id="containLogoNameAndTitle" style="position: center; top: 150px">
       <div class="jumbotron-text" style="position: absolute">
-        <!-- <%= image_tag "self_thumbnail.jpg", class: 'animated fadeIn', style: "border-radius: 100px; filter: grayscale(100%);" %> -->
         <%= image_tag "CA Logo.png", class: 'logo animated', style: 'position: relative;display:none;width: 30%;'%>
         
         <div style="width: 90%;margin: 0 0 0 5%">
           <h1 id="jumbotron-full-name" class="fullName" style="margin-top: -20px;font-size: 3em;width: 100%;">Carlos Almonte</h1>
         </div>
-        <p id="jumbotron-full-title-and-location" class="animated fadeInDown">Full-Stack<a id="neon3" style="cursor: default">
-        Web Developer&nbsp;</a>in New York, USA.</p>
+        <p id="jumbotron-full-title-and-location" class="animated fadeInDown"><a id="neon3" style="cursor: default">
+        Software Engineer&nbsp;</a>based in New York, USA.</p>
         <div class="jumbotron-social" style="font-size: .6em">
           <ul class="ul-social">
             <li class="li-social-links">
@@ -53,7 +63,8 @@
       </div>
     </div>
   </section>
-  <!-- END HEADER -->
+  <!-- END HERO/JUMBOTRON -->
+
   <!-- BEGIN ABOUT -->
   <section id="about" class="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style="z-index: 0000">
     <div class="row box-shadow" style="background-color: white" >
@@ -64,13 +75,13 @@
           <h2> <a style="cursor: default">About</a></h2>
           <p></p>
         </div>
-        <div class="content-body" style="color: black">
-          <p>Academic and career background in Clinical Nutrition, passion and knowledge of Software Engineering, primarily using React, React Native, Ruby on Rails, NodeJS and Express.</p>
-          <p>Feel free to get in touch with me through email using the contact box at the end of this page, or any social medial link provided above.</p>
+        <div class="content-body" style="color: black; text-align: left">
+          <p>Inner passion for Software Engineering led me to become proficient in modern web technologies such as React, React Native, Ruby on Rails, NodeJS and Express.</p>
+          <p>Currently looking for a new challenge.</p>
+          <p>Feel free to get in touch with me through email using the contact box at the end of this page, or any media link provided above.</p>
           <p>Thanks for stopping by!</p>
         </div>
-        <div class="wrapper typo">
-        </div>
+        <div class="wrapper typo"></div>
       </div>
       <div class="side-content"></div>
     </div>
@@ -85,43 +96,168 @@
         <div class="content-header">
           <a class="anchor" name="projects"></a>
           <h2>Projects</h2>
+          <br>
         </div>
-        <div class="content-body">
-          <!-- CARD #1 -->
+        <div class="content-body"></div>
+
+
+  <!-- CARD 1 -->
+  <div class="example-1 card">
+    <div class="wrapper" style="background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: cover;background-repeat: no-repeat;background-position: 52% -39px">
+     <div class="date">
+      <span><i class="day fa fa-desktop"></i></span>
+      <span class="day">RoR</span>
+    </div>
+      <div class="data">
+        <div class="content">
+          <h1 class="title"><a>Dietitian.help</a></h1>
+          <p class="text">Fullstack Ruby on Rails application using SQL, Github and Heroku and multiple frontend libraries.</p>
+          <label for="show-menu-1" class="menu-button"><span></span></label>
         </div>
-        <div class="project-card hvr-glow" style="width: 100%">
-          <div class="project-content" style="display: inline-block;width: 55%;position: relative; left: 23px">
-            <h4>Dietitian.Help</h4>
-            <p>Prototype of a small CRUD application with user authentication and individualized database access for each user. Functions as a Electronic Medical Record (EMR) designed specifically for Dietitians and healthcare providers seeking to ease the Medical Nutrition Therapy process.</p>
-            <ul>
-              <li><p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://dietitian.help" target="_blank">Dietitian.Help</a><br></li>
-              <li><p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/carlosalmonte04/DietitianHelp" target="_blank">See on GitHub</a></li>
-              
-            </ul>
-          </div>
-          <div style="width: 40%;height: 201px;float: right">
-            <a href="www.dietitian.help"><div class="project-image" style="margin-top: 20px;height: 100%;background-image: url('<%= asset_path('ezgif-1-b329556bfd.jpg')%>');background-size: contain;background-repeat: no-repeat" >
-            </div>
-          </a>
-        </div>
-      </div>
-      <!-- CARD #2 -->
-      <div class="project-card hvr-glow" style="width: 100%">
-        <div class="project-content" style="display: inline-block;position: relative;width: 60%">
-          <h4>Nostalgia Experience</h4>
-          <p>Web app for music group "Nostalgia."</p>
-          <p style="display: inline-block">WEBSITE:&nbsp;</p><a href="http://wearenostalgia.xyz" target="_blank">wearenostalgia.xyz</a><br>
-          <p style="display: inline-block">CODE:&nbsp;</p><a href="https://github.com/carlosalmonte04/nostalgiaexperience" target="_blank">See on GitHub</a>
-        </div>
-        <div class="project-image" style="float: right;width: 40%" >
-          <%= image_tag "ezgif-1-af57977208.jpg",class: 'project2', style: "width: 100%" %>
-        </div>
+        <input type="checkbox" id="show-menu-1" />
+        <ul class="menu-content">
+          <li>
+            <a href="#" id="dh-modal-trigger" class="fa fa-video-camera"></a>
+          </li>
+          <li><a href="http://dietitian.help" class="fa fa-eye" target="_blank"></a></li>
+          <li><a href="https://github.com/carlosalmonte04/DietitianHelp" class="fa fa-github" target="_blank"></a></li>
+        </ul>
       </div>
     </div>
   </div>
+
+  <!-- CARD 2 -->
+    <div class="example-1 card">
+    <div class="wrapper" style="background-image: url('<%= asset_path('DNA.jpeg')%>');background-size: cover;background-repeat: no-repeat;background-position: 52%">
+       <div class="date">
+        <span><i class="day fa fa-mobile"></i></span>
+        <span class="day">MERN</span>
+      </div>
+      <div class="data">
+        <div class="content">
+          <h1 class="title" style="text-align: center"><a>DNA</a></h1>
+          <p class="text">Mobile application built using MongoDB, Express, React Native and NodeJS.</p>
+          <label for="show-menu-2" class="menu-button"><span></span></label>
+        </div>
+        <input type="checkbox" id="show-menu-2" />
+        <ul class="menu-content">
+          <li>
+            <a id="dna-modal-trigger" class="fa fa-video-camera"></a>
+          </li>
+          <li><a href="https://github.com/carlosalmonte04/DNA" class="fa fa-github" target="_blank"></a></li>
+          <li><a href="https://github.com/carlosalmonte04/ANA-api" class="fa fa-github" target="_blank"><span>API</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+    <div class="example-1 card">
+    <div class="wrapper" style="background-image: url('<%= asset_path('macros.jpeg')%>');background-size: cover;background-repeat: no-repeat;background-position: 49%">
+       <div class="date">
+        <span><i class="day fa fa-desktop"></i></span>
+        <span class="day">ReactJS</span>
+        <span class="year">+</span>
+        <span class="month">RoR</span>
+      </div>
+      <div class="data">
+        <div class="content">
+          <h1 class="title"><a>Macros</a></h1>
+          <p class="text">Collaborated with a talented engineer to create a ReactJS and RoR application using two external APIs to enable the core functionality.
+            <br></p>
+          <label for="show-menu-3" class="menu-button"><span></span></label>
+        </div>
+        <input type="checkbox" id="show-menu-3" />
+        <ul class="menu-content">
+          <li>
+            <a href="https://github.com/carlosalmonte04/macros-frontend" class="fa fa-github"></a>
+          </li>
+          <li><a href="https://github.com/carlosalmonte04/macros-backend" class="fa fa-github"><span>API</span></a></li>
+          <li><a href="https://github.com/snigdhasur" class="fa fa-user"><span>Collaborator</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+    <div class="example-1 card">
+    <div class="wrapper" style="background-image: url('<%= asset_path('fft.jpeg')%>');background-size: cover;background-repeat: no-repeat;background-position: 73% -28px">
+       <div class="date">
+        <span><i class="day fa fa-desktop"></i></span>
+        <span class="day">RoR</span>
+      </div>
+      <div class="data">
+        <div class="content">
+          <h1 class="title"><a>Food For Thought</a></h1>
+          <p class="text">Collaborated with a team of engineers to create a fullstack Ruby on Rails application.</p>
+          <label for="show-menu-3" class="menu-button"><span></span></label>
+        </div>
+        <input type="checkbox" id="show-menu-3" />
+        <ul class="menu-content">
+          <li>
+            <a href="#" class="fa fa-bookmark-o"></a>
+          </li>
+          <li><a href="#" class="fa fa-heart-o"><span>47</span></a></li>
+          <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+    <div class="example-1 card">
+    <div class="wrapper" style="background-image: url('<%= asset_path('snake.jpeg')%>');background-size: cover;background-repeat: no-repeat;background-position: 10%">
+       <div class="date">
+        <span><i class="day fa fa-desktop"></i></span>
+        <span class="day">JS</span>
+      </div>
+      <div class="data">
+        <div class="content">
+          <h1 class="title"><a>Snake Game</a></h1>
+          <p class="text">Collaborated with a team of engineers to create a Javascript snake game using Object Orientation.</p>
+          <label for="show-menu" class="menu-button"><span></span></label>
+        </div>
+        <input type="checkbox" id="show-menu" />
+        <ul class="menu-content">
+          <li>
+            <a href="#" class="fa fa-bookmark-o"></a>
+          </li>
+          <li><a href="#" class="fa fa-heart-o"><span>47</span></a></li>
+          <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 6 -->
+    <div class="example-1 card">
+    <div class="wrapper" style="background-image: url('<%= asset_path('lukes-beer.jpeg')%>');background-size: cover;background-repeat: no-repeat;background-position: 52% 34px">
+       <div class="date">
+        <span><i class="day fa fa-desktop"></i></span>
+        <span class="day">ReactJS</span>
+      </div>
+      <div class="data">
+        <div class="content">
+          <h1 class="title"><a>Luke's Beer</a></h1>
+          <p class="text">Collaborated with an engineer to create a ReactJS frontend web application.</p>
+          <label for="show-menu-6" class="menu-button"><span></span></label>
+        </div>
+        <input type="checkbox" id="show-menu-6" />
+        <ul class="menu-content">
+          <li>
+            <a href="#" class="fa fa-bookmark-o"></a>
+          </li>
+          <li><a href="#" class="fa fa-heart-o"><span>47</span></a></li>
+          <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </section>
   <div class="side-content"></div>
 </div>
-</section>
 <!-- END PROJECTS -->
 <!-- BEGIN EPERIENCE -->
 <!--
@@ -187,6 +323,7 @@
 </div>
 </section>
 <!-- END EXPERIENCE -->
+
 <!-- BEGIN EDUCATION -->
 <section id="education" class="ha-waypoint">
 <div class="row white box-shadow">
@@ -198,7 +335,7 @@
     </div>
     <div class="content-body">
       <!-- EDUCATION 1 -->
-      <div class="card hvr-glow" style="width: 100%" style="background-color: white">
+      <div class="hvr-glow" style="width: 100%" style="background-color: white">
         <div class="card-header">
           <h4>Flatiron School <span class="job-title">2017 - 2017</span></h4>
         </div>
@@ -206,7 +343,7 @@
           <p>Software Engineer Immersive. <br></p>
         </div>
       </div>
-      <div class="card hvr-glow" style="width: 100%" style="background-color: white">
+      <div class="hvr-glow" style="width: 100%" style="background-color: white">
         <div class="card-header">
           <h4>Lehman College <span class="job-title">2012 - 2016</span></h4>
         </div>
@@ -220,6 +357,7 @@
 </div>
 </section>
 <!-- END EDUCATION -->
+
 <!-- BEGIN SKILLS -->
 <section id="skills" class="ha-waypoint">
 <div class="row white box-shadow">
@@ -250,6 +388,7 @@
 </div>
 </section>
 <!-- END SKILLS -->
+
 <!-- BEGIN CONTACT -->
 <section id="contact" class="cd-section">
 <div class="row dark-gray">
@@ -273,7 +412,13 @@
 </section>
 <!-- END CONTACT -->
 </div>
-<div id="iframes-holder"></div>
+
+<div id="iframes-holder">
+  <div id="dh-modal">
+  </div>
+  <div id="dna-modal">
+  </div>
+</div>
 <script>
 
   // RESIABLE AND REPOSITIONABLE ELEMENTS
@@ -300,7 +445,25 @@ $(".link-from-nav").click(function(event) {
 });
 
 window.onload = function() {
-  myResize()
+  $("#dh-modal").iziModal({
+    iframe: true,
+    iframeURL: 'https://www.youtube.com/embed/iF7qFFyv4-w?rel=0&amp;showinfo=0'
+  });
+  $("#dna-modal").iziModal({
+    iframe: true,
+    iframeURL: 'https://www.youtube.com/embed/ua84gTrbVtQ?rel=0&amp;showinfo=0'
+  });
+
+  $("#dh-modal-trigger").click(e => {
+    e.preventDefault()
+    $("#dh-modal").iziModal('open');
+  })
+
+  $("#dna-modal-trigger").click(e => {
+    e.preventDefault()
+    $("#dna-modal").iziModal('open');
+  })
+
   if ($(window).scrollTop() < 384) {
     $('.ha-header').delay(400).addClass('ha-header-shrink');
   }
@@ -343,6 +506,7 @@ $('.ha-waypoint').each(function(i) {
     offset: '100%'
   });
 });
+
 var logoMain = $('.logo')
 
 var ua = navigator.userAgent,
@@ -498,13 +662,14 @@ blogLinkFromNav.hover(function() {
 })
   .on('click', function() {
   postsContainerContainer.toggleClass('half-way full-way')
-  fetchPostsThumbnailsFromDB()
+
 })
   .on('mouseleave', function() {
   postsContainerContainer.removeClass('half-way full-way')
 })
-postsContainerContainer.one('mouseenter', function() {
-  fetchPostsThumbnailsFromDB()
+
+postsContainerContainer.on('mouseenter', function() {
+  TweenMax.staggerFromTo(document.getElementsByClassName('post-holder'), 0.5, {opacity: 0, top: 50}, {opacity: 1, top: 0}, 0.1) 
 })
 
   var postsImages = ['<%= raw asset_path('post1.jpg')%>', '<%= asset_path('post3.jpg')%>', '<%= asset_path('post2.png')%>', '<%= asset_path('post4.jpg')%>']
