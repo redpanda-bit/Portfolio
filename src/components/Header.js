@@ -2,6 +2,7 @@ import React from 'react';
 import post2 from '../assets/img/post2.png'
 import post3 from '../assets/img/post3.png'
 import post4 from '../assets/img/post4.png'
+import post5 from '../assets/img/post5.png'
 import logo from '../assets/img/CA Logo.png'
 
 
@@ -28,6 +29,10 @@ const Header = (props) => {
           </div>
           <div className="posts-carrier posts-container-container">
             <div id="posts-container" className="posts-container">
+              <a href="https://medium.com/@carlosalmonte04/intro-to-data-structures-binary-search-trees-65e54070647" target="_blank" className="post-holder hvr-glow">
+                <div className="post-img" style={{backgroundImage: `url('${post5}')`, backgroundSize: 'cover'}}></div>
+                <div className="post-title">Intro to Data Structures, Binary Search Trees</div>
+              </a>
               <a href="https://medium.com/@carlosalmonte04/react-on-plain-javascript-terms-7521d00f0d99" target="_blank" className="post-holder hvr-glow">
                 <div className="post-img" style={{backgroundImage: `url('${post4}')`, backgroundSize: 'cover'}}></div>
                 <div className="post-title">React on Plain Javascript Terms</div>
