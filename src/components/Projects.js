@@ -61,8 +61,9 @@ const Jumbotron = (props) => {
                 <input type="checkbox" id="show-menu-2" />
                 <ul className="menu-content">
                   <li>
-                    <a id="dna-modal-trigger" href="triggersVideoModal" />
-                    <i  className="fa fa-video-camera" />
+                    <a id="dna-modal-trigger" href="triggersVideoModal">
+                      <i  className="fa fa-video-camera" />
+                    </a>
                   </li>
                   <li><a href="https://github.com/carlosalmonte04/DNA" className="fa fa-github" target="_blank" rel="noopener noreferrer" /></li>
                   <li><a href="https://github.com/carlosalmonte04/ANA-api" className="fa fa-github" target="_blank" rel="noopener noreferrer"><span>API</span></a></li>
