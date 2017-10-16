@@ -12,10 +12,16 @@
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
       crossorigin="anonymous"></script>
-    <script src="./application.js"></script>
+    <script src="/application.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type='text/javascript' src='/jquery.particleground.min.js'></script>
+    <script type='text/javascript' src='/particlesBg.js'></script>
+    <link rel="stylesheet" href="/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="/style.css">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <!--
@@ -34,6 +40,7 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -51,257 +58,194 @@
       <div id="dna-modal">
       </div>
     </div>
+    <script src="/velocity.min.js"></script>
+    <script src="/velocity.ui.min.js"></script>
+    <script src="/main.js"></script>  
+    <script src="/TweenLite.min.js"></script>
+    <script src="/EasePack.min.js"></script>
+    <script src="/rAF.js"></script>
+    <script src="/mouseParticles.js"></script>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
   </body>
 <script>
 
-  // RESIABLE AND REPOSITIONABLE ELEMENTS
-  const jumbotronFullName = $('#jumbotron-full-name')
-  const jumbotronFullTitleAndLocation = $('#jumbotron-full-title-and-location')
-  const jumbotronText = $('.jumbotron-text')
-  const header = $('#header')
-  const logoOnHeader = $('#logo-on-header')
-  const postsContainerContainer = $('.posts-container-container')
+  var mobile = false
 
+  // RESIZABLE AND REPOSITIONABLE ELEMENTS
+  const header         = document.getElementById('ha-header')
+  const logoOnHeader   = document.getElementById('jumbotron-from-nav')
+  const postsContainer = document.getElementsByClassName('posts-container-container')
+  const particlesDiv   = document.getElementById('large-header')
+  const stars          = document.getElementsByClassName('star')
+  const projectsCont   = document.getElementsByClassName('projects-container')[0]
+  const projects       = document.getElementsByClassName('project')
+  const blogLinkFromNav= document.getElementById('blog-from-nav')
 
-// TYPING EFFECT FOR FULL NAME ON JUMBOTRON
-// $("#jumbotronFullName").typed({
-// strings: ['carlos almonte'],
-// typeSpeed: 4,
-// startDelay: 100,
-// cursorChar: "",
-// });
-$(".link-from-nav").click(function(event) {
-  const destination = "#" + event.target.dataset.destination
-  $('html, body').animate({
-    scrollTop: $(destination).offset().top - 25
-  }, 400);
-});
+  let isMouseParticleShowing = true
+  let isStarsShowing = true
+  var scrollY = $(window).scrollTop()
+  var width   = window.innerWidth
 
-window.onload = function() {
-  $("#dh-modal").iziModal({
-    iframe: true,
-    iframeURL: 'https://www.youtube.com/embed/iF7qFFyv4-w?rel=0&amp;showinfo=0'
-  });
-  $("#dna-modal").iziModal({
-    iframe: true,
-    iframeURL: 'https://www.youtube.com/embed/ua84gTrbVtQ?rel=0&amp;showinfo=0'
-  });
-
-  $("#dh-modal-trigger").click(e => {
-    e.preventDefault()
-    $("#dh-modal").iziModal('open');
-  })
-
-  $("#dna-modal-trigger").click(e => {
-    e.preventDefault()
-    $("#dna-modal").iziModal('open');
-  })
-
-  if ($(window).scrollTop() < 384) {
-    $('.ha-header').delay(400).addClass('ha-header-shrink');
-  }
-  $('#preloader').delay(100).fadeOut("slow");
-  $('.ha-header').delay(400).css('display', '');
-  logoMain.delay(400).css('display', '');
-  jumbotronFullTitleAndLocation.delay(400).css('display', '');
-  // PNG TO GIF (ANIMATES PICTURES ON HOVER)
-  $("#project1").hover(
-    function() {
-      var src = $(this).attr("src");
-      $(this).attr("src", '/assets/ezgif-1-b329556bfd-5f572dc96e85c6cd0ed34764dc5197195b6ec9995d501579d3cd09045d93b188.gif');
-    },
-    function() {
-      var src = $(this).attr("src");
-      $(this).attr("src", '/assets/ezgif-1-b329556bfd-00794f1f40b1c2804ff249ccea95a5be8de7034fc3482c2b6d96198734aaf775.jpg');
+function initDynamicEls() {
+  const initializeHeader = new Promise((resolve, reject) => {
+    
+    VanillaTilt.init(document.getElementById("jumbotron-text"), {
+      max: 2,
+      speed: 100,
+      perspective: 1500
     });
-  $("#project2").hover(
-    function() {
-      var src = $(this).attr("src");
-      $(this).attr("src", '/assets/ezgif-1-af57977208-7f9296b91a58a6b76ee63b14a6f423e7bd7fcfc2a7831f538f932d8e57752409.gif');
-    },
-    function() {
-      var src = $(this).attr("src");
-      $(this).attr("src", '/assets/ezgif-1-af57977208-f0168f9a925cc356bba4c279f8f495c579aa84da0ca83a559f6fad5a0db59101.jpg');
+
+    $("#dh-modal").iziModal({
+      iframe: true,
+      iframeURL: 'https://www.youtube.com/embed/iF7qFFyv4-w?rel=0&amp;showinfo=0'
+    })
+
+    $("#dna-modal").iziModal({
+      iframe: true,
+      iframeURL: 'https://www.youtube.com/embed/ua84gTrbVtQ?rel=0&amp;showinfo=0'
+    })
+
+    $("#dh-modal-trigger").click(e => {
+      e.preventDefault()
+      $("#dh-modal").iziModal('open');
+    })
+
+    $("#dna-modal-trigger").click(e => {
+      e.preventDefault()
+      $("#dna-modal").iziModal('open');
+    })
+
+    $(".link-from-nav").click(function(event) {
+      const destination = "#" + event.target.dataset.destination
+      $('html, body').animate({
+        scrollTop: $(destination).offset().top - 25
+      }, 400);
     });
-};
-var $head = $('#ha-header');
-$('.ha-waypoint').each(function(i) {
-  var $el = $(this),
-    animClassDown = $el.data('animateDown'),
-    animClassUp = $el.data('animateUp');
-  $el.waypoint(function(direction) {
-    if (direction === 'down' && animClassDown) {
-      $head.attr('class', 'ha-header ' + animClassDown);
-    } else if (direction === 'up' && animClassUp) {
-      $head.attr('class', 'ha-header ' + animClassUp);
+    if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
+      mobile = true
     }
-  }, {
-    offset: '100%'
-  });
-});
 
-var logoMain = $('.logo')
-
-var ua = navigator.userAgent,
-browser = {
-    iPad: /iPad/.test(ua),
-    iPhone: /iPhone/.test(ua),
-    Android4: /Android 4/.test(ua)
-}
-
-if (browser.iPhone) {
-  $('.jumbotron-text').css('top', '32%')
-};
-
-
-function myResize(height, width) {
-  // RESIZE FULLNAME && LOGO
-  if (width < 601 && width > 470) {
-    jumbotronFullName.attr('style', 'font-size: 2.3em;margin-top: -20px')
-    logoMain.width('75%')
-  };
-  if (width > 601 && width < 830) {
-    jumbotronFullName.attr('style', 'font-size: 3em;margin-top: -20px')
-    logoMain.attr('style', 'width:44%; margin-top: -10px')
-  };
-  // LOGO ONLY
-  if (width > 470 && width < 601) {
-    logoMain.attr('style', 'width:72%')
-  };
-  if (width > 830) {
-    logoMain.attr('style', 'width:33%;')
-  };
-  if (width < 470) {
-    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
-    logoMain.attr('style', 'width:75%')
-  };
-  // RESIZE TITLE AND LOCATION
-  if (width < 601 && width > 470) {
-    jumbotronFullTitleAndLocation.attr('style', 'font-size: .8em;margin-top: 7px')
-  };
-  if (width > 601) {
-    jumbotronFullTitleAndLocation.attr('style', 'font-size: 1em;')
-  };
-  if (width < 470) {
-    jumbotronFullTitleAndLocation.attr('style', 'font-size: .7em;margin-top: 7px')
-  };
-  if ($(window).scrollTop() > 384 && width > 970) {
-    logoOnHeader.show();
-    logoOnHeader.removeClass('fadeOutDownBig');
-    logoOnHeader.addClass('fadeInUp');
-  } 
-  else if ($(window).scrollTop() < 384 || width < 970) {
-    logoOnHeader.addClass('fadeOutDownBig')
-    logoOnHeader.removeClass('fadeInUp')
-  }
-  if (width < 970) {
-    $('#navLi').attr('style', 'margin-top: -15px')
-  }
-  if (width > 970) {
-    $('#navLi').attr('style', 'margin-top: 0px; float: right')
-  }
-  // RESIZE LOGO ON HEIGHT
-  if (height < 735) {
-    logoMain.removeClass('fadeInDown');
-    logoMain.addClass('fadeOutUp');
-  };
-  if (height > 735) {
-    logoMain.removeClass('fadeOutUp');
-    logoMain.addClass('fadeInDown');
-  };
-
-  // POSITION JUMBOTRO TEXT (LOGO, SOCIAL, LOCATION) WHEN HEIGHT RESIZE
-  if (height < 410) {
-    jumbotronFullTitleAndLocation.attr('style', 'font-size: .7em;margin-top: 7px')
-    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
-  };
-  if (height < 384) {
-    width < 600 ? jumbotronText.css('top', '-65%') : jumbotronText.css('top', '-40%')
-    $('#ha-header').removeClass('animated fadeInDown')
-    $('#ha-header').addClass('animated fadeOutUp')
-    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
-  };
-  if (height > 384) {
-    jumbotronText.css('top', '40%')
-    width > 600 ? jumbotronText.css('top', '20%') : ''
-    height > 1300 ? jumbotronText.css('top', '32%') : ''
-
-    jumbotronFullTitleAndLocation.attr('style', 'font-size: 1em;margin-top: 7px')
-    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
-    if (header.hasClass('fadeOutUp')) {
-      header.removeClass('animated fadeOutUp')
-      header.addClass('animated fadeInDown')
-      header.one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
-        function() {
-          if (header.hasClass('fadeOutUp')) {} else {
-            $('#ha-header').removeClass('animated fadeInDown')
+    if(mobile) {
+      $(projects).each((idx, project) => {
+        project.onclick = (e) => {
+          toggleSelect(project, idx)
+        }
+      })
+    }
+    else {
+      $('.ha-waypoint').each(function(i) {
+        const $el = $(this),
+          animClassDown = $el.data('animateDown'),
+          animClassUp = $el.data('animateUp');
+        $el.waypoint(function(direction) {
+          if (direction === 'down' && animClassDown) {
+            $(header).attr('class', 'ha-header ' + animClassDown);
+          } else if (direction === 'up' && animClassUp) {
+            $(header).attr('class', 'ha-header ' + animClassUp);
           }
-        });
+        }, {
+          offset: '100%'
+        })
+      })
     }
-  };
-  if (height < 300) {
-    width > 950 ? jumbotronText.css('top', '-50%') : ''
-    jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
-  };
-  if (height < 250) {
-    jumbotronText.css('top', '-70%')
-    jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
-  };
-  if (height < 200) {
-    width < 480 ? jumbotronText.css('top', '-94%') : jumbotronText.css('top', '-115%')
-    width > 511 && width < 600 ? jumbotronText.css('top', '-132%') : ''
-    width > 600 && width < 700 ? jumbotronText.css('top', '-79%') : ''
-    width > 700 && width < 1000 ? jumbotronText.css('top', '-100%') : ''
-    width > 1000 && width < 1200 ? jumbotronText.css('top', '-110%') : ''
-    width > 1200 && width < 1300 ? jumbotronText.css('top', '-140%') : ''
-    width > 1300 ? jumbotronText.css('top', '-160%') : ''
+    resolve(true)
+  })
+  .then(()=> { // SHRINK HEADER ACCORDINGLY
+    if (scrollY < 384) {
+      $(header).delay(400).addClass('ha-header-shrink');
+    }
+    logoOnHeaderToggle(scrollY)
+  })
+  .then(() => {
+    reAlignProjects(width)
+  }) 
+}
 
-    jumbotronFullName.attr('style', 'font-size: 1.3em;margin-top: -20px')
-  };
-  // IF SMALLEST
-  if (height < 225 && width < 525) {
-    jumbotronFullName.attr('style', 'font-size: .9em;margin-top: -20px')
-    jumbotronFullTitleAndLocation.attr('style', 'font-size: .5em;margin-top: 7px')
-  };
-  if (height > 410) {
-    jumbotronFullName.attr('style', 'font-size: 3em;margin-top: -20px')
-  };
-  if (width < 572 && height > 400) {
-    jumbotronFullName.attr('style', 'font-size: 2em;margin-top: -20px')
-  };
-  if (width < 970) {
-    $('#navLi').attr('style', 'margin-top: -30px')
+function toggleSelect(project, idx) {
+  if (project.dataset.isMobileHovered === "true") {
+  }
+  else {
   }
 }
-// ON RESIZE EVENT LISTENER FOR LOGO ON NAVBAR
-$(window).resize(function() {
-  myResize($(window).height(), $(window).width());
-});
-// ON SCROLL EVENT LISTENER FOR LOGO ON NAVBAR
-$(window).on("scroll", function() {
-  myResize($(window).height(), $(window).width());
-});
-$(document).ready(function() {
-  jumbotronText.tilt({
-    perspective: 2000,
-    maxTilt: 10
-})
-  myResize($(window).height(), $(window).width());
-})
-const blogLinkFromNav = $('#blog-from-nav')
 
-blogLinkFromNav.hover(function() {
+function logoOnHeaderToggle(scrollY) {
+  
+  if (scrollY > 384 && $(window).width() > 970) {
+    $(logoOnHeader).show();
+    $(logoOnHeader).removeClass('fadeOutDownBig');
+    $(logoOnHeader).addClass('fadeInUp');
+  } 
+  else if (scrollY < 384 || $(window).width() < 970) {
+    $(logoOnHeader).addClass('fadeOutDownBig')
+    $(logoOnHeader).removeClass('fadeInUp')
+  }
+}
+
+function particlesToggle(scrollY) {
+  let isWithinRage = scrollY >= 600 && scrollY <= 1300
+  if (isWithinRage && !isMouseParticleShowing) {
+    particlesDiv.style = `position: fixed; height: 100%; opacity: 1;z-index: -1`
+    isMouseParticleShowing = true
+    return
+  }
+  else if (!isWithinRage && isMouseParticleShowing) {
+    particlesDiv.style = `position: fixed; height: 100%; opacity: 0; z-index: -1`
+    isMouseParticleShowing = false
+    return
+  }
+}
+
+function starsToggle(scrollY) {
+  let isWithinRage = scrollY >= 1550 && scrollY <= 2200
+  if (isWithinRage && !isStarsShowing) {
+    new Array(stars).forEach(el => $(el).show())
+    isStarsShowing = true
+    return
+  }
+  else if (!isWithinRage && isStarsShowing) {
+    new Array(stars).forEach(el => $(el).hide())
+    isStarsShowing = false
+    return
+  }
+}
+
+function reAlignProjects(width) {
+  if (width < 640) {
+    projectsCont.style = "transition: all 0.5s ease;justify-content: left"
+  }
+  else {
+    projectsCont.style = "transition: all 0.5s ease"
+  }
+}
+
+// EVENT LISTENERS
+
+window.onscroll = (e) => {
+  scrollY = e.currentTarget.pageYOffset
+
+  _.throttle(logoOnHeaderToggle(scrollY), 50)
+  _.throttle(particlesToggle(scrollY), 100)
+  _.throttle(starsToggle(scrollY), 100)
+}
+
+window.onresize = (e) => {
+  width = e.currentTarget.innerWidth
+
+  _.throttle(reAlignProjects(width), 500)
+}
+
+$(blogLinkFromNav).hover(function() {
   $('.posts-container-container').addClass('half-way')
 })
   .on('click', function() {
-  postsContainerContainer.toggleClass('half-way full-way')
+  $(postsContainer).toggleClass('half-way full-way')
 
 })
   .on('mouseleave', function() {
-  postsContainerContainer.removeClass('half-way full-way')
+  $(postsContainer).removeClass('half-way full-way')
 })
 
-postsContainerContainer.on('mouseenter', function() {
+$(postsContainer).on('mouseenter', function() {
   TweenMax.staggerFromTo(document.getElementsByClassName('post-holder'), 0.5, {opacity: 0, top: 50}, {opacity: 1, top: 0}, 0.1) 
 })
 </script>

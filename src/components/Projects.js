@@ -1,172 +1,127 @@
 import React from 'react';
-import project1 from '../assets/img/project1.png'
-import project2 from '../assets/img/project2.png'
-import project3 from '../assets/img/project3.png'
-import project4 from '../assets/img/project4.png'
-import project5 from '../assets/img/project5.png'
-import project6 from '../assets/img/project6.png'
+import { Link } from 'react-router-dom'
 
 const Jumbotron = (props) => {
-
   return (
-    <section id="projects" className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
-      <div className="row">
-        <div className="side-content" />
-        <div className="main-content">
-          <div className="content-header">
-            <h2>Projects</h2>
-            <br />
+    <section id="projects" className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={styles.main}>
+    <div id='stars' className="star"></div>
+    <div id='stars2' className="star"></div>
+    <div id='stars3' className="star"></div>
+      <div style={styles.innerMain}>
+        <div className="content-header" style={{zIndex: 9}}>
+          <h2 className="d3-effect" style={styles.header}>Projects</h2>
+          <br/>
+        </div>
+        <div className="projects-container" style={{transition: 'all 0.5s ease'}}>
+          <div className="project" data-mobile-hovered={false}>
+            <div className="project-icons-container d3-effect">
+              <a href="triggersDhModal" id="dh-modal-trigger">
+                <i className="project-icon fa fa-video-camera"/>
+                <span className="project-icon-help">video demo</span>
+              </a>
+              <Link to="https://github.com/carlosalmonte04/dietitianhelp" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+              <Link to="http://dietitian.help" target="_blank">
+                <i className="project-icon fa fa-eye"/>
+                <span className="project-icon-help">website</span>
+              </Link>
+            </div>
+            <Link to="">
+              <h2 className="d3-effect" style={styles.project}>Dietitian.Help</h2>
+            </Link>
           </div>
-          <div className="content-body" />
-          {/* CARD 1 */}
-          <div className="example-1 card">
-            <div className="wrapper" style={{backgroundImage: `url('${project1}')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '52% -39px'}}>
-              <div className="date">
-                <span><i className="day fa fa-desktop" /></span>
-                <span className="day">RoR</span>
-              </div>
-              <div className="data">
-                <div className="content">
-                  <h1 className="title"><a>Dietitian.help</a></h1>
-                  <p className="text">Fullstack Ruby on Rails application using SQL, Github and Heroku and multiple frontend libraries.</p>
-                  <label htmlFor="show-menu-1" className="menu-button"><span /></label>
-                </div>
-                <input type="checkbox" id="show-menu-1" />
-                <ul className="menu-content">
-                  <li>
-                    <a href="triggersVideoModal" id="dh-modal-trigger">
-                    <i  className="fa fa-video-camera" />
-                    </a>
-                  </li>
-                  <li><a href="http://dietitian.help" className="fa fa-eye" target="_blank" rel="noopener noreferrer" />
-                  </li>
-                  <li><a href="https://github.com/carlosalmonte04/DietitianHelp" className="fa fa-github" target="_blank" rel="noopener noreferrer" /></li>
-                </ul>
-              </div>
+          <div className="project" data-mobile-hovered={false}>
+            <div className="project-icons-container d3-effect">
+              <a href="triggersDnaModal" id="dna-modal-trigger">
+                <i className="project-icon fa fa-video-camera"/>
+                <span className="project-icon-help">video demo</span>
+              </a>
+              <Link to="https://github.com/carlosalmonte04/dna" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+              <Link to="https://github.com/carlosalmonte04/ana-api" target="_blank">
+                <i className="project-icon fa fa-eye"/>
+                <span className="project-icon-help">api repo</span>
+              </Link>
+            </div>
+            <Link to="">
+              <h2 className="d3-effect" style={styles.project}>DNA</h2>
+            </Link>
+            <div>
+              
             </div>
           </div>
-          {/* CARD 2 */}
-          <div className="example-1 card">
-            <div className="wrapper" style={{backgroundImage: `url('${project2}')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '52%'}}>
-              <div className="date">
-                <span><i className="day fa fa-mobile" /></span>
-                <span className="day">MERN</span>
-              </div>
-              <div className="data">
-                <div className="content">
-                  <h1 className="title" style={{textAlign: 'center'}}><a>DNA</a></h1>
-                  <p className="text">Mobile application built using MongoDB, Express, React Native and NodeJS.</p>
-                  <label htmlFor="show-menu-2" className="menu-button"><span /></label>
-                </div>
-                <input type="checkbox" id="show-menu-2" />
-                <ul className="menu-content">
-                  <li>
-                    <a id="dna-modal-trigger" href="triggersVideoModal">
-                      <i  className="fa fa-video-camera" />
-                    </a>
-                  </li>
-                  <li><a href="https://github.com/carlosalmonte04/DNA" className="fa fa-github" target="_blank" rel="noopener noreferrer" /></li>
-                  <li><a href="https://github.com/carlosalmonte04/ANA-api" className="fa fa-github" target="_blank" rel="noopener noreferrer"><span>API</span></a></li>
-                </ul>
-              </div>
+          <div href="triggersMacrosModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+            <div className="project-icons-container d3-effect">
+              <Link to="https://github.com/carlosalmonte04/macros-frontend" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+              <Link to="https://github.com/carlosalmonte04/macros-backend" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">api repo</span>
+              </Link>
+              <Link to="https://github.com/snigdhasur" target="_blank" >
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">collaborator</span>
+              </Link>
+            </div>
+            <a>
+              <h2 className="d3-effect" style={styles.project}>Macros</h2>
+            </a>
+            <div>
             </div>
           </div>
-          {/* CARD 3 */}
-          <div className="example-1 card">
-            <div className="wrapper" style={{backgroundImage: `url('${project3}')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '49% 53px'}}>
-              <div className="date">
-                <span><i className="day fa fa-desktop" /></span>
-                <span className="day">ReactJS</span>
-                <span className="year">+</span>
-                <span className="month">RoR</span>
-              </div>
-              <div className="data">
-                <div className="content">
-                  <h1 className="title"><a>Macros</a></h1>
-                  <p className="text">Collaborated with a talented engineer to create a ReactJS and RoR application using two external APIs to enable the core functionality.
-                    <br /></p>
-                  <label htmlFor="show-menu-3" className="menu-button"><span /></label>
-                </div>
-                <input type="checkbox" id="show-menu-3" />
-                <ul className="menu-content">
-                  <li>
-                    <a href="https://github.com/carlosalmonte04/macros-frontend" className="fa fa-github" />
-                  </li>
-                  <li><a href="https://github.com/carlosalmonte04/macros-backend" className="fa fa-github"><span>API</span></a></li>
-                  <li><a href="https://github.com/snigdhasur" className="fa fa-user"><span>Collaborator</span></a></li>
-                </ul>
-              </div>
+          <div href="triggersFftModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+            <div className="project-icons-container d3-effect">
+              <Link to="https://foodforthought-app.herokuapp.com/" target="_blank">
+                <i className="project-icon fa fa-eye"/>
+                <span className="project-icon-help">website</span>
+              </Link>
+              <Link to="https://github.com/carlosalmonte04/food-for-thought" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+            </div>
+            <a>
+              <h2 className="d3-effect" style={styles.project}>Food For Thought</h2>
+            </a>
+            <div>
+              
             </div>
           </div>
-          {/* CARD 4 */}
-          <div className="example-1 card">
-            <div className="wrapper" style={{backgroundImage: `url('${project4}')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '73% -28px'}}>
-              <div className="date">
-                <span><i className="day fa fa-desktop" /></span>
-                <span className="day">RoR</span>
-              </div>
-              <div className="data">
-                <div className="content">
-                  <h1 className="title"><a>Food For Thought</a></h1>
-                  <p className="text">Collaborated with a team of engineers to create a fullstack Ruby on Rails application.</p>
-                  <label htmlFor="show-menu-4" className="menu-button"><span /></label>
-                </div>
-                <input type="checkbox" id="show-menu-4" />
-                <ul className="menu-content">
-                  <li>
-                    <a href="http://foodforthought-app.herokuapp.com" className="fa fa-eye" />
-                  </li>
-                  <li><a href="https://github.com/carlosalmonte04/food-for-thought" className="fa fa-github"></a></li>
-                  <li></li>
-                </ul>
-              </div>
+          <div href="triggersSnakeModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+            <div className="project-icons-container d3-effect">
+              <Link to="https://github.com/carlosalmonte04/snake-frontend" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+            </div>
+            <a>
+              <h2 className="d3-effect" style={styles.project}>Snake</h2>
+            </a>
+            <div>
+              
             </div>
           </div>
-          {/* CARD 5 */}
-          <div className="example-1 card">
-            <div className="wrapper" style={{backgroundImage: `url('${project5}')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '10%'}}>
-              <div className="date">
-                <span><i className="day fa fa-desktop" /></span>
-                <span className="day">JS</span>
-              </div>
-              <div className="data">
-                <div className="content">
-                  <h1 className="title"><a>Snake Game</a></h1>
-                  <p className="text">Collaborated with a team of engineers to create a Javascript snake game using Object Orientation.</p>
-                  <label htmlFor="show-menu-5" className="menu-button"><span /></label>
-                </div>
-                <input type="checkbox" id="show-menu-5" />
-                <ul className="menu-content">
-                  <li></li>
-                  <li>
-                    <a href="https://github.com/carlosalmonte04/snake-frontend" className="fa fa-github" />
-                  </li>
-                  <li></li>
-                </ul>
-              </div>
+          <div href="triggersLukesBeerModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+            <div className="project-icons-container d3-effect">
+              <Link to="https://github.com/carlosalmonte04/lukes-beer" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+              <Link to="https://github.com/yakovkiff" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">collaborator</span>
+              </Link>
             </div>
-          </div>
-          {/* CARD 6 */}
-          <div className="example-1 card">
-            <div className="wrapper" style={{backgroundImage: `url('${project6}')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: '52% 34px'}}>
-              <div className="date">
-                <span><i className="day fa fa-desktop" /></span>
-                <span className="day">ReactJS</span>
-              </div>
-              <div className="data">
-                <div className="content">
-                  <h1 className="title"><a>Luke's Beer</a></h1>
-                  <p className="text">Collaborated with an engineer to create a ReactJS frontend web application.</p>
-                  <label htmlFor="show-menu-6" className="menu-button"><span /></label>
-                </div>
-                <input type="checkbox" id="show-menu-6" />
-                <ul className="menu-content">
-                  <li>
-                  </li>
-                  <li><a href="https://github.com/carlosalmonte04/lukes-beer" className="fa fa-github"></a></li>
-                  <li></li>
-                </ul>
-              </div>
+            <a>
+              <h2 className="d3-effect" style={styles.project}>Luke's Beer</h2>
+            </a>
+            <div>
             </div>
           </div>
         </div>
@@ -175,4 +130,42 @@ const Jumbotron = (props) => {
   )
 }
 
+const styles = {
+  main: {
+    display: 'flex',
+    marginTop: 150,
+    height: window.innerHeight * 0.8,
+    justifyContent: 'center'
+  },
+  innerMain: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: 100
+  },
+  header: {
+    cursor: 'default',
+    fontSize: "calc(5vw + 5vh)",
+    textAlign: 'center',
+    color: '#3e6fb2',
+    marginBottom: -56,
+    width: '100%',
+    padding: 0,
+    overflow: 'visible'
+  },
+  project: {
+    textAlign: 'left'
+  },
+  pContainer: {
+    padding: 20,
+    zIndex: 1,
+    color: 'white',
+    textAlign: 'left',
+    backgroundColor: 'transparent',
+    width: '80vw',
+  },
+  p: {
+    fontSize: "calc(1.5vw + 1.5vh)",
+    lineHeight: 1,
+  },
+}
 export default Jumbotron;

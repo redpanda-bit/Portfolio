@@ -1,20 +1,19 @@
 import React from 'react';
-import background from '../assets/img/bg copy.jpg'
-import logo from '../assets/img/CA Logo.png'
 
 const Jumbotron = (props) => {
 
   return (
-  <section className="cd-section jumbotron" id="jumbotron" style={{backgroundImage: `url('${background}')`, backgroundSize: "cover"}}>
-    <div id="containLogoNameAndTitle" style={{position: "center", top: "150px"}}>
-      <div className="jumbotron-text" style={{position: "absolute"}}>
-      	<img src={logo} className="logo animated" style={{position: 'relative', display: 'none', width: '30%'}} alt="logo for Carlos Almonte"/>
-        
-        <div style={{width: "90%", margin: "0 0 0 5%"}}>
-          <h1 id="jumbotron-full-name" className="fullName" style={{marginTop: "-20px", fontSize: "3em", width: "100%"}}>Carlos Almonte</h1>
+  <section className="jumbotron ha-waypoint" id="jumbotron" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={{display: 'flex', flexDirection: 'row', zIndex: 9}}>
+    <div id="jumbotron-text" className="jumbotron-text d3-effect">
+    	<div id="logo" style={{position: 'relative', fontSize: 'calc(20vw + 20vh)'}} alt="logo for Carlos Almonte">
+        <span className="icon-ca-logo"></span>
+      </div>
+      <div className="text-container">
+        <div>
+          <h1 style={{fontSize: "calc(4vw + 4vh)", textAlign: 'center', fontFamily: "Raleway"}}>Carlos Almonte</h1>
         </div>
-        <p id="jumbotron-full-title-and-location" className="animated fadeInDown"><a id="neon3" style={{cursor: "default"}}>
-        Software Engineer&nbsp;</a>based in New York, USA.</p>
+        <p style={{fontSize: "calc(1.5vw + 1.5vh)", display: 'flex', flexDirection: 'row-reverse'}}>based in New York, USA.<a id="neon3" style={{cursor: "default"}}>Software Engineer&nbsp;</a>
+        </p>
         <div className="jumbotron-social" style={{fontSize: ".6em"}}>
           <ul className="ul-social">
             <li className="li-social-links">
