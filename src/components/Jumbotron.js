@@ -3,18 +3,18 @@ import React from 'react';
 const Jumbotron = (props) => {
 
   return (
-  <section className="jumbotron ha-waypoint" id="jumbotron" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={{display: 'flex', flexDirection: 'row', zIndex: 9}}>
+  <section className="jumbotron ha-waypoint" id="jumbotron" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={{display: 'flex', flexDirection: 'row', zIndex: 2}}>
     <div id="jumbotron-text" className="jumbotron-text d3-effect">
     	<div id="logo" style={{position: 'relative', fontSize: 'calc(20vw + 20vh)'}} alt="logo for Carlos Almonte">
         <span className="icon-ca-logo"></span>
       </div>
-      <div className="text-container">
+      <div className="text-container" style={{zIndex: 1}}>
         <div>
           <h1 style={{fontSize: "calc(4vw + 4vh)", textAlign: 'center', fontFamily: "Raleway"}}>Carlos Almonte</h1>
         </div>
         <p style={{fontSize: "calc(1.5vw + 1.5vh)", display: 'flex', flexDirection: 'row-reverse'}}>based in New York, USA.<a id="neon3" style={{cursor: "default"}}>Software Engineer&nbsp;</a>
         </p>
-        <div className="jumbotron-social" style={{fontSize: ".6em"}}>
+        <div className="jumbotron-social" style={{fontSize: ".6em", width: "150%"}}>
           <ul className="ul-social">
             <li className="li-social-links">
               <a className="social" href="https://github.com/carlosalmonte04" target="_blank" rel="noopener noreferrer" content="null"><i className="fa fa-github fa-inverse"></i></a>

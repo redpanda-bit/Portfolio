@@ -14,11 +14,17 @@ class App extends Component {
   state = {
     isLoading: true,
     isPageSettled: false,
-    isMobile: false
+    isMobile: false,
+    webApp: null
   }
 
-  noMoreDynamicEls = () => {
-    return null
+  showTheMagic = () => {
+    setTimeout(function() {
+      document.getElementById('preloader').className = "animated fadeOut"
+    }, 1000)
+    setTimeout( function() {
+      document.getElementById('preloader').remove()
+    }, 1500)
   }
 
   addMoreDynamicEls = () => {
@@ -31,57 +37,123 @@ class App extends Component {
     window.starsToggle(window.scrollY)
   }
 
-  showTheMagic = () => {
-    setTimeout(function() {
-      document.getElementById('preloader').className = "animated fadeOut"
-    }, 1000)
-    setTimeout( function() {
-      document.getElementById('preloader').style = "display: none"  
-    }, 1500)
+  projectHoverOn = (project, projectIcons) => {
+    this.allProjectsHoverOff()
+    projectIcons.style.opacity = 1
+    projectIcons.style.transform = "translateY(-40px)"
+    project.dataset.isMobilePressed = "true"
   }
 
+  projectHoverOff = (project, projectIcons) => {
+    projectIcons.style.opacity = 0
+    projectIcons.style.transform = "translateY(0px)"  
+    project.style.transform = "translateY(0) scale(1);"
+    project.dataset.isMobilePressed = "false"
+  }
+
+  allProjectsHoverOff = () => {
+    const projects = window.projectsCont.children
+
+    for (let i = 0; i < projects.length; i++) {
+      this.projectHoverOff(projects[i], projects[i].children[0])
+    }
+  }
+
+  handleProjectPress = (projectTitleEl) => {
+    // ARGUMENT IS THE h2 PROJECT TITLE
+    const projectEl = projectTitleEl.parentElement.parentElement
+    const projectIconsCont = projectEl.children[0]
+    const { projectId, isMobilePressed } = projectEl.dataset
+
+    if (isMobilePressed === "true") {
+      this.allProjectsHoverOff()
+    }
+    else {
+      this.projectHoverOn(projectEl, projectIconsCont)
+    }
+  }
+
+  _renderMouseParticle = () => {
+    return(
+      <div id="large-header" className="large-header animated" style={{position: 'fixed', height: window.innerHeight, width: (window.innerWidth * 0.9), zIndex: -1}}>
+        <canvas id="demo-canvas"></canvas>
+      </div>
+    ) 
+  }
+
+  _renderBackground = () => {
+    return(
+      <div id="background" style={styles.background}/>
+    ) 
+  }
+
+  _renderPreloader = () => {
+    return(
+      <div id="preloader" className="animated fadeIn" style={styles.preloader}/>
+    ) 
+  }
+// 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false, 
-        isMobile: !!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
-      })
-    } ,800)
+    if (!this.state.didWebAppInit) {
+
+      setTimeout(() => {
+        this.setState({
+          isLoading: false, 
+          isMobile: !!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ),
+        }, this.showTheMagic)
+      } ,800)
+    }
   }
 
   componentDidUpdate() {
     if(!this.state.isLoading && !this.state.isPageSettled) {
-      // AS EASY AS:
-      window.initDynamicEls() // 1
 
-      this.state.isMobile ? this.noMoreDynamicEls() : this.addMoreDynamicEls() // 2 
-       
-      this.showTheMagic() // 3
+      this.state.isMobile ? null : (window.initDynamicEls() && this.addMoreDynamicEls() )
 
       this.setState({isPageSettled: true})
     }
   }
 
   render() {
-    console.log("MOVILE?", this.state.isMobile)
     return (
-      <div className="App" >
-        <div id="preloader" className="animated fadeIn" style={{position: 'fixed', zIndex: 99, backgroundImage: `url('/bg-preloader.gif')`, backgroundPosition: 'center', backgroundSize: 'cover', height: '100%', width: '100%', backgroundRepeat: 'no-repeat'}}/>
-        <div id="background" style={{position: 'fixed', backgroundImage: `url('/bg.jpg')`, backgroundSize: 'cover', height: '100%', width: '100%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', zIndex: -9}}/>
-        <div style={{opacity: this.state.isLoading ? 0 : 1}}>
-          <div id="large-header" className="large-header animated" style={{position: 'fixed', height: window.innerHeight, zIndex: -1}}>
-            <canvas id="demo-canvas"></canvas>
-          </div>
-          <Header />
+      <div className="App">
+        {this._renderPreloader()}
+        {this._renderBackground()}
+        <div style={{opacity: this.state.isLoading && !this.state.isPageSettled ? 0 : 1}}>
+        {!this.state.isMobile ? this._renderMouseParticle() : null}
+          <Header isMobile={this.state.isMobile}/>
           <Jumbotron />
           <About />
-          <Projects isMobile={this.state.isMobile} />
+          <Projects isMobile={this.state.isMobile} handleProjectPress={this.handleProjectPress}/>
           <Education />
           <Skills />
           <Contact />
         </div>
       </div>
     )
+  }
+}
+
+const styles = {
+  background: {
+    position: 'fixed', 
+    backgroundImage: `url('/bg.jpg')`, 
+    backgroundSize: 'cover', 
+    height: '100%', 
+    width: '100%', 
+    backgroundPosition: 'center', 
+    backgroundRepeat: 'no-repeat', 
+    zIndex: -9
+  },
+  preloader: {
+    position: 'fixed',
+    zIndex: 99,
+    backgroundImage: `url('/bg-preloader.gif')`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    height: '100%', 
+    width: '100%',
+    backgroundRepeat: 'no-repeat'
   }
 }
 

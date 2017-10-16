@@ -24,7 +24,6 @@ const About = (props) => {
 const styles = {
   main: {
     display: 'flex',
-    height: window.innerHeight * 0.8,
     flexDirection: 'row',
     justifyContent: 'center',
   },

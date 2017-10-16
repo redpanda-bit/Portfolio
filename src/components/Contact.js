@@ -3,7 +3,7 @@ import React from 'react';
 const Skills = (props) => {
 
   return (
-    <section id="contact" className="ha-waypoint" style={{marginTop: 200}}>
+    <section id="contact" className="ha-waypoint" style={{marginTop: 200, width: "102%"}}>
       <div className="row dark-gray">
         <div className="main-content" style={{flex: 1}}>
           <div className="content-header">

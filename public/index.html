@@ -12,6 +12,7 @@
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
       crossorigin="anonymous"></script>
+
     <script src="/application.js"></script>
     <script src="http://underscorejs.org/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
@@ -58,6 +59,7 @@
       <div id="dna-modal">
       </div>
     </div>
+
     <script src="/velocity.min.js"></script>
     <script src="/velocity.ui.min.js"></script>
     <script src="/main.js"></script>  
@@ -68,9 +70,10 @@
   </body>
 <script>
 
-  var mobile = false
+  var isMobile = false
 
   // RESIZABLE AND REPOSITIONABLE ELEMENTS
+  const menuContainer  = document.getElementById('menu-container')
   const header         = document.getElementById('ha-header')
   const logoOnHeader   = document.getElementById('jumbotron-from-nav')
   const postsContainer = document.getElementsByClassName('posts-container-container')
@@ -80,13 +83,43 @@
   const projects       = document.getElementsByClassName('project')
   const blogLinkFromNav= document.getElementById('blog-from-nav')
 
-  let isMouseParticleShowing = true
-  let isStarsShowing = true
+  var isMouseParticleShowing = true
+  var isStarsShowing = true
   var scrollY = $(window).scrollTop()
   var width   = window.innerWidth
+  var menuIsMobile = width < 780
+
+  const Menu = function() {}
+
+  Menu.prototype.renderMobile = function() {
+    return (`
+      <header id="mobile-menu" style="position: fixed; z-index: 10">
+        <div id="menuToggle" >
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+          <ul id="menu">
+            <a><li class="link-from-nav" style="cursor: pointer" data-destination="jumbotron">home</li></a>
+            <a><li class="link-from-nav" style="cursor: pointer" data-destination="about">about</li></a>
+            <a href="https://medium.com/@carlosalmonte04"><li>Blog</li></a>
+            <a><li class="link-from-nav" style="cursor: pointer" data-destination="projects">projects</li></a>
+            <a><li class="link-from-nav" style="cursor: pointer" data-destination="education">education</li></a>
+            <a><li class="link-from-nav" style="cursor: pointer" data-destination="skills">skills</li></a>
+            <a><li class="link-from-nav" style="cursor: pointer" data-destination="contact">contact</li></a>
+          </ul>
+        </div>
+      </header>
+    `)
+  }
+
+  const mobileMenu = document.createElement('div')
+
+
+// INIT ELEMENTS
 
 function initDynamicEls() {
-  const initializeHeader = new Promise((resolve, reject) => {
+  const initializeHeader = new Promise(function(resolve, reject) {
 
     $("#dh-modal").iziModal({
       iframe: true,
@@ -98,84 +131,74 @@ function initDynamicEls() {
       iframeURL: 'https://www.youtube.com/embed/ua84gTrbVtQ?rel=0&amp;showinfo=0'
     })
 
-    $("#dh-modal-trigger").click(e => {
+    $("#dh-modal-trigger").click(function(e) {
       e.preventDefault()
       $("#dh-modal").iziModal('open');
     })
 
-    $("#dna-modal-trigger").click(e => {
+    $("#dna-modal-trigger").click(function(e) {
       e.preventDefault()
       $("#dna-modal").iziModal('open');
     })
 
-    $(".link-from-nav").click(function(event) {
-      const destination = "#" + event.target.dataset.destination
-      $('html, body').animate({
-        scrollTop: $(destination).offset().top - 25
-      }, 400);
-    });
-    if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
-      mobile = true
-    }
-
-    if(mobile) {
-      $(projects).each((idx, project) => {
-        project.onclick = (e) => {
-          toggleSelect(project, idx)
+    $('.ha-waypoint').each(function(i) {
+      const $el = $(this),
+        animClassDown = $el.data('animateDown'),
+        animClassUp = $el.data('animateUp');
+      $el.waypoint(function(direction) {
+        if (direction === 'down' && animClassDown) {
+          $(header).attr('class', 'ha-header ' + animClassDown);
+        } else if (direction === 'up' && animClassUp) {
+          $(header).attr('class', 'ha-header ' + animClassUp);
         }
+      }, {
+        offset: '100%'
       })
-    }
-    else {
-      $('.ha-waypoint').each(function(i) {
-        const $el = $(this),
-          animClassDown = $el.data('animateDown'),
-          animClassUp = $el.data('animateUp');
-        $el.waypoint(function(direction) {
-          if (direction === 'down' && animClassDown) {
-            $(header).attr('class', 'ha-header ' + animClassDown);
-          } else if (direction === 'up' && animClassUp) {
-            $(header).attr('class', 'ha-header ' + animClassUp);
-          }
-        }, {
-          offset: '100%'
-        })
-      })
-    }
+    })
+
     resolve(true)
   })
-  .then(()=> { // SHRINK HEADER ACCORDINGLY
+  .then(function() { // SHRINK HEADER ACCORDINGLY
     if (scrollY < 384) {
       $(header).delay(400).addClass('ha-header-shrink');
     }
     logoOnHeaderToggle(scrollY)
   })
-  .then(() => {
+  .then(function() {
     reAlignProjects(width)
   }) 
+  return true
 }
 
-function toggleSelect(project, idx) {
-  if (project.dataset.isMobileHovered === "true") {
+$(document).click(function(e) {
+  if (e.target.className.includes('link-from-nav') ){
+    const destination = "#" + event.target.dataset.destination
+    $('html, body').animate({
+    scrollTop: $(destination).offset().top - 25
+    }, 400);
+    document.getElementById('menuToggle').children[0].checked = false // -> menu toggle might not be there, getelement has to happen every time
   }
-  else {
-  }
-}
+})
+
+
+
+// REPOSITIONERS
 
 function logoOnHeaderToggle(scrollY) {
   
-  if (scrollY > 384 && $(window).width() > 970) {
+  if (scrollY > 384 && $(window).width() > 830) {
     $(logoOnHeader).show();
     $(logoOnHeader).removeClass('fadeOutDownBig');
     $(logoOnHeader).addClass('fadeInUp');
   } 
-  else if (scrollY < 384 || $(window).width() < 970) {
+  else if (scrollY < 384 || $(window).width() < 830) {
     $(logoOnHeader).addClass('fadeOutDownBig')
     $(logoOnHeader).removeClass('fadeInUp')
   }
 }
 
 function particlesToggle(scrollY) {
-  let isWithinRage = scrollY >= 600 && scrollY <= 1300
+  var isWithinRage = scrollY >= 600 && scrollY <= 1300
   if (isWithinRage && !isMouseParticleShowing) {
     particlesDiv.style = `position: fixed; height: 100%; opacity: 1;z-index: -1`
     isMouseParticleShowing = true
@@ -189,42 +212,65 @@ function particlesToggle(scrollY) {
 }
 
 function starsToggle(scrollY) {
-  let isWithinRage = scrollY >= 1550 && scrollY <= 2200
+  var isWithinRage = scrollY >= 1550 && scrollY <= 2200
   if (isWithinRage && !isStarsShowing) {
-    new Array(stars).forEach(el => $(el).show())
+    new Array(stars).forEach(function(el) { $(el).show()})
     isStarsShowing = true
     return
   }
   else if (!isWithinRage && isStarsShowing) {
-    new Array(stars).forEach(el => $(el).hide())
+    new Array(stars).forEach(function(el) { $(el).hide()})
     isStarsShowing = false
     return
   }
 }
 
 function reAlignProjects(width) {
-  if (width < 640) {
-    projectsCont.style = "transition: all 0.5s ease;justify-content: left"
+  if (width < 640 || isMobile) {
+    projectsCont.style.justifyContent = "left"
   }
   else {
-    projectsCont.style = "transition: all 0.5s ease"
+    projectsCont.style.justifyContent = "center"
   }
 }
+
+
+function resizeMenu(width) {
+  if (width < 780 && !menuIsMobile) {
+    console.log("ran will change to mobile")
+      mobileMenu.innerHTML = new Menu().renderMobile()
+      $(header).hide()
+      menuContainer.prepend(mobileMenu)
+      menuIsMobile = true
+    }
+  else if (menuIsMobile && width > 780){
+    console.log("ran will change")
+    document.getElementById('mobile-menu').remove()
+    $(header).show()
+    menuIsMobile = false
+  }
+}
+
+
+
 
 // EVENT LISTENERS
 
-window.onscroll = (e) => {
-  scrollY = e.currentTarget.pageYOffset
+window.onscroll = function(e) {
+  if(!isMobile) {
+    scrollY = e.currentTarget.pageYOffset
 
-  _.throttle(logoOnHeaderToggle(scrollY), 50)
-  _.throttle(particlesToggle(scrollY), 100)
-  _.throttle(starsToggle(scrollY), 100)
+    _.throttle(logoOnHeaderToggle(scrollY), 50)
+    _.throttle(particlesToggle(scrollY), 100)
+    _.throttle(starsToggle(scrollY), 100)
+  }
 }
 
-window.onresize = (e) => {
+window.onresize = function(e) {
   width = e.currentTarget.innerWidth
 
-  _.throttle(reAlignProjects(width), 500)
+  _.throttle(reAlignProjects(width), 50)
+  _.throttle(resizeMenu(width), 500)
 }
 
 $(blogLinkFromNav).hover(function() {

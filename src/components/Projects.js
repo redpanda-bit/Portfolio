@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Jumbotron = (props) => {
   
-  const _renderStars = () => {
+  function _renderStars() {
     return (
       <div>
         <div id='stars' className="star"></div>
@@ -22,7 +22,7 @@ const Jumbotron = (props) => {
           <br/>
         </div>
         <div className="projects-container" style={{transition: 'all 0.5s ease'}}>
-          <div className="project" data-mobile-hovered={false}>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={0} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <a href="triggersDhModal" id="dh-modal-trigger">
                 <i className="project-icon fa fa-video-camera"/>
@@ -41,7 +41,7 @@ const Jumbotron = (props) => {
               <h2 className="d3-effect" style={styles.project}>Dietitian.Help</h2>
             </Link>
           </div>
-          <div className="project" data-mobile-hovered={false}>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={1} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <a href="triggersDnaModal" id="dna-modal-trigger">
                 <i className="project-icon fa fa-video-camera"/>
@@ -63,7 +63,7 @@ const Jumbotron = (props) => {
               
             </div>
           </div>
-          <div href="triggersMacrosModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={2} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <Link to="https://github.com/carlosalmonte04/macros-frontend" target="_blank">
                 <i className="project-icon fa fa-github"/>
@@ -84,7 +84,7 @@ const Jumbotron = (props) => {
             <div>
             </div>
           </div>
-          <div href="triggersFftModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={3} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <Link to="https://foodforthought-app.herokuapp.com/" target="_blank">
                 <i className="project-icon fa fa-eye"/>
@@ -102,7 +102,7 @@ const Jumbotron = (props) => {
               
             </div>
           </div>
-          <div href="triggersSnakeModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={4} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <Link to="https://github.com/carlosalmonte04/snake-frontend" target="_blank">
                 <i className="project-icon fa fa-github"/>
@@ -116,7 +116,7 @@ const Jumbotron = (props) => {
               
             </div>
           </div>
-          <div href="triggersLukesBeerModal" id="dh-modal-trigger" className="project" data-mobile-hovered={false}>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={5} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <Link to="https://github.com/carlosalmonte04/lukes-beer" target="_blank">
                 <i className="project-icon fa fa-github"/>
