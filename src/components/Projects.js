@@ -2,11 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const Jumbotron = (props) => {
+  
+  const _renderStars = () => {
+    return (
+      <div>
+        <div id='stars' className="star"></div>
+        <div id='stars2' className="star"></div>
+        <div id='stars3' className="star"></div>
+      </div>
+    ) 
+  }
+
   return (
     <section id="projects" className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={styles.main}>
-    <div id='stars' className="star"></div>
-    <div id='stars2' className="star"></div>
-    <div id='stars3' className="star"></div>
+      {props.isMobile ? null : _renderStars()}
       <div style={styles.innerMain}>
         <div className="content-header" style={{zIndex: 9}}>
           <h2 className="d3-effect" style={styles.header}>Projects</h2>

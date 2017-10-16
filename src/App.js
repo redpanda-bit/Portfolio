@@ -48,6 +48,7 @@ class App extends Component {
       })
     } ,800)
   }
+
   componentDidUpdate() {
     if(!this.state.isLoading && !this.state.isPageSettled) {
       // AS EASY AS:
@@ -60,7 +61,9 @@ class App extends Component {
       this.setState({isPageSettled: true})
     }
   }
-  _renderApp = () => {
+
+  render() {
+    console.log("MOVILE?", this.state.isMobile)
     return (
       <div className="App" >
         <div id="preloader" className="animated fadeIn" style={{position: 'fixed', zIndex: 99, backgroundImage: `url('/bg-preloader.gif')`, backgroundPosition: 'center', backgroundSize: 'cover', height: '100%', width: '100%', backgroundRepeat: 'no-repeat'}}/>
@@ -72,18 +75,12 @@ class App extends Component {
           <Header />
           <Jumbotron />
           <About />
-          <Projects />
+          <Projects isMobile={this.state.isMobile} />
           <Education />
           <Skills />
           <Contact />
         </div>
       </div>
-    ) 
-  }
-
-  render() {
-    return (
-      this._renderApp()
     )
   }
 }
