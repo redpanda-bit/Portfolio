@@ -65,7 +65,6 @@
     <script src="/EasePack.min.js"></script>
     <script src="/rAF.js"></script>
     <script src="/mouseParticles.js"></script>
-    <script type="text/javascript" src="vanilla-tilt.js"></script>
   </body>
 <script>
 
@@ -88,12 +87,6 @@
 
 function initDynamicEls() {
   const initializeHeader = new Promise((resolve, reject) => {
-    
-    VanillaTilt.init(document.getElementById("jumbotron-text"), {
-      max: 2,
-      speed: 100,
-      perspective: 1500
-    });
 
     $("#dh-modal").iziModal({
       iframe: true,

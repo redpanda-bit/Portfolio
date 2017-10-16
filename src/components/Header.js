@@ -12,7 +12,7 @@ const Header = (props) => {
         <div className="ha-header-perspective">
           <div className="ha-header-front">
             <div id="jumbotron-from-nav" className="link-from-nav animated" style={styles.logoOnHeader} data-destination="jumbotron">
-              <span className="icon-ca-logo"></span>            
+              <span className="icon-ca-logo" data-destination="jumbotron"></span>            
             </div>
             <nav id="navLi" style={{float: 'right'}}>
               <a id="about-from-nav" className="link-from-nav" style={{cursor: 'pointer'}} data-destination="about">About</a>
