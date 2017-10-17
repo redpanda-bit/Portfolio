@@ -9942,7 +9942,7 @@ STARS
 }
 
 .project-icon:hover + .project-icon-help {
-	transform: translateY(-4vh);
+	transform: translateY(-40px);
 	opacity: 1;
 
 }

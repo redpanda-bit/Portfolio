@@ -137,7 +137,7 @@ class App extends Component {
 const styles = {
   background: {
     position: 'fixed', 
-    backgroundImage: `url('/bg.jpg')`, 
+    backgroundImage: `url('/bg-small.jpg')`, 
     backgroundSize: 'cover', 
     height: '100%', 
     width: '100%', 
