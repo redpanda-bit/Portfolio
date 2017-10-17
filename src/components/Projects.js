@@ -52,7 +52,7 @@ const Jumbotron = (props) => {
                 <span className="project-icon-help">repo</span>
               </Link>
               <Link to="https://github.com/carlosalmonte04/ana-api" target="_blank">
-                <i className="project-icon fa fa-eye"/>
+                <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">api repo</span>
               </Link>
             </div>
