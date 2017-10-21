@@ -15,6 +15,7 @@ const Skills = (props) => {
               <input type="email" name="_replyto" placeholder="Your email" required />
               <textarea name="message" placeholder="Your message" required defaultValue={""} />
               <button type="submit">Send</button>
+              <h4>© Carlos Almonte 2017</h4>
             </form>
           </div>
         </div>
