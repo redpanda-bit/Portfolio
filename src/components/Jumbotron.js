@@ -12,8 +12,8 @@ const Jumbotron = (props) => {
         <div>
           <h1 style={{fontSize: "calc(4vw + 4vh)", textAlign: 'center', fontFamily: "Raleway"}}>Carlos Almonte</h1>
         </div>
-        <p style={{fontSize: "calc(1.5vw + 1.5vh)", display: 'flex', flexDirection: 'row-reverse'}}>based in New York, USA.<a id="neon3" style={{cursor: "default"}}>Software Engineer&nbsp;</a>
-        </p>
+        <h4 style={{fontSize: "calc(1.5vw + 1.5vh)", display: 'flex', flexDirection: 'row-reverse'}}>based in New York, USA.<a id="neon3" style={{cursor: "default"}}>Software Engineer&nbsp;</a>
+        </h4>
         <div className="jumbotron-social" style={{fontSize: ".6em", width: "150%"}}>
           <ul className="ul-social">
             <li className="li-social-links">

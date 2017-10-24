@@ -13,7 +13,7 @@ const Education = (props) => {
 	          {/* EDUCATION 1 */}
 	          <div className="hvr-glow" style={{width: '110%', margin: 10, fontSize: 16}}>
 	            <div className="card-header">
-	              <h4>Flatiron School <span className="job-title">2017 - 2017</span></h4>
+	              <h3>Flatiron School <span className="job-title">2017 - 2017</span></h3>
 	            </div>
 	            <div className="card-content">
 	              <p>Software Engineer Immersive. <br /></p>
@@ -22,7 +22,7 @@ const Education = (props) => {
 	          {/* EDUCATION 2 */}
 	          <div className="hvr-glow" style={{width: '110%', margin: 10, fontSize: 16}}>
 	            <div className="card-header">
-	              <h4>Lehman College <span className="job-title">2012 - 2016</span></h4>
+	              <h3>Lehman College <span className="job-title">2012 - 2016</span></h3>
 	            </div>
 	            <div className="card-content">
 	              <p>Bachelors of Science in Dietetics, Foods and Nutrition. <br /></p>

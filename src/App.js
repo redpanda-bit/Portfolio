@@ -30,10 +30,10 @@ class App extends Component {
   addMoreDynamicEls = () => {
     window.addParticles()
     window.particlesToggle(window.scrollY)
-    window.particleground(document.getElementById('particles'), {
-      dotColor: '#264883',
-      lineColor: '#3059a3'
-    });
+    // window.particleground(document.getElementById('particles'), {
+    //   dotColor: '#264883',
+    //   lineColor: '#3059a3'
+    // });
     window.starsToggle(window.scrollY)
   }
 
@@ -123,7 +123,7 @@ class App extends Component {
         {!this.state.isMobile ? this._renderMouseParticle() : null}
           <Header isMobile={this.state.isMobile}/>
           <Jumbotron />
-          <About />
+          {/*<About />*/}
           <Projects isMobile={this.state.isMobile} handleProjectPress={this.handleProjectPress}/>
           <Education />
           <Skills />

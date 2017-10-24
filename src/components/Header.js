@@ -18,7 +18,7 @@ const Header = (props) => {
             <span></span>
             <ul id="menu">
               <a ><li className="link-from-nav" style={{cursor: 'pointer'}} data-destination="jumbotron">home</li></a>
-              <a ><li className="link-from-nav" style={{cursor: 'pointer'}} data-destination="about">about</li></a>
+              {/*<a ><li className="link-from-nav" style={{cursor: 'pointer'}} data-destination="about">about</li></a>*/}
               <a href="https://medium.com/@carlosalmonte04"><li>Blog</li></a>
               <a ><li className="link-from-nav" style={{cursor: 'pointer'}} data-destination="projects">projects</li></a>
               <a ><li className="link-from-nav" style={{cursor: 'pointer'}} data-destination="education">education</li></a>
@@ -40,7 +40,7 @@ const Header = (props) => {
                 <span className="icon-ca-logo" data-destination="jumbotron"></span>            
               </div>
               <nav id="navLi" style={{float: 'right'}}>
-                <a id="about-from-nav" className="link-from-nav" style={{cursor: 'pointer'}} data-destination="about">About</a>
+                {/*<a id="about-from-nav" className="link-from-nav" style={{cursor: 'pointer'}} data-destination="about">About</a>*/}
                 <a id="blog-from-nav" className="blog-from-nav extra-padding" data-destination="blog">Blog
                   <i id="blogDownArrow" className="fa fa-chevron-down" aria-hidden="true" /></a>
                 <a id="projects-from-nav" style={{cursor: 'pointer'}} className="extra-padding link-from-nav" data-destination="projects">Projects</a>
