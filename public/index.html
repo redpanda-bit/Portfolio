@@ -12,7 +12,7 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
 
-    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/reset.css"> <!-- CSS reset -->
     <link rel="stylesheet" href="/style.css">
@@ -227,11 +227,11 @@ function starsToggle(scrollY) {
 }
 
 function reAlignProjects(width) {
-  if (width < 640 || isMobile) {
-    projectsCont.style.justifyContent = "left"
+  if (width < 1015 || isMobile) {
+    $('.sections-container').addClass("mobile")
   }
   else {
-    projectsCont.style.justifyContent = "center"
+    $('.sections-container').removeClass("mobile")
   }
 }
 
