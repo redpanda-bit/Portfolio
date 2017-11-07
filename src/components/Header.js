@@ -83,7 +83,8 @@ const styles = {
     fontSize: 65,
     display: 'inline-flex',
     height: "100%",
-    justifyContent: 'center'
+    justifyContent: 'center',
+    float: 'left'
   }
 }
 
