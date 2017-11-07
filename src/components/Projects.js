@@ -11,27 +11,6 @@ const Jumbotron = (props) => {
           <br/>
         </div>
         <div className="projects-container" style={{transition: 'all 0.5s ease'}}>
-          <div className="project" data-is-mobile-pressed={false} data-project-id={2} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container ">
-              <Link to="https://github.com/carlosalmonte04/macros-frontend" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="https://github.com/carlosalmonte04/macros-backend" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">api repo</span>
-              </Link>
-              <Link to="https://github.com/snigdhasur" target="_blank" >
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">collaborator</span>
-              </Link>
-            </div>
-            <a>
-              <h2 className="" style={styles.project}>Macros</h2>
-            </a>
-            <div>
-            </div>
-          </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={1} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container ">
               <a href="triggersDnaModal" id="dna-modal-trigger">
