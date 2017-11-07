@@ -9089,6 +9089,7 @@ h4 {
   color: black;
   -webkit-transition: .5s ease all;
   transition: .5s ease all;
+  text-align: left
 }
 
 /* line 278, /Users/CarlosAlmonte/Desktop/APPS/Portfolio/app/assets/stylesheets/pages.css.scss */
