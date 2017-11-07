@@ -5,12 +5,13 @@ const Jumbotron = (props) => {
   return (
   <section id="jumbotron" className="jumbotron">
     <div id="jumbotron-text" className="jumbotron-text">
-    	<div id="logo" style={{position: 'relative', fontSize: 'calc(20vw + 20vh)'}} alt="logo for Carlos Almonte">
-      </div>
       <div className="text-container" style={{zIndex: 1}}>
         <div>
           <h1 style={{fontSize: "calc(4vw + 4vh)", textAlign: 'center', fontFamily: "Raleway"}}>Carlos Almonte</h1>
         </div>
+    	<div id="logo">
+        <span className="icon-ca-logo" style={{fontSize: 'calc(6vw + 6vh)'}}></span>
+      </div>
         <div className="jumbotron-social" style={{fontSize: ".6em", width: "150%"}}>
           <ul className="ul-social">
             <li className="li-social-links">

@@ -43,11 +43,7 @@ const styles = {
     overflow: 'visible',
   },
   pContainer: {
-    padding: 20,
-    zIndex: 1,
-    textAlign: 'left',
     backgroundColor: 'transparent',
-    width: '100%',
   },
   p: {
     fontSize: "calc(1vw + 1vh)",

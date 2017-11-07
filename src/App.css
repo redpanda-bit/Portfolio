@@ -8812,7 +8812,6 @@ body {
   padding-top: 5vh;
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
 }
 
 /* line 45, /Users/CarlosAlmonte/Desktop/APPS/Portfolio/app/assets/stylesheets/pages.css.scss */
@@ -9880,6 +9879,11 @@ STARS
 	flex-direction: row-reverse;
 	justify-content: space-evenly
 
+}
+.sections-container.mobile {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly
 }
 
 .projects-container {
