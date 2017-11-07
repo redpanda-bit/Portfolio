@@ -20,21 +20,18 @@ class App extends Component {
 
   showTheMagic = () => {
     setTimeout(function() {
-      document.getElementById('preloader').className = "animated fadeOut"
+      // document.getElementById('preloader').className = "animated fadeOut"
     }, 1000)
     setTimeout( function() {
-      document.getElementById('preloader').remove()
+      // document.getElementById('preloader').remove()
     }, 1500)
   }
 
   addMoreDynamicEls = () => {
-    window.addParticles()
-    window.particlesToggle(window.scrollY)
     // window.particleground(document.getElementById('particles'), {
     //   dotColor: '#264883',
     //   lineColor: '#3059a3'
     // });
-    window.starsToggle(window.scrollY)
   }
 
   projectHoverOn = (project, projectIcons) => {
@@ -117,17 +114,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this._renderPreloader()}
-        {this._renderBackground()}
-        <div style={{opacity: this.state.isLoading && !this.state.isPageSettled ? 0 : 1}}>
-        {!this.state.isMobile ? this._renderMouseParticle() : null}
-          <Header isMobile={this.state.isMobile}/>
+        <div className="wrapper" style={{opacity: this.state.isLoading && !this.state.isPageSettled ? 0 : 1}}>
           <Jumbotron />
-          {/*<About />*/}
+          <About />
+        <div className="sections-container">
           <Projects isMobile={this.state.isMobile} handleProjectPress={this.handleProjectPress}/>
-          <Education />
-          <Skills />
           <Contact />
+          <Education />
+        </div>
+          {/*<Education />
+          <Skills />
+          <Contact />*/}
         </div>
       </div>
     )

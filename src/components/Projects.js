@@ -2,69 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const Jumbotron = (props) => {
-  
-  function _renderStars() {
-    return (
-      <div>
-        <div id='stars' className="star"></div>
-        <div id='stars2' className="star"></div>
-        <div id='stars3' className="star"></div>
-      </div>
-    ) 
-  }
 
   return (
     <section id="projects" className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={styles.main}>
-      {props.isMobile ? null : _renderStars()}
       <div style={styles.innerMain}>
         <div className="content-header" style={{zIndex: 9}}>
-          <h2 className="d3-effect" style={styles.header}>Projects</h2>
+          <h2>Projects</h2>
           <br/>
         </div>
         <div className="projects-container" style={{transition: 'all 0.5s ease'}}>
-          <div className="project" data-is-mobile-pressed={false} data-project-id={0} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
-              <a href="triggersDhModal" id="dh-modal-trigger">
-                <i className="project-icon fa fa-video-camera"/>
-                <span className="project-icon-help">video demo</span>
-              </a>
-              <Link to="https://github.com/carlosalmonte04/dietitianhelp" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="http://dietitian.help" target="_blank">
-                <i className="project-icon fa fa-eye"/>
-                <span className="project-icon-help">website</span>
-              </Link>
-            </div>
-            <Link to="">
-              <h2 className="d3-effect" style={styles.project}>Dietitian.Help</h2>
-            </Link>
-          </div>
-          <div className="project" data-is-mobile-pressed={false} data-project-id={1} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
-              <a href="triggersDnaModal" id="dna-modal-trigger">
-                <i className="project-icon fa fa-video-camera"/>
-                <span className="project-icon-help">video demo</span>
-              </a>
-              <Link to="https://github.com/carlosalmonte04/dna" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="https://github.com/carlosalmonte04/ana-api" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">api repo</span>
-              </Link>
-            </div>
-            <Link to="">
-              <h2 className="d3-effect" style={styles.project}>DNA</h2>
-            </Link>
-            <div>
-              
-            </div>
-          </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={2} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
+            <div className="project-icons-container ">
               <Link to="https://github.com/carlosalmonte04/macros-frontend" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">repo</span>
@@ -79,13 +27,54 @@ const Jumbotron = (props) => {
               </Link>
             </div>
             <a>
-              <h2 className="d3-effect" style={styles.project}>Macros</h2>
+              <h2 className="" style={styles.project}>Macros</h2>
             </a>
             <div>
             </div>
           </div>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={1} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
+            <div className="project-icons-container ">
+              <a href="triggersDnaModal" id="dna-modal-trigger">
+                <i className="project-icon fa fa-video-camera"/>
+                <span className="project-icon-help">video demo</span>
+              </a>
+              <Link to="https://github.com/carlosalmonte04/dna" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+              <Link to="https://github.com/carlosalmonte04/ana-api" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">api repo</span>
+              </Link>
+            </div>
+            <Link to="">
+              <h2 className="" style={styles.project}>DNA</h2>
+            </Link>
+            <div>
+              
+            </div>
+          </div>
+          <div className="project" data-is-mobile-pressed={false} data-project-id={0} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
+            <div className="project-icons-container ">
+              <a href="triggersDhModal" id="dh-modal-trigger">
+                <i className="project-icon fa fa-video-camera"/>
+                <span className="project-icon-help">video demo</span>
+              </a>
+              <Link to="https://github.com/carlosalmonte04/dietitianhelp" target="_blank">
+                <i className="project-icon fa fa-github"/>
+                <span className="project-icon-help">repo</span>
+              </Link>
+              <Link to="http://dietitian.help" target="_blank">
+                <i className="project-icon fa fa-eye"/>
+                <span className="project-icon-help">website</span>
+              </Link>
+            </div>
+            <Link to="">
+              <h2 className="" style={styles.project}>Dietitian.Help</h2>
+            </Link>
+          </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={3} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
+            <div className="project-icons-container ">
               <Link to="https://foodforthought-app.herokuapp.com/" target="_blank">
                 <i className="project-icon fa fa-eye"/>
                 <span className="project-icon-help">website</span>
@@ -96,41 +85,24 @@ const Jumbotron = (props) => {
               </Link>
             </div>
             <a>
-              <h2 className="d3-effect" style={styles.project}>Food For Thought</h2>
+              <h2 className="" style={styles.project}>Food For Thought</h2>
             </a>
             <div>
               
             </div>
           </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={4} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
+            <div className="project-icons-container ">
               <Link to="https://github.com/carlosalmonte04/snake-frontend" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">repo</span>
               </Link>
             </div>
             <a>
-              <h2 className="d3-effect" style={styles.project}>Snake</h2>
+              <h2 className="" style={styles.project}>Snake</h2>
             </a>
             <div>
               
-            </div>
-          </div>
-          <div className="project" data-is-mobile-pressed={false} data-project-id={5} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
-              <Link to="https://github.com/carlosalmonte04/lukes-beer" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="https://github.com/yakovkiff" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">collaborator</span>
-              </Link>
-            </div>
-            <a>
-              <h2 className="d3-effect" style={styles.project}>Luke's Beer</h2>
-            </a>
-            <div>
             </div>
           </div>
         </div>
@@ -142,18 +114,15 @@ const Jumbotron = (props) => {
 const styles = {
   main: {
     display: 'flex',
-    marginTop: 150,
-    height: window.innerHeight * 0.8,
     justifyContent: 'center'
   },
   innerMain: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: 100
   },
   header: {
     cursor: 'default',
-    fontSize: "calc(5vw + 5vh)",
+    fontSize: "calc(2vw + 2vh)",
     textAlign: 'center',
     color: '#3e6fb2',
     marginBottom: -56,
