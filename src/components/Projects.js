@@ -63,27 +63,6 @@ const Jumbotron = (props) => {
               
             </div>
           </div>
-          <div className="project" data-is-mobile-pressed={false} data-project-id={2} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
-              <Link to="https://github.com/carlosalmonte04/macros-frontend" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="https://github.com/carlosalmonte04/macros-backend" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">api repo</span>
-              </Link>
-              <Link to="https://github.com/snigdhasur" target="_blank" >
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">collaborator</span>
-              </Link>
-            </div>
-            <a>
-              <h2 className="d3-effect" style={styles.project}>Macros</h2>
-            </a>
-            <div>
-            </div>
-          </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={3} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <Link to="https://foodforthought-app.herokuapp.com/" target="_blank">
@@ -114,23 +93,6 @@ const Jumbotron = (props) => {
             </a>
             <div>
               
-            </div>
-          </div>
-          <div className="project" data-is-mobile-pressed={false} data-project-id={5} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
-            <div className="project-icons-container d3-effect">
-              <Link to="https://github.com/carlosalmonte04/lukes-beer" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="https://github.com/yakovkiff" target="_blank">
-                <i className="project-icon fa fa-github"/>
-                <span className="project-icon-help">collaborator</span>
-              </Link>
-            </div>
-            <a>
-              <h2 className="d3-effect" style={styles.project}>Luke's Beer</h2>
-            </a>
-            <div>
             </div>
           </div>
         </div>
