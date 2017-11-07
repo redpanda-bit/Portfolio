@@ -11,18 +11,18 @@ const Education = (props) => {
         </div>
 	        <div className="content-body" style={styles.schoolContainer}>
 	          {/* EDUCATION 1 */}
-	          <div className="hvr-glow" style={{width: '110%', margin: 10, fontSize: 16}}>
-	            <div className="card-header">
-	              <h3>Flatiron School <span className="job-title">2017 - 2017</span></h3>
+	          <div className="hvr-glow" style={{width: '100%', margin: 10, fontSize: 16}}>
+	            <div className="card-header" style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
+	              <h3>Flatiron School </h3> <h3><span className="job-title">2017 - 2017</span></h3>
 	            </div>
 	            <div className="card-content">
 	              <p>Software Engineer Immersive. <br /></p>
 	            </div>
 	          </div>
 	          {/* EDUCATION 2 */}
-	          <div className="hvr-glow" style={{width: '110%', margin: 10, fontSize: 16}}>
-	            <div className="card-header">
-	              <h3>Lehman College <span className="job-title">2012 - 2016</span></h3>
+	          <div className="hvr-glow" style={{width: '100%', margin: 10, fontSize: 16}}>
+	            <div className="card-header" style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
+	              <h3>Lehman College </h3> <h3><span className="job-title">2012 - 2016</span></h3>
 	            </div>
 	            <div className="card-content">
 	              <p>Bachelors of Science in Dietetics, Foods and Nutrition. <br /></p>
