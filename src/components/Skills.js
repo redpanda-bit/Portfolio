@@ -9,7 +9,7 @@ const Skills = (props) => {
           <h2 className="d3-effect" style={styles.header}>Skills</h2>
           <br/>
         </div>
-        <div className="content-body d3-effect" style={{marginTop: '6vh'}}>
+        <div className="content-body d3-effect width" style={{marginTop: '6vh'}}>
           <p style={styles.p}>React React Native Redux Javascript JQuery Ruby on Rails SQL NodeJS Express MongoDB Github Heroku
           </p>
         </div>

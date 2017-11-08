@@ -125,7 +125,7 @@ class App extends Component {
           <Jumbotron />
           {/*<About />*/}
           <Projects isMobile={this.state.isMobile} handleProjectPress={this.handleProjectPress}/>
-          <Education />
+          <Education isMobile={this.state.isMobile} />
           <Skills />
           <Contact />
         </div>

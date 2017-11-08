@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
+let isMobile;
+
 const Jumbotron = (props) => {
   
   function _renderStars() {
@@ -12,16 +14,17 @@ const Jumbotron = (props) => {
       </div>
     ) 
   }
+  isMobile = props.isMobile
 
   return (
-    <section id="projects" className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink" style={styles.main}>
+    <section id="projects" style={styles.main} className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
       {props.isMobile ? null : _renderStars()}
       <div style={styles.innerMain}>
         <div className="content-header" style={{zIndex: 9}}>
           <h2 className="d3-effect" style={styles.header}>Projects</h2>
           <br/>
         </div>
-        <div className="projects-container" style={{transition: 'all 0.5s ease'}}>
+        <div className={`projects-container ${props.isMobile ? 'mobile' : ''}`} style={{transition: 'all 0.5s ease'}}>
           <div className="project" data-is-mobile-pressed={false} data-project-id={0} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
               <a href="triggersDhModal" id="dh-modal-trigger">
@@ -116,7 +119,7 @@ const styles = {
   header: {
     cursor: 'default',
     fontSize: "calc(5vw + 5vh)",
-    textAlign: 'center',
+    textAlign: isMobile ? 'left' : 'center',
     color: '#3e6fb2',
     marginBottom: -56,
     width: '100%',

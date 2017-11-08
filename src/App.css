@@ -8951,6 +8951,19 @@ h2 {
   font-weight: 100;
   width: 68vw;
 }
+.content-body.mobile {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between 
+}
+.width {
+  width: 68vw !important;
+}
+
+.education-card {
+	flex: 1;
+}
 
 /* line 159, /Users/CarlosAlmonte/Desktop/APPS/Portfolio/app/assets/stylesheets/pages.css.scss */
 .content-body > p {
@@ -9857,6 +9870,13 @@ STARS
 	margin-top: 10vh;
 }
 
+.projects-container.mobile {
+	justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: initial;
+}
+
 .project {
   color: #3e6fb2;
   color: white;
@@ -9965,7 +9985,7 @@ HMABURGER MENU
 #menuToggle
 {
   display: block;
-  position: relative;
+  position: fixed;
   top: 50px;
   left: 50px;
   
@@ -10085,5 +10105,5 @@ HMABURGER MENU
  */
 #menuToggle input:checked ~ ul
 {
-  transform: none;
+  transform: translate(32%, 0%);
 }

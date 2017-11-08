@@ -9,9 +9,9 @@ const Education = (props) => {
           <h2 className="d3-effect" style={styles.header}>Education</h2>
           <br/>
         </div>
-	        <div className="content-body" style={styles.schoolContainer}>
+	        <div className={`content-body ${props.isMobile ? 'mobile' : ''}`} style={styles.schoolContainer}>
 	          {/* EDUCATION 1 */}
-	          <div className="hvr-glow" style={{width: '100%', margin: 10, fontSize: 16}}>
+	          <div className="hvr-glow education-card" style={{width: '100%', margin: 10, fontSize: 16}}>
 	            <div className="card-header" style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
 	              <h3>Flatiron School </h3> <h3><span className="job-title">2017 - 2017</span></h3>
 	            </div>
@@ -20,7 +20,7 @@ const Education = (props) => {
 	            </div>
 	          </div>
 	          {/* EDUCATION 2 */}
-	          <div className="hvr-glow" style={{width: '100%', margin: 10, fontSize: 16}}>
+	          <div className="hvr-glow education-card" style={{width: '100%', margin: 10, fontSize: 16}}>
 	            <div className="card-header" style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'space-between'}}>
 	              <h3>Lehman College </h3> <h3><span className="job-title">2012 - 2016</span></h3>
 	            </div>
