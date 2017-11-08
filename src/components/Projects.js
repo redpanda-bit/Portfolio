@@ -17,7 +17,7 @@ const Jumbotron = (props) => {
   isMobile = props.isMobile
 
   return (
-    <section id="projects" style={styles.main} className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-shrink">
+    <section id="projects" style={styles.main} className="ha-waypoint" data-animate-down="ha-header-small" data-animate-up="ha-header-small" >
       {props.isMobile ? null : _renderStars()}
       <div style={styles.innerMain}>
         <div className="content-header" style={{zIndex: 9}}>
