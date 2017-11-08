@@ -108,7 +108,9 @@ class App extends Component {
   componentDidUpdate() {
     if(!this.state.isLoading && !this.state.isPageSettled) {
 
-      this.state.isMobile ? null : (window.initDynamicEls() && this.addMoreDynamicEls() )
+      setTimeout(() => {
+        this.state.isMobile ? null : (window.initDynamicEls() && this.addMoreDynamicEls() )
+        },100)
 
       this.setState({isPageSettled: true})
     }
