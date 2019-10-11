@@ -31,14 +31,14 @@ const Jumbotron = (props) => {
                 <i className="project-icon fa fa-video-camera"/>
                 <span className="project-icon-help">video demo</span>
               </a>
-              <Link to="https://github.com/carlosalmonte04/dietitianhelp" target="_blank">
+              <a href="https://github.com/carlosalmonte04/dietitianhelp" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="http://dietitian.help" target="_blank">
+              </a>
+              <a href="http://dietitian.help" target="_blank">
                 <i className="project-icon fa fa-eye"/>
                 <span className="project-icon-help">website</span>
-              </Link>
+              </a>
             </div>
             <Link to="">
               <h2 className="d3-effect" style={styles.project}>Dietitian.Help</h2>
@@ -50,14 +50,14 @@ const Jumbotron = (props) => {
                 <i className="project-icon fa fa-video-camera"/>
                 <span className="project-icon-help">video demo</span>
               </a>
-              <Link to="https://github.com/carlosalmonte04/dna" target="_blank">
+              <a href="ttps://github.com/carlosalmonte04/dna" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">repo</span>
-              </Link>
-              <Link to="https://github.com/carlosalmonte04/ana-api" target="_blank">
+              </a>
+              <a href="ttps://github.com/carlosalmonte04/ana-api" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">api repo</span>
-              </Link>
+              </a>
             </div>
             <Link to="">
               <h2 className="d3-effect" style={styles.project}>DNA</h2>
@@ -68,14 +68,14 @@ const Jumbotron = (props) => {
           </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={3} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
-              <Link to="https://foodforthought-app.herokuapp.com/" target="_blank">
+              <a href="ttps://foodforthought-app.herokuapp.com/" target="_blank">
                 <i className="project-icon fa fa-eye"/>
                 <span className="project-icon-help">website</span>
-              </Link>
-              <Link to="https://github.com/carlosalmonte04/food-for-thought" target="_blank">
+              </a>
+              <a href="ttps://github.com/carlosalmonte04/food-for-thought" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">repo</span>
-              </Link>
+              </a>
             </div>
             <a>
               <h2 className="d3-effect" style={styles.project}>Food For Thought</h2>
@@ -86,10 +86,10 @@ const Jumbotron = (props) => {
           </div>
           <div className="project" data-is-mobile-pressed={false} data-project-id={4} onClick={ props.isMobile ? (e) => props.handleProjectPress(e.target) : null} >
             <div className="project-icons-container d3-effect">
-              <Link to="https://github.com/carlosalmonte04/snake-frontend" target="_blank">
+              <a href="ttps://github.com/carlosalmonte04/snake-frontend" target="_blank">
                 <i className="project-icon fa fa-github"/>
                 <span className="project-icon-help">repo</span>
-              </Link>
+              </a>
             </div>
             <a>
               <h2 className="d3-effect" style={styles.project}>Snake</h2>
